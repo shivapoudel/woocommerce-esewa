@@ -90,22 +90,14 @@ class WC_eSewa {
 	private function includes() {}
 
 	/**
-	 * Install method.
-	 */
-	public static function install() {}
-
-	/**
 	 * WooCommerce fallback notice.
 	 *
 	 * @return string
 	 */
 	public function woocommerce_missing_notice() {
-		echo '<div class="error"><p>' . sprintf( __( 'WooCommerce eSewa depends on the last version of %s to work!', 'woocommerce-esewa' ), '<a href="http://www.woothemes.com/woocommerce/" target="_blank">' . __( 'WooCommerce', 'woocommerce-esewa' ) . '</a>' ) . '</p></div>';
+		echo '<div class="error notice is-dismissible"><p>' . sprintf( __( 'WooCommerce eSewa depends on the last version of %s to work!', 'woocommerce-esewa' ), '<a href="http://www.woothemes.com/woocommerce/" target="_blank">' . __( 'WooCommerce', 'woocommerce-esewa' ) . '</a>' ) . '</p></div>';
 	}
 }
-
-// Plugin install.
-register_activation_hook( __FILE__, array( 'WC_eSewa', 'install' ) );
 
 add_action( 'plugins_loaded', array( 'WC_eSewa', 'get_instance' ) );
 
