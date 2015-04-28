@@ -127,20 +127,6 @@ class WC_eSewa {
 	public function woocommerce_missing_notice() {
 		echo '<div class="error notice is-dismissible"><p>' . sprintf( __( 'WooCommerce eSewa depends on the last version of %s to work!', 'woocommerce-esewa' ), '<a href="http://www.woothemes.com/woocommerce/" target="_blank">' . __( 'WooCommerce', 'woocommerce-esewa' ) . '</a>' ) . '</p></div>';
 	}
-
-	/**
-	 * Plugin Logger.
-	 *
-	 * @return WC_Logger
-	 */
-	public static function logger() {
-		if ( class_exists( 'WC_Logger' ) ) {
-			return new WC_Logger();
-		} else {
-			global $woocommerce;
-			return $woocommerce->logger();
-		}
-	}
 }
 
 add_action( 'plugins_loaded', array( 'WC_eSewa', 'get_instance' ), 0 );
