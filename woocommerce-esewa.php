@@ -49,6 +49,7 @@ class WC_eSewa {
 
 			// Hooks
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateway' ) );
+			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'plugin_action_links' ) );
 		} else {
 			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
 		}
@@ -103,6 +104,19 @@ class WC_eSewa {
 	public function add_gateway( $methods ) {
 		$methods[] = 'WC_Gateway_eSewa';
 		return $methods;
+	}
+
+	/**
+	 * Show action links on the plugin screen.
+	 * @param  mixed $links Plugin Action links
+	 * @return array
+	 */
+	public static function plugin_action_links( $links ) {
+		$action_links = array(
+			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=wc_gateway_esewa' ) . '" title="' . esc_attr( __( 'View Settings', 'woocommerce-esewa' ) ) . '">' . __( 'Settings', 'woocommerce-esewa' ) . '</a>',
+		);
+
+		return array_merge( $action_links, $links );
 	}
 
 	/**
