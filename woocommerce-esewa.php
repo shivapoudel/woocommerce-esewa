@@ -48,7 +48,7 @@ class WC_eSewa {
 			$this->includes();
 
 			// Hooks
-			// add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateway' ) );
+			add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateway' ) );
 		} else {
 			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
 		}
@@ -90,7 +90,9 @@ class WC_eSewa {
 	/**
 	 * Includes.
 	 */
-	private function includes() {}
+	private function includes() {
+		include_once( 'includes/class-wc-esewa-gateway.php' );
+	}
 
 	/**
 	 * Add the gateway to WooCommerce.
@@ -99,7 +101,7 @@ class WC_eSewa {
 	 * @return array          Payment methods with eSewa.
 	 */
 	public function add_gateway( $methods ) {
-		$methods[] = 'WC_eSewa_Gateway';
+		$methods[] = 'WC_Gateway_eSewa';
 		return $methods;
 	}
 
@@ -110,6 +112,20 @@ class WC_eSewa {
 	 */
 	public function woocommerce_missing_notice() {
 		echo '<div class="error notice is-dismissible"><p>' . sprintf( __( 'WooCommerce eSewa depends on the last version of %s to work!', 'woocommerce-esewa' ), '<a href="http://www.woothemes.com/woocommerce/" target="_blank">' . __( 'WooCommerce', 'woocommerce-esewa' ) . '</a>' ) . '</p></div>';
+	}
+
+	/**
+	 * Plugin Logger.
+	 *
+	 * @return WC_Logger
+	 */
+	public static function logger() {
+		if ( class_exists( 'WC_Logger' ) ) {
+			return new WC_Logger();
+		} else {
+			global $woocommerce;
+			return $woocommerce->logger();
+		}
 	}
 }
 
