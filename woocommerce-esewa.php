@@ -44,8 +44,11 @@ class WC_eSewa {
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
 		// Checks with WooCommerce is installed.
-		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '2.3', '>=' ) ) {
+		if ( class_exists( 'WC_Payment_Gateway' ) ) {
 			$this->includes();
+
+			// Hooks
+			// add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateway' ) );
 		} else {
 			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
 		}
@@ -66,12 +69,12 @@ class WC_eSewa {
 	}
 
 	/**
-	 * Get assets url.
+	 * Get the plugin path.
 	 *
 	 * @return string
 	 */
-	public static function get_assets_url() {
-		return plugins_url( 'assets/', __FILE__ );
+	public function plugin_path() {
+		return untrailingslashit( plugin_dir_path( __FILE__ ) );
 	}
 
 	/**
@@ -90,6 +93,17 @@ class WC_eSewa {
 	private function includes() {}
 
 	/**
+	 * Add the gateway to WooCommerce.
+	 *
+	 * @param  array $methods WooCommerce payment methods.
+	 * @return array          Payment methods with eSewa.
+	 */
+	public function add_gateway( $methods ) {
+		$methods[] = 'WC_eSewa_Gateway';
+		return $methods;
+	}
+
+	/**
 	 * WooCommerce fallback notice.
 	 *
 	 * @return string
@@ -99,6 +113,6 @@ class WC_eSewa {
 	}
 }
 
-add_action( 'plugins_loaded', array( 'WC_eSewa', 'get_instance' ) );
+add_action( 'plugins_loaded', array( 'WC_eSewa', 'get_instance' ), 0 );
 
 endif;
