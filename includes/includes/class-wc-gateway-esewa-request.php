@@ -73,8 +73,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Helper method to get the order subtotal
 	 *
-	 * @since 2.1
-	 * @param WC_Order $order
+	 * @param  WC_Order $order
 	 * @return float
 	 */
 	private function get_order_subtotal( $order ) {
@@ -89,8 +88,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Helper method to get the service charge
 	 *
-	 * @since 2.1
-	 * @param WC_Order $order
+	 * @param  WC_Order $order
 	 * @return float
 	 */
 	private function get_service_charge( $order ) {
