@@ -42,7 +42,7 @@ class WC_Gateway_eSewa_Request {
 		if ( $sandbox ) {
 			return 'https://dev.esewa.com.np/epay/main?' . $esewa_args;
 		} else {
-			return 'http://esewa.com/epay/main?' . $esewa_args;
+			return 'http://esewa.com.np/epay/main?' . $esewa_args;
 		}
 	}
 
@@ -78,12 +78,8 @@ class WC_Gateway_eSewa_Request {
 	 * @return float
 	 */
 	private function get_order_subtotal( $order ) {
-
 		$subtotal = 0;
-
-		// subtotal
 		foreach ( $order->get_items() as $item ) {
-
 			$subtotal += ( isset( $item['line_subtotal'] ) ) ? $item['line_subtotal'] : 0;
 		}
 
@@ -99,11 +95,8 @@ class WC_Gateway_eSewa_Request {
 	 */
 	private function get_service_charge( $order ) {
 		$charge = 0;
-
-		// Service Charge
 		if ( sizeof( $order->get_fees() ) > 0 ) {
 			foreach ( $order->get_fees() as $item ) {
-
 				$charge += ( isset( $item['line_total'] ) ) ? $item['line_total'] : 0;
 			}
 		}
