@@ -110,12 +110,30 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 *
 	 * @return string
 	 */
-	public function get_transaction_url( $order ) {
-		if ( $this->testmode ) {
-			$this->view_transaction_url = 'https://dev.esewa.com.np/epay/id=%s';
-		} else {
-			$this->view_transaction_url = 'https://esewa.com.np/epay/id=%s';
-		}
-		return parent::get_transaction_url( $order );
+	// public function get_transaction_url( $order ) {
+	// 	if ( $this->testmode ) {
+	// 		$this->view_transaction_url = 'https://dev.esewa.com.np/epay/id=%s';
+	// 	} else {
+	// 		$this->view_transaction_url = 'https://esewa.com.np/epay/id=%s';
+	// 	}
+	// 	return parent::get_transaction_url( $order );
+	// }
+
+	/**
+	 * Process the payment and return the result
+	 *
+	 * @param  int $order_id
+	 * @return array
+	 */
+	public function process_payment( $order_id ) {
+		include_once( 'class-wc-gateway-esewa-request.php' );
+
+		$order          = wc_get_order( $order_id );
+		$paypal_request = new WC_Gateway_eSewa_Request( $this );
+
+		return array(
+			'result'   => 'success',
+			'redirect' => $paypal_request->get_request_url( $order, $this->testmode )
+		);
 	}
 }
