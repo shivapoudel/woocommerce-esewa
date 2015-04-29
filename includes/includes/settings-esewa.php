@@ -36,24 +36,24 @@ return array(
 		'default'     => '',
 		'placeholder' => 'Eg: 0000MID'
 	),
-	'paymentaction' => array(
-		'title'       => __( 'Payment Action', 'woocommerce-esewa' ),
+	'mode' => array(
+		'title'       => __( 'Payment Mode', 'woocommerce-esewa' ),
 		'type'        => 'select',
 		'class'       => 'wc-enhanced-select',
-		'description' => __( 'Choose whether you wish to capture funds immediately or authorize payment only.', 'woocommerce-esewa' ),
-		'default'     => 'sale',
+		'description' => __( 'Choose whether you wish to use standard or hosted payment mode.', 'woocommerce-esewa' ),
+		'default'     => 'standard',
 		'desc_tip'    => true,
 		'options'     => array(
-			'sale'          => __( 'Capture', 'woocommerce-esewa' ),
-			'authorization' => __( 'Authorize', 'woocommerce-esewa' )
+			'standard' => __( 'Standard', 'woocommerce-esewa' ),
+			'hosted'   => __( 'Hosted Payments', 'woocommerce-esewa' )
 		)
 	),
 	'testmode' => array(
-		'title'       => __( 'Test Mode', 'woocommerce-esewa' ),
+		'title'       => __( 'Sandbox Mode', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
-		'label'       => __( 'Enable eSewa test mode', 'woocommerce-esewa' ),
+		'label'       => __( 'Enable Sandbox Mode', 'woocommerce-esewa' ),
 		'default'     => 'no',
-		'description' => __( 'Enable eSewa test mode to test payments.', 'woocommerce-esewa' ),
+		'description' => __( 'Enable sandbox mode to test payments.', 'woocommerce-esewa' ),
 	),
 	'debug' => array(
 		'title'       => __( 'Debug Log', 'woocommerce-esewa' ),
