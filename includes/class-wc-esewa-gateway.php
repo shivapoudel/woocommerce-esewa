@@ -32,7 +32,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 */
 	public function __construct() {
 		$this->id                 = 'esewa';
-		$this->icon               = apply_filters( 'woocommerce_esewa_icon', plugins_url( 'assets/images/esewa.png', plugin_dir_path( __FILE__ ) ) );
+		$this->icon               = apply_filters( 'woocommerce_esewa_icon', plugins_url( 'images/esewa.png', plugin_dir_path( __FILE__ ) ) );
 		$this->has_fields         = false;
 		$this->order_button_text  = __( 'Proceed to eSewa', 'woocommerce-esewa' );
 		$this->method_title       = __( 'eSewa', 'woocommerce-esewa' );
