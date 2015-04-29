@@ -128,12 +128,29 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	public function process_payment( $order_id ) {
 		include_once( 'includes/class-wc-gateway-esewa-request.php' );
 
-		$order          = wc_get_order( $order_id );
-		$paypal_request = new WC_Gateway_eSewa_Request( $this );
+		$order         = wc_get_order( $order_id );
+		$esewa_request = new WC_Gateway_eSewa_Request( $this );
 
+		if ( 'hosted' == $this->mode ) {
+			return $this->process_hosted_payments( $order );
+		} else {
+			return array(
+				'result'   => 'success',
+				'redirect' => $esewa_request->get_request_url( $order, $this->testmode )
+			);
+		}
+	}
+
+	/**
+	 * Process hosted payments
+	 *
+	 * @param  WC_Order $order
+	 * @return array
+	 */
+	protected function process_hosted_payments( $order ) {
 		return array(
 			'result'   => 'success',
-			'redirect' => $paypal_request->get_request_url( $order, $this->testmode )
+			'redirect' => $order->get_checkout_payment_url( true )
 		);
 	}
 }

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce eSewa 1.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/shivapoudel/woocommerce-esewa/issues\n"
-"POT-Creation-Date: 2015-04-29 07:04:00+00:00\n"
+"POT-Creation-Date: 2015-04-29 07:46:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -76,33 +76,31 @@ msgid ""
 msgstr ""
 
 #: includes/includes/settings-esewa.php:40
-msgid "Payment Action"
+msgid "Payment Mode"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:43
-msgid ""
-"Choose whether you wish to capture funds immediately or authorize payment "
-"only."
+msgid "Choose whether you wish to use standard or hosted payment mode."
 msgstr ""
 
 #: includes/includes/settings-esewa.php:47
-msgid "Capture"
+msgid "Standard"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:48
-msgid "Authorize"
+msgid "Hosted Payments"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:52
-msgid "Test Mode"
+msgid "Sandbox Mode"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:54
-msgid "Enable eSewa test mode"
+msgid "Enable Sandbox Mode"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:56
-msgid "Enable eSewa test mode to test payments."
+msgid "Enable sandbox mode to test payments."
 msgstr ""
 
 #: includes/includes/settings-esewa.php:59
