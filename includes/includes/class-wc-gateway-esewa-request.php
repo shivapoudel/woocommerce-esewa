@@ -39,8 +39,6 @@ class WC_Gateway_eSewa_Request {
 	public function get_request_url( $order, $sandbox = false ) {
 		$esewa_args = http_build_query( $this->get_esewa_args( $order ), '', '&' );
 
-      nspre($esewa_args);
-      die;
 		if ( $sandbox ) {
 			return 'https://dev.esewa.com.np/epay/main?' . $esewa_args;
 		} else {
