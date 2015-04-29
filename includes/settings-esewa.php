@@ -33,6 +33,7 @@ return array(
 		'type'        => 'text',
 		'desc_tip'    => true,
 		'description' => __( 'Please enter eSewa Merchant ID; this is needed in order to take payment.', 'woocommerce-esewa' ),
-		'default'     => ''
+		'default'     => '',
+		'placeholder' => 'Eg: 0000MID'
 	),
 );
