@@ -52,7 +52,7 @@ class WC_Gateway_eSewa_Request {
 	 * @param  WC_Order $order
 	 * @return array
 	 */
-	protected function get_paypal_args( $order ) {
+	protected function get_esewa_args( $order ) {
 		WC_Gateway_eSewa::log( 'Generating payment form for order ' . $order->get_order_number() . '. Notify URL: ' . $this->notify_url );
 	}
 }
