@@ -4,14 +4,6 @@ module.exports = function( grunt ){
 
 	grunt.initConfig({
 
-		// Setting folder templates.
-		dirs: {
-			css: 'assets/css',
-			fonts: 'assets/fonts',
-			images: 'assets/images',
-			js: 'assets/js'
-		},
-
 		// JavaScript linting with JSHint.
 		jshint: {
 			options: {
