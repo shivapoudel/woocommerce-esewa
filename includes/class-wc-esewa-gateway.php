@@ -38,6 +38,10 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->method_title       = __( 'eSewa', 'woocommerce-esewa' );
 		$this->method_description = __( 'The eSewa ePay system enables partner merchant to perform transaction and receive money from customer having eSewa account in secure environment.', 'woocommerce-esewa' );
 
+		// Load eSewa Credientials.
+		$this->live_url = 'https://esewa.com.np/epay';
+		$this->test_url = 'http://dev.esewa.com.np/epay';
+
 		// Load the settings.
 		$this->init_form_fields();
 		$this->init_settings();
@@ -47,9 +51,9 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->description    = $this->get_option( 'description' );
 		$this->testmode       = 'yes' === $this->get_option( 'testmode', 'no' );
 		$this->debug          = 'yes' === $this->get_option( 'debug', 'no' );
-		$this->email          = $this->get_option( 'email' );
-		$this->receiver_email = $this->get_option( 'receiver_email', $this->email );
-		$this->identity_token = $this->get_option( 'identity_token' );
+		$this->submission     = 'yes' === $this->get_option( 'submission', 'no' );
+		$this->merchant       = $this->get_option( 'merchant' );
+		$this->test_merchant  = $this->get_option( 'test_merchant', 'testmerchant' );
 
 		self::$log_enabled    = $this->debug;
 

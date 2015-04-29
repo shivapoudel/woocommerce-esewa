@@ -27,5 +27,12 @@ return array(
 		'desc_tip'    => true,
 		'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce-esewa' ),
 		'default'     => __( 'Pay via eSewa; you can pay with eSewa account securly.', 'woocommerce-esewa' )
-	)
+	),
+	'merchant_id' => array(
+		'title'       => __( 'Merchant ID', 'woocommerce-esewa' ),
+		'type'        => 'text',
+		'desc_tip'    => true,
+		'description' => __( 'Please enter eSewa Merchant ID; this is needed in order to take payment.', 'woocommerce-esewa' ),
+		'default'     => ''
+	),
 );
