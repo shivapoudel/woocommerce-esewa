@@ -112,9 +112,9 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 */
 	public function get_transaction_url( $order ) {
 		if ( $this->testmode ) {
-			$this->view_transaction_url = 'https://dev.esewa.com.np/epay/id=%s';
+			$this->view_transaction_url = 'https://dev.esewa.com.np/epay/main?id=%s';
 		} else {
-			$this->view_transaction_url = 'https://esewa.com.np/epay/id=%s';
+			$this->view_transaction_url = 'https://esewa.com.np/epay/main?id=%s';
 		}
 		return parent::get_transaction_url( $order );
 	}

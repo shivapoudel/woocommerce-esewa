@@ -11,19 +11,19 @@ class WC_Gateway_eSewa_Request {
 
 	/**
 	 * Pointer to gateway making the request
-	 * @var WC_Gateway_Paypal
+	 * @var WC_Gateway_eSewa
 	 */
 	protected $gateway;
 
 	/**
-	 * Endpoint for requests from PayPal
+	 * Endpoint for requests from eSewa
 	 * @var string
 	 */
 	protected $notify_url;
 
 	/**
 	 * Constructor
-	 * @param WC_Gateway_Paypal $gateway
+	 * @param WC_Gateway_eSewa $gateway
 	 */
 	public function __construct( $gateway ) {
 		$this->gateway    = $gateway;
@@ -40,9 +40,9 @@ class WC_Gateway_eSewa_Request {
 		$esewa_args = http_build_query( $this->get_esewa_args( $order ), '', '&' );
 
 		if ( $sandbox ) {
-			return 'https://dev.esewa.com.np/main?' . $esewa_args;
+			return 'https://dev.esewa.com.np/epay/main?' . $esewa_args;
 		} else {
-			return 'https://www.paypal.com/main?' . $esewa_args;
+			return 'http://esewa.com/epay/main?' . $esewa_args;
 		}
 	}
 
