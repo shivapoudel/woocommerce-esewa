@@ -45,9 +45,9 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		// Define user set variables
 		$this->title          = $this->get_option( 'title' );
 		$this->description    = $this->get_option( 'description' );
+		$this->servicecode    = $this->get_option( 'servicecode' );
 		$this->testmode       = 'yes' === $this->get_option( 'testmode', 'no' );
 		$this->debug          = 'yes' === $this->get_option( 'debug', 'no' );
-		$this->merchant       = $this->get_option( 'merchant' );
 
 		self::$log_enabled    = $this->debug;
 
@@ -104,22 +104,6 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Get the transaction URL.
-	 *
-	 * @param  WC_Order $order
-	 *
-	 * @return string
-	 */
-	public function get_transaction_url( $order ) {
-		if ( $this->testmode ) {
-			$this->view_transaction_url = 'https://dev.esewa.com.np/epay/main?id=%s';
-		} else {
-			$this->view_transaction_url = 'http://esewa.com.np/epay/main?id=%s';
-		}
-		return parent::get_transaction_url( $order );
-	}
-
-	/**
 	 * Process the payment and return the result
 	 *
 	 * @param  int $order_id
@@ -131,14 +115,10 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$order         = wc_get_order( $order_id );
 		$esewa_request = new WC_Gateway_eSewa_Request( $this );
 
-		if ( 'hosted' == $this->mode ) {
-			return $this->process_hosted_payments( $order );
-		} else {
-			return array(
-				'result'   => 'success',
-				'redirect' => $esewa_request->get_request_url( $order, $this->testmode )
-			);
-		}
+		return array(
+			'result'   => 'success',
+			'redirect' => $esewa_request->get_request_url( $order, $this->testmode )
+		);
 	}
 
 	/**

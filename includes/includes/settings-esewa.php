@@ -36,18 +36,6 @@ return array(
 		'default'     => '',
 		'placeholder' => 'Eg: AxisThemes'
 	),
-	'mode' => array(
-		'title'       => __( 'Payment Mode', 'woocommerce-esewa' ),
-		'type'        => 'select',
-		'class'       => 'wc-enhanced-select',
-		'description' => __( 'Choose whether you wish to use standard or hosted payment mode.', 'woocommerce-esewa' ),
-		'default'     => 'standard',
-		'desc_tip'    => true,
-		'options'     => array(
-			'standard' => __( 'Standard', 'woocommerce-esewa' ),
-			'hosted'   => __( 'Hosted Payments', 'woocommerce-esewa' )
-		)
-	),
 	'testmode' => array(
 		'title'       => __( 'Sandbox Mode', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
