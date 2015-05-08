@@ -28,7 +28,7 @@ return array(
 		'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce-esewa' ),
 		'default'     => __( 'Pay via eSewa; you can pay with eSewa account securly.', 'woocommerce-esewa' )
 	),
-	'servicecode' => array(
+	'service_code' => array(
 		'title'       => __( 'Service Code', 'woocommerce-esewa' ),
 		'type'        => 'text',
 		'desc_tip'    => true,

@@ -60,7 +60,7 @@ class WC_Gateway_eSewa_Request {
 			'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
 			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
 			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
-			'scd'   => $this->gateway->get_option( 'servicecode' ),
+			'scd'   => $this->gateway->get_option( 'service_code' ),
 			'pid'   => $order->id,
 			'su'    => esc_url( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ),
 			'fu'    => esc_url( $order->get_cancel_order_url() )

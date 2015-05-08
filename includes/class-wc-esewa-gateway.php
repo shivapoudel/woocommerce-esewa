@@ -45,9 +45,9 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		// Define user set variables
 		$this->title          = $this->get_option( 'title' );
 		$this->description    = $this->get_option( 'description' );
-		$this->servicecode    = $this->get_option( 'servicecode' );
 		$this->testmode       = 'yes' === $this->get_option( 'testmode', 'no' );
 		$this->debug          = 'yes' === $this->get_option( 'debug', 'no' );
+		$this->service_code   = $this->get_option( 'service_code' );
 
 		self::$log_enabled    = $this->debug;
 
@@ -57,7 +57,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 			$this->enabled = 'no';
 		} else {
 			include_once( 'includes/class-wc-gateway-esewa-handler.php' );
-			new WC_Gateway_eSewa_Handler( $this->testmode, $this->servicecode );
+			new WC_Gateway_eSewa_Handler( $this->testmode, $this->service_code );
 		}
 	}
 
