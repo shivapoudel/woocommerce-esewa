@@ -43,13 +43,13 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->init_settings();
 
 		// Define user set variables
-		$this->title          = $this->get_option( 'title' );
-		$this->description    = $this->get_option( 'description' );
-		$this->testmode       = 'yes' === $this->get_option( 'testmode', 'no' );
-		$this->debug          = 'yes' === $this->get_option( 'debug', 'no' );
-		$this->service_code   = $this->get_option( 'service_code' );
+		$this->title        = $this->get_option( 'title' );
+		$this->description  = $this->get_option( 'description' );
+		$this->testmode     = 'yes' === $this->get_option( 'testmode', 'no' );
+		$this->debug        = 'yes' === $this->get_option( 'debug', 'no' );
+		$this->service_code = $this->get_option( 'service_code' );
 
-		self::$log_enabled    = $this->debug;
+		self::$log_enabled  = $this->debug;
 
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 
