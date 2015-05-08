@@ -57,8 +57,8 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 			$this->enabled = 'no';
 		} else {
 			if ( $this->service_code ) {
-				include_once( 'includes/class-wc-gateway-esewa-handler.php' );
-				new WC_Gateway_eSewa_Handler( $this->testmode, $this->service_code );
+				include_once( 'includes/class-wc-gateway-esewa-pdt-handler.php' );
+				new WC_Gateway_eSewa_PDT_Handler( $this->testmode, $this->service_code );
 			}
 		}
 	}
