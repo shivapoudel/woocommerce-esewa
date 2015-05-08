@@ -120,17 +120,4 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 			'redirect' => $esewa_request->get_request_url( $order, $this->testmode )
 		);
 	}
-
-	/**
-	 * Process hosted payments
-	 *
-	 * @param  WC_Order $order
-	 * @return array
-	 */
-	protected function process_hosted_payments( $order ) {
-		return array(
-			'result'   => 'success',
-			'redirect' => $order->get_checkout_payment_url( true )
-		);
-	}
 }
