@@ -20,8 +20,8 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 	public function __construct( $sandbox = false, $service_code = '' ) {
 		add_action( 'woocommerce_thankyou_esewa', array( $this, 'check_response' ) );
 
-		$this->sandbox      = $sandbox;
 		$this->service_code = $service_code;
+		$this->sandbox      = $sandbox;
 	}
 
 	/**
