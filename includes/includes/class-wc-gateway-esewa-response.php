@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Handles responses
+ * Handles Responses
  */
 abstract class WC_Gateway_eSewa_Response {
 

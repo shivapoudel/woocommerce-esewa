@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 include_once( 'class-wc-gateway-esewa-response.php' );
 
 /**
- * Handles responses from eSewa
+ * Handles Responses from eSewa
  */
 class WC_Gateway_eSewa_Handler extends WC_Gateway_eSewa_Response {
 
