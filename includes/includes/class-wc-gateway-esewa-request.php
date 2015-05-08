@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Generates requests to send to PayPal
+ * Generates requests to send to eSewa
  */
 class WC_Gateway_eSewa_Request {
 
@@ -47,8 +47,7 @@ class WC_Gateway_eSewa_Request {
 	}
 
 	/**
-	 * Get eSewa Args for passing to PP
-	 *
+	 * Get eSewa Args for passing to eSewa
 	 * @param  WC_Order $order
 	 * @return array
 	 */
@@ -69,8 +68,7 @@ class WC_Gateway_eSewa_Request {
 	}
 
 	/**
-	 * Helper method to get the order subtotal
-	 *
+	 * Get the subtotal to send to eSewa
 	 * @param  WC_Order $order
 	 * @return float
 	 */
@@ -84,8 +82,7 @@ class WC_Gateway_eSewa_Request {
 	}
 
 	/**
-	 * Helper method to get the service charge
-	 *
+	 * Get the service charge to send to eSewa
 	 * @param  WC_Order $order
 	 * @return float
 	 */
