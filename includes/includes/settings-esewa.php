@@ -28,13 +28,13 @@ return array(
 		'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce-esewa' ),
 		'default'     => __( 'Pay via eSewa; you can pay with eSewa account securly.', 'woocommerce-esewa' )
 	),
-	'merchant' => array(
-		'title'       => __( 'Merchant ID', 'woocommerce-esewa' ),
+	'servicecode' => array(
+		'title'       => __( 'Service Code', 'woocommerce-esewa' ),
 		'type'        => 'text',
 		'desc_tip'    => true,
-		'description' => __( 'Please enter your eSewa Merchant ID; this is needed in order to take payment.', 'woocommerce-esewa' ),
+		'description' => __( 'Please enter your eSewa Service Code; this is needed in order to take payment.', 'woocommerce-esewa' ),
 		'default'     => '',
-		'placeholder' => 'Eg: 0000MID'
+		'placeholder' => 'Eg: AxisThemes'
 	),
 	'mode' => array(
 		'title'       => __( 'Payment Mode', 'woocommerce-esewa' ),
