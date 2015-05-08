@@ -42,7 +42,7 @@ class WC_Gateway_eSewa_Request {
 		if ( $sandbox ) {
 			return 'https://dev.esewa.com.np/epay/main?' . $esewa_args;
 		} else {
-			return 'http://esewa.com.np/epay/main?' . $esewa_args;
+			return 'https://esewa.com.np/epay/main?' . $esewa_args;
 		}
 	}
 
@@ -55,18 +55,16 @@ class WC_Gateway_eSewa_Request {
 	protected function get_esewa_args( $order ) {
 		WC_Gateway_eSewa::log( 'Generating payment form for order ' . $order->get_order_number() . '. Notify URL: ' . $this->notify_url );
 
-		return apply_filters( 'woocommerce_esewa_args', array_merge(
-			array(
-				'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
-				'amt'   => wc_format_decimal( $this->get_order_subtotal( $order ), 2 ),
-				'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
-				'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
-				'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
-				'pid'   => $order->id,
-				'su'    => esc_url( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ),
-				'fu'    => esc_url( $order->get_cancel_order_url() )
-			),
-			$this->get_merchant_args()
+		return apply_filters( 'woocommerce_esewa_args', array(
+			'amt'   => wc_format_decimal( $this->get_order_subtotal( $order ), 2 ),
+			'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
+			'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
+			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
+			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
+			'scd'   => $this->gateway->get_option( 'servicecode' ),
+			'pid'   => $order->id,
+			'su'    => esc_url( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ),
+			'fu'    => esc_url( $order->get_cancel_order_url() )
 		), $order );
 	}
 
@@ -100,21 +98,5 @@ class WC_Gateway_eSewa_Request {
 		}
 
 		return $charge;
-	}
-
-	/**
-	 * Get merchant args for eSewa request
-	 * @return array
-	 */
-	protected function get_merchant_args() {
-		$merchant_args = array();
-
-		if ( 'yes' == $this->gateway->get_option( 'testmode' ) ) {
-			$merchant_args['scd'] = 'testmerchant';
-		} else {
-			$merchant_args['scd'] = $this->gateway->get_option( 'merchant' );
-		}
-
-		return $merchant_args;
 	}
 }
