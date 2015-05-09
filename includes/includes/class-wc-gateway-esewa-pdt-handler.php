@@ -53,8 +53,12 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 	 * Check Response for PDT
 	 */
 	public function check_response() {
-		if ( empty( $_REQUEST['oid'] ) || empty( $_REQUEST['amt'] ) || empty( $_REQUEST['st'] ) ) {
+		if ( empty( $_REQUEST['oid'] ) || empty( $_REQUEST['amt'] ) || empty( $_REQUEST['refId'] ) ) {
 			return;
 		}
+
+		$order_id    = wc_clean( stripslashes( $_REQUEST['oid'] ) );
+		$amount      = wc_clean( stripslashes( $_REQUEST['amt'] ) );
+		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
 	}
 }
