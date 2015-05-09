@@ -13,29 +13,14 @@ abstract class WC_Gateway_eSewa_Response {
 	protected $sandbox = false;
 
 	/**
-	 * Get the order from the eSewa 'Custom' variable
+	 * Get the order from the eSewa Order ID
 	 * @param  string $custom
 	 * @return bool|WC_Order object
 	 */
-	protected function get_esewa_order( $custom ) {
-		$custom = maybe_unserialize( $custom );
-
-		if ( is_array( $custom ) ) {
-			list( $order_id, $order_key ) = $custom;
-
-			if ( ! $order = wc_get_order( $order_id ) ) {
-				// We have an invalid $order_id, probably because invoice_prefix has changed
-				$order_id = wc_get_order_id_by_order_key( $order_key );
-				$order    = wc_get_order( $order_id );
-			}
-
-			if ( ! $order || $order->order_key !== $order_key ) {
-				WC_Gateway_eSewa::log( 'Error: Order Keys do not match.' );
-				return false;
-			}
-
-		} elseif ( ! $order = apply_filters( 'woocommerce_get_esewa_order', false, $custom ) ) {
-			WC_Gateway_eSewa::log( 'Error: Order ID and key were not found in "custom".' );
+	protected function get_esewa_order( $order_id ) {
+		$order = wc_get_order( $order_id );
+		if ( ! $order ) {
+			WC_Gateway_eSewa::log( 'Error: Order ID and key were not found.' );
 			return false;
 		}
 
