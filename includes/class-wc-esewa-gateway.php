@@ -36,7 +36,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->has_fields         = false;
 		$this->order_button_text  = __( 'Proceed to eSewa', 'woocommerce-esewa' );
 		$this->method_title       = __( 'eSewa', 'woocommerce-esewa' );
-		$this->method_description = __( 'The eSewa ePay system enables partner merchant to perform transaction and receive money from customer having eSewa account in secure environment.', 'woocommerce-esewa' );
+		$this->method_description = __( 'The eSewa ePay system works by sending customers to eSewa where they can enter their payment information.', 'woocommerce-esewa' );
 
 		// Load the settings.
 		$this->init_form_fields();
