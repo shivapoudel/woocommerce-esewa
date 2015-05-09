@@ -20,7 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class WC_Gateway_eSewa extends WC_Payment_Gateway {
 
-
 	/** @var boolean Whether or not logging is enabled */
 	public static $log_enabled = false;
 
