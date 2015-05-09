@@ -36,7 +36,7 @@ Compatiable with WooCommerce 2.3+
 
 = Installation =
 
-Check out our installation guide and configuration of WooCommerce Bcash tab [Installation](http://wordpress.org/extend/plugins/woocommerce-esewa/installation/).
+Check out our installation guide and configuration of WooCommerce eSewa tab [Installation](http://wordpress.org/extend/plugins/woocommerce-esewa/installation/).
 
 = Questions? =
 
@@ -61,7 +61,7 @@ You can answer you questions using:
 
 * WooCommerce version 2.3 or later installed and active.
 * Have a Merchant account on [eSewa](https://www.esewa.com.np/).
-* Ask/Get a **Service Code** for Merchant account eSewa Digital Payment Portal.
+* Ask/Get a **Service Code** for Merchant account from eSewa Digital Payment Portal.
 
 = eSewa receives payments from which countries? =
 
@@ -71,7 +71,7 @@ Configure the plugin to receive payments only users who select Nepal in payment 
 
 = I installed the plugin, but the eSewa payment option during checkout is invisible. What did I do wrong? =
 
-You forgot to select the Nepal during registration at checkout. The eSewa payment option works only with Nepali.
+You forgot to select the Nepal during registration at checkout. The eSewa payment option works only with Nepal.
 
 = The request was paid and got the status of "processing" and not as "complete", that is right? =
 
@@ -100,4 +100,4 @@ by the Free Software Foundation, either version 3 of the License, or (at your op
 WooCommerce eSewa is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with WooCommerce Bcash. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with WooCommerce eSewa. If not, see <http://www.gnu.org/licenses/>.
