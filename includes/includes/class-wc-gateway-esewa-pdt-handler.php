@@ -29,12 +29,16 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 	 * @param  string $transaction
 	 * @return bool
 	 */
-	protected function validate_transaction( $transaction ) {
+	protected function validate_transaction( $order, $transaction ) {
 		$pdt = array(
 			'body'        => array(
+				'amt'  => $order->get_total(),
+				'pid'  => $order->id,
+				'rid'  => $transaction,
 				'scd'  => $this->service_code
 			),
 			'timeout'     => 60,
+			'sslverify'   => false,
 			'httpversion' => '1.1',
 			'user-agent'  => 'WooCommerce/' . WC_VERSION
 		);
@@ -60,5 +64,18 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 		$order_id    = wc_clean( stripslashes( $_REQUEST['oid'] ) );
 		$amount      = wc_clean( stripslashes( $_REQUEST['amt'] ) );
 		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
+
+		if ( ! ( $order = wc_get_order( $order_id ) ) || ! $order->has_status( 'pending' ) ) {
+			return false;
+		}
+
+		if ( $this->validate_transaction( $order, $transaction ) ) {
+			if ( $order->get_total() != $amount ) {
+				WC_Gateway_eSewa::log( 'Payment error: Amounts do not match (amt ' . $amount . ')' );
+				$this->payment_on_hold( $order, sprintf( __( 'Validation error: eSewa amounts do not match (amt %s).', 'woocommerce-esewa' ), $amount ) );
+			} else {
+				$this->payment_complete( $order, $transaction,  __( 'PDT payment completed', 'woocommerce-esewa' ) );
+			}
+		}
 	}
 }

@@ -54,17 +54,33 @@ class WC_Gateway_eSewa_Request {
 	protected function get_esewa_args( $order ) {
 		WC_Gateway_eSewa::log( 'Generating payment form for order ' . $order->get_order_number() . '. Notify URL: ' . $this->notify_url );
 
-		return apply_filters( 'woocommerce_esewa_args', array(
-			'amt'   => wc_format_decimal( $this->get_order_subtotal( $order ), 2 ),
-			'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
-			'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
-			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
-			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
-			'scd'   => $this->gateway->get_option( 'service_code' ),
-			'pid'   => $order->id,
-			'su'    => esc_url( $this->gateway->get_return_url( $order ) ),
-			'fu'    => esc_url( $order->get_cancel_order_url() )
+		return apply_filters( 'woocommerce_esewa_args', array_merge(
+			array(
+				'amt'   => wc_format_decimal( $this->get_order_subtotal( $order ), 2 ),
+				'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
+				'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
+				'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
+				'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
+				'scd'   => $this->gateway->get_option( 'service_code' ),
+				'pid'   => $order->id,
+				'su'    => esc_url( $this->gateway->get_return_url( $order ) ),
+				'fu'    => esc_url( $order->get_cancel_order_url() ),
+			),
+			$this->get_custom_args( $order )
 		), $order );
+	}
+
+	/**
+	 * Get custom args for eSewa request
+	 * @param  WC_Order $order
+	 * @return array
+	 */
+	protected function get_custom_args( $order ) {
+		$custom_args = array(
+			'custom' => serialize( array( $order->id, $order->order_key ) )
+		);
+
+		return $custom_args;
 	}
 
 	/**
