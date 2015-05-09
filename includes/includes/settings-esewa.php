@@ -36,6 +36,13 @@ return array(
 		'default'     => '',
 		'placeholder' => 'Eg: AxisThemes'
 	),
+	'invoice_prefix' => array(
+		'title'       => __( 'Invoice Prefix', 'woocommerce-esewa' ),
+		'type'        => 'text',
+		'description' => __( 'Please enter a prefix for your invoice numbers. If you use your eSewa account for multiple stores ensure this prefix is unique as eSewa will not allow orders with the same invoice number.', 'woocommerce-esewa' ),
+		'default'     => 'WC-',
+		'desc_tip'    => true,
+	),
 	'testmode' => array(
 		'title'       => __( 'Sandbox Mode', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
