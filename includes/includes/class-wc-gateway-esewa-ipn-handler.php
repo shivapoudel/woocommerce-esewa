@@ -30,9 +30,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 */
 	public function check_response() {
 		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) {
-			$posted = wp_unslash( $_REQUEST );
+			$requested = wp_unslash( $_REQUEST );
 
-			do_action( 'valid-esewa-standard-ipn-request', $posted );
+			do_action( 'valid-esewa-standard-ipn-request', $requested );
 			exit;
 		}
 
@@ -41,9 +41,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * There was a valid response
-	 * @param array $posted data after wp_unslash
+	 * @param array $requested data after wp_unslash
 	 */
-	public function valid_response( $posted ) {
+	public function valid_response( $requested ) {
 
 	}
 
@@ -53,12 +53,18 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	public function validate_ipn() {
 		WC_Gateway_eSewa::log( 'Checking IPN response is valid' );
 
-		// Get received values from post data
-		$validate_ipn = wp_unslash( $_REQUEST );
+		$amount      = wc_clean( stripslashes( $_REQUEST['amt'] ) );
+		$order_id    = wc_clean( stripslashes( $_REQUEST['oid'] ) );
+		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
 
 		// Send back post vars to eSewa
-		$params = array(
-			'body'        => $validate_ipn,
+		$ipn = array(
+			'body'        => array(
+				'amt'  => $amount,
+				'pid'  => $order_id,
+				'rid'  => $transaction,
+				'scd'  => $this->service_code
+			),
 			'timeout'     => 60,
 			'sslverify'   => false,
 			'httpversion' => '1.1',
@@ -68,7 +74,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		);
 
 		// Post back to get a response
-		$response = wp_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $params );
+		$response = wp_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $ipn );
 
 		WC_Gateway_eSewa::log( 'IPN Request: ' . print_r( $params, true ) );
 		WC_Gateway_eSewa::log( 'IPN Response: ' . print_r( $response, true ) );
