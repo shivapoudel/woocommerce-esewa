@@ -91,3 +91,9 @@ For downloadable products to WooCommerce default setting is to allow access only
 = 1.0.0 =
 
 * Initial version.
+
+== Upgrade Notice ==
+
+= 1.0.0 =
+
+* Initial version.
