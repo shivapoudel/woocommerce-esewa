@@ -5,7 +5,7 @@
   "homepage": "http://axisthemes.com/woocommerce-esewa/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shivapoudel/woocommerce-esewa.git"
+    "url": "https://github.com/axisthemes/woocommerce-esewa.git"
   },
   "main": "Gruntfile.js",
   "devDependencies": {
