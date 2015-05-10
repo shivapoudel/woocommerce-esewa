@@ -17,9 +17,9 @@ return array(
 	'title' => array(
 		'title'       => __( 'Title', 'woocommerce-esewa' ),
 		'type'        => 'text',
-		'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce-esewa' ),
-		'default'     => __( 'eSewa', 'woocommerce-esewa' ),
 		'desc_tip'    => true,
+		'description' => __( 'This controls the title which the user sees during checkout.', 'woocommerce-esewa' ),
+		'default'     => __( 'eSewa', 'woocommerce-esewa' )
 	),
 	'description' => array(
 		'title'       => __( 'Description', 'woocommerce-esewa' ),
@@ -39,16 +39,16 @@ return array(
 	'invoice_prefix' => array(
 		'title'       => __( 'Invoice Prefix', 'woocommerce-esewa' ),
 		'type'        => 'text',
-		'description' => __( 'Please enter a prefix for your invoice numbers. If you use your eSewa account for multiple stores ensure this prefix is unique as eSewa will not allow orders with the same invoice number.', 'woocommerce-esewa' ),
-		'default'     => 'WC-',
 		'desc_tip'    => true,
+		'description' => __( 'Please enter a prefix for your invoice numbers. If you use your eSewa account for multiple stores ensure this prefix is unique as eSewa will not allow orders with the same invoice number.', 'woocommerce-esewa' ),
+		'default'     => 'WC-'
 	),
 	'testmode' => array(
 		'title'       => __( 'Sandbox Mode', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable Sandbox Mode', 'woocommerce-esewa' ),
 		'default'     => 'no',
-		'description' => __( 'Enable sandbox mode to test payments.', 'woocommerce-esewa' ),
+		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Sign up for a developer account %shere%s.', 'woocommerce-esewa' ), '<a href="https://dev.esewa.com.np/" target="_blank">', '</a>' )
 	),
 	'debug' => array(
 		'title'       => __( 'Debug Log', 'woocommerce-esewa' ),
