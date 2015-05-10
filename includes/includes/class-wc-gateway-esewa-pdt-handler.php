@@ -46,7 +46,7 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 		// Post back to get a response
 		$response = wp_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $pdt );
 
-		if ( is_wp_error( $response ) || ! strpos( $response['body'], "SUCCESS" ) === 0 ) {
+		if ( is_wp_error( $response ) || ! strpos( $response['body'], 'SUCCESS' ) === 0 ) {
 			return false;
 		}
 
