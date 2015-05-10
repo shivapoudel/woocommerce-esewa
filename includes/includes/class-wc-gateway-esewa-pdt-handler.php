@@ -61,11 +61,12 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 			return;
 		}
 
+		$order_key   = wc_clean( stripslashes( $_REQUEST['key'] ) );
 		$order_id    = wc_clean( stripslashes( $_REQUEST['oid'] ) );
 		$amount      = wc_clean( stripslashes( $_REQUEST['amt'] ) );
 		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
 
-		if ( ! ( $order = $this->get_esewa_order( $order_id ) ) || ! $order->has_status( 'pending' ) ) {
+		if ( ! ( $order = $this->get_esewa_order( $order_id, $order_key ) ) || ! $order->has_status( 'pending' ) ) {
 			return false;
 		}
 

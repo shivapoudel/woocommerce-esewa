@@ -61,7 +61,7 @@ class WC_Gateway_eSewa_Request {
 			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
 			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
 			'scd'   => $this->gateway->get_option( 'service_code' ),
-			'pid'   => $order->id,
+			'pid'   => $this->gateway->get_option( 'invoice_prefix' ) . $order->id,
 			'su'    => esc_url( $this->gateway->get_return_url( $order ) ),
 			'fu'    => esc_url( $order->get_cancel_order_url() ),
 		), $order );
