@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce eSewa 1.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/shivapoudel/woocommerce-esewa/issues\n"
-"POT-Creation-Date: 2015-05-09 19:20:37+00:00\n"
+"POT-Creation-Date: 2015-05-10 01:58:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,34 +14,34 @@ msgstr ""
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: grunt-wp-i18n 0.5.2\n"
 
-#: includes/class-wc-esewa-gateway.php:37
+#: includes/class-wc-esewa-gateway.php:36
 msgid "Proceed to eSewa"
 msgstr ""
 
-#: includes/class-wc-esewa-gateway.php:38
+#: includes/class-wc-esewa-gateway.php:37
 #: includes/includes/settings-esewa.php:21
 msgid "eSewa"
 msgstr ""
 
-#: includes/class-wc-esewa-gateway.php:39
+#: includes/class-wc-esewa-gateway.php:38
 msgid ""
 "The eSewa ePay system works by sending customers to eSewa where they can "
 "enter their payment information."
 msgstr ""
 
-#: includes/class-wc-esewa-gateway.php:99
+#: includes/class-wc-esewa-gateway.php:98
 msgid "Gateway Disabled"
 msgstr ""
 
-#: includes/class-wc-esewa-gateway.php:99
+#: includes/class-wc-esewa-gateway.php:98
 msgid "eSewa does not support your store currency."
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-pdt-handler.php:75
+#: includes/includes/class-wc-gateway-esewa-pdt-handler.php:76
 msgid "Validation error: eSewa amounts do not match (amt %s)."
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-pdt-handler.php:77
+#: includes/includes/class-wc-gateway-esewa-pdt-handler.php:78
 msgid "PDT payment completed"
 msgstr ""
 
@@ -84,26 +84,37 @@ msgid ""
 msgstr ""
 
 #: includes/includes/settings-esewa.php:40
-msgid "Sandbox Mode"
+msgid "Invoice Prefix"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:42
-msgid "Enable Sandbox Mode"
-msgstr ""
-
-#: includes/includes/settings-esewa.php:44
-msgid "Enable sandbox mode to test payments."
+msgid ""
+"Please enter a prefix for your invoice numbers. If you use your eSewa "
+"account for multiple stores ensure this prefix is unique as eSewa will not "
+"allow orders with the same invoice number."
 msgstr ""
 
 #: includes/includes/settings-esewa.php:47
-msgid "Debug Log"
+msgid "Sandbox Mode"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:49
-msgid "Enable logging"
+msgid "Enable Sandbox Mode"
 msgstr ""
 
 #: includes/includes/settings-esewa.php:51
+msgid "Enable sandbox mode to test payments."
+msgstr ""
+
+#: includes/includes/settings-esewa.php:54
+msgid "Debug Log"
+msgstr ""
+
+#: includes/includes/settings-esewa.php:56
+msgid "Enable logging"
+msgstr ""
+
+#: includes/includes/settings-esewa.php:58
 msgid "Log eSewa events, inside <code>%s</code>"
 msgstr ""
 
