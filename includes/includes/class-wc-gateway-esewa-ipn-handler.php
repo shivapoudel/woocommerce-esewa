@@ -30,9 +30,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 */
 	public function check_response() {
 		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) {
-			$requested = wp_unslash( $_REQUEST );
+			$posted = wp_unslash( $_REQUEST );
 
-			do_action( 'valid-esewa-standard-ipn-request', $requested );
+			do_action( 'valid-esewa-standard-ipn-request', $posted );
 			exit;
 		}
 
@@ -41,10 +41,23 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * There was a valid response
-	 * @param array $requested data after wp_unslash
+	 * @param array $posted Post data after wp_unslash
 	 */
-	public function valid_response( $requested ) {
+	public function valid_response( $posted ) {
+		if ( ! empty( $posted['key'] ) && $order = $this->get_esewa_order( $posted['oid'], $posted['key'] ) ) {
 
+			// Check to see if the transaction was valid
+			if ( isset( $posted['amt'] ) && isset( $posted['refId'] ) ) {
+				$posted['payment_status'] = 'completed';
+			}
+
+			WC_Gateway_eSewa::log( 'Found order #' . $order->id );
+			WC_Gateway_eSewa::log( 'Payment status: ' . $posted['payment_status'] );
+
+			if ( method_exists( __CLASS__, 'payment_status_' . $posted['payment_status'] ) ) {
+				call_user_func( array( __CLASS__, 'payment_status_' . $posted['payment_status'] ), $order, $posted );
+			}
+		}
 	}
 
 	/**
@@ -92,5 +105,22 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Handle a completed payment
+	 * @param WC_Order $order
+	 */
+	protected function payment_status_completed( $order, $posted ) {
+		if ( $order->has_status( 'completed' ) ) {
+			WC_Gateway_eSewa::log( 'Aborting, Order #' . $order->id . ' is already complete.' );
+			exit;
+		}
+
+		if ( 'completed' === $posted['payment_status'] ) {
+			$this->payment_complete( $order, ( ! empty( $posted['refId'] ) ? wc_clean( $posted['refId'] ) : '' ), __( 'IPN payment completed', 'woocommerce-esewa' ) );
+		} else {
+			$this->payment_on_hold( $order, sprintf( __( 'Payment pending: eSewa amounts do not match (amt %s).', 'woocommerce-error' ), $posted['amt'] ) );
+		}
 	}
 }
