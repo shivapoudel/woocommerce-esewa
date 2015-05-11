@@ -122,16 +122,16 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Handle a completed payment
 	 * @param WC_Order $order
 	 */
-	protected function payment_status_completed( $order, $posted ) {
+	protected function payment_status_completed( $order, $requested ) {
 		if ( $order->has_status( 'completed' ) ) {
 			WC_Gateway_eSewa::log( 'Aborting, Order #' . $order->id . ' is already complete.' );
 			exit;
 		}
 
-		if ( 'completed' === $posted['payment_status'] ) {
-			$this->payment_complete( $order, ( ! empty( $posted['refId'] ) ? wc_clean( $posted['refId'] ) : '' ), __( 'IPN payment completed', 'woocommerce-esewa' ) );
+		if ( 'completed' === $requested['payment_status'] ) {
+			$this->payment_complete( $order, ( ! empty( $requested['refId'] ) ? wc_clean( $requested['refId'] ) : '' ), __( 'IPN payment completed', 'woocommerce-esewa' ) );
 		} else {
-			$this->payment_on_hold( $order, sprintf( __( 'Payment pending: eSewa amounts do not match (amt %s).', 'woocommerce-error' ), $posted['amt'] ) );
+			$this->payment_on_hold( $order, sprintf( __( 'Payment pending: %s', 'woocommerce-esewa' ), $requested['pending_reason'] ) );
 		}
 	}
 
