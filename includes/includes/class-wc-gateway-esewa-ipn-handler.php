@@ -123,4 +123,12 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			$this->payment_on_hold( $order, sprintf( __( 'Payment pending: eSewa amounts do not match (amt %s).', 'woocommerce-error' ), $posted['amt'] ) );
 		}
 	}
+
+	/**
+	 * Handle a failed payment
+	 * @param WC_Order $order
+	 */
+	protected function payment_status_failed( $order, $requested ) {
+		$order->update_status( 'failed', sprintf( __( 'Payment %s via IPN.', 'woocommerce-esewa' ), wc_clean( $requested['payment_status'] ) ) );
+	}
 }
