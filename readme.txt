@@ -21,7 +21,7 @@ Please notice that [WooCommerce](http://wordpress.org/plugins/woocommerce/) must
 
 Add eSewa as a payment method in your WooCommerce store.
 
-[eSewa](https://esewa.com.np/) is a Nepali Digital Payment Portal developed by fonepay. This means that if your store doesn't accept payment in NPR, you really don not need this plugin!!!
+[eSewa](https://esewa.com.np/) is a Nepali Digital Payment Portal developed by fonepay. This means that if your store doesn't accept payment in NPR, you really do not need this plugin!!!
 
 The plugin WooCommerce eSewa was developed without any incentive or eSewa Company. None of the developers of this plugin have ties to any of these two companies.
 
