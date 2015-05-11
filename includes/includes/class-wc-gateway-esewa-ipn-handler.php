@@ -16,13 +16,15 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * Constructor
+	 * @param WC_Gateway_eSewa $gateway
 	 */
-	public function __construct( $sandbox = false, $service_code = '' ) {
+	public function __construct( $gateway, $sandbox = false, $service_code = '' ) {
 		add_action( 'woocommerce_api_wc_gateway_esewa', array( $this, 'check_response' ) );
 		add_action( 'valid-esewa-standard-ipn-request', array( $this, 'valid_response' ) );
 
 		$this->service_code = $service_code;
 		$this->sandbox      = $sandbox;
+		$this->gateway      = $gateway;
 	}
 
 	/**
@@ -55,6 +57,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			WC_Gateway_eSewa::log( 'Payment status: ' . $posted['payment_status'] );
 
 			if ( method_exists( __CLASS__, 'payment_status_' . $posted['payment_status'] ) ) {
+				wp_redirect( esc_url( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ) );
 				call_user_func( array( __CLASS__, 'payment_status_' . $posted['payment_status'] ), $order, $posted );
 			}
 		}
