@@ -11,7 +11,7 @@ include_once( 'class-wc-gateway-esewa-response.php' );
  */
 class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
-	/** @var string Merchant/Service code to validate */
+	/** @var string Service code for IPN support */
 	protected $service_code;
 
 	/**
