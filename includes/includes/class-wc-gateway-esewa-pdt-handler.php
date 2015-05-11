@@ -11,7 +11,7 @@ include_once( 'class-wc-gateway-esewa-response.php' );
  */
 class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 
-	/** @var string service_code for PDT support */
+	/** @var string Service code for PDT support */
 	protected $service_code;
 
 	/**
