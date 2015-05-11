@@ -61,9 +61,9 @@ class WC_Gateway_eSewa_Request {
 			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
 			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
 			'scd'   => $this->gateway->get_option( 'service_code' ),
-			'pid'   => $this->gateway->get_option( 'invoice_prefix' ) . $order->id,
-			'su'    => esc_url_raw( add_query_arg( 'wc-api', 'WC_Gateway_eSewa', $this->gateway->get_return_url( $order ) ) ),
-			'fu'    => esc_url( $order->get_cancel_order_url() ),
+			'pid'   => $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(),
+			'su'    => add_query_arg( array( 'payment_status' => 'success', 'key' => $order->order_key ), $this->notify_url ),
+			'fu'    => add_query_arg( array( 'payment_status' => 'failure', 'key' => $order->order_key ), $this->notify_url ),
 		), $order );
 	}
 
