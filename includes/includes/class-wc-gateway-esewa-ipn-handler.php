@@ -31,10 +31,12 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Check for eSewa IPN Response
 	 */
 	public function check_response() {
-		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) {
-			$posted = wp_unslash( $_REQUEST );
+		@ob_clean();
 
-			do_action( 'valid-esewa-standard-ipn-request', $posted );
+		if ( ! empty( $_REQUEST ) && isset( $_REQUEST['payment_status'] ) ) {
+			$requested = wp_unslash( $_REQUEST );
+
+			do_action( 'valid-esewa-standard-ipn-request', $requested );
 			exit;
 		}
 
@@ -43,22 +45,28 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * There was a valid response
-	 * @param array $posted Post data after wp_unslash
+	 * @param array $requested Request data after wp_unslash
 	 */
-	public function valid_response( $posted ) {
-		if ( ! empty( $posted['key'] ) && $order = $this->get_esewa_order( $posted['oid'], $posted['key'] ) ) {
+	public function valid_response( $requested ) {
+		if ( ! empty( $requested['key'] ) && $order = $this->get_esewa_order( $requested['oid'], $requested['key'] ) ) {
 
-			// Check to see if the transaction was valid
-			if ( isset( $posted['amt'] ) && isset( $posted['refId'] ) ) {
-				$posted['payment_status'] = 'completed';
+			// Lowercase returned variables
+			$requested['payment_status'] = strtolower( $requested['payment_status'] );
+
+			// Validate transaction status
+			if ( isset( $requested['refId'] ) && 'success' == $requested['payment_status'] && $this->validate_ipn() ) {
+				$requested['payment_status'] = 'completed';
+				$requested['pending_reason'] = __( 'eSewa IPN response failed.', 'woocommerce-esewa' );
+			} else {
+				$requested['payment_status'] = 'failed';
 			}
 
 			WC_Gateway_eSewa::log( 'Found order #' . $order->id );
-			WC_Gateway_eSewa::log( 'Payment status: ' . $posted['payment_status'] );
+			WC_Gateway_eSewa::log( 'Payment status: ' . $requested['payment_status'] );
 
-			if ( method_exists( __CLASS__, 'payment_status_' . $posted['payment_status'] ) ) {
+			if ( method_exists( __CLASS__, 'payment_status_' . $requested['payment_status'] ) ) {
 				wp_redirect( esc_url( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ) );
-				call_user_func( array( __CLASS__, 'payment_status_' . $posted['payment_status'] ), $order, $posted );
+				call_user_func( array( __CLASS__, 'payment_status_' . $requested['payment_status'] ), $order, $requested );
 			}
 		}
 	}
