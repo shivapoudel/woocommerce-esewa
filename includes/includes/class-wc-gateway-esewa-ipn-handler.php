@@ -71,7 +71,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
 
 		// Send back post vars to eSewa
-		$ipn = array(
+		$params = array(
 			'body'        => array(
 				'amt'  => $amount,
 				'pid'  => $order_id,
@@ -87,7 +87,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		);
 
 		// Post back to get a response
-		$response = wp_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $ipn );
+		$response = wp_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $params );
 
 		WC_Gateway_eSewa::log( 'IPN Request: ' . print_r( $params, true ) );
 		WC_Gateway_eSewa::log( 'IPN Response: ' . print_r( $response, true ) );
