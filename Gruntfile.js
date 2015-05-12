@@ -4,16 +4,6 @@ module.exports = function( grunt ){
 
 	grunt.initConfig({
 
-		// JavaScript linting with JSHint.
-		jshint: {
-			options: {
-				jshintrc: '.jshintrc'
-			},
-			all: [
-				'Gruntfile.js'
-			]
-		},
-
 		// Generate POT files.
 		makepot: {
 			options: {
@@ -65,7 +55,6 @@ module.exports = function( grunt ){
 	// Load NPM tasks to be used here
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 
 	// Register tasks
 	grunt.registerTask( 'default', [
