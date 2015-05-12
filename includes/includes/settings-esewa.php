@@ -55,6 +55,6 @@ return array(
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable logging', 'woocommerce-esewa' ),
 		'default'     => 'no',
-		'description' => sprintf( __( 'Log eSewa events, inside <code>%s</code>', 'woocommerce-esewa' ), wc_get_log_file_path( 'esewa' ) )
+		'description' => sprintf( __( 'Log eSewa events, such as IPN requests, inside <code>%s</code>', 'woocommerce-esewa' ), wc_get_log_file_path( 'esewa' ) )
 	)
 );
