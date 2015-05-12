@@ -127,7 +127,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			WC_Gateway_eSewa::log( 'Payment error: Amounts do not match (gross ' . $amount . ')' );
 
 			// Put this order on-hold for manual checking
-			$order->update_status( 'on-hold', sprintf( __( 'Validation error: eSewa amounts do not match (gross %s).', 'woocommerce-eSewa' ), $amount ) );
+			$order->update_status( 'on-hold', sprintf( __( 'Validation error: eSewa amounts do not match (gross %s).', 'woocommerce-esewa' ), $amount ) );
 			exit;
 		}
 	}
