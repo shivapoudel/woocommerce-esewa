@@ -33,7 +33,7 @@ module.exports = function( grunt ){
 
 		// Check textdomain errors.
 		checktextdomain: {
-			options:{
+			options: {
 				text_domain: 'woocommerce-esewa',
 				keywords: [
 					'__:1,2d',
