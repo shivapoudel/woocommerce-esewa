@@ -88,6 +88,8 @@ For downloadable products to WooCommerce default setting is to allow access only
 
 == Changelog ==
 
+* Fix - When eSewa payment is on hold, reduce stock and empty cart.
+
 = 1.0.0 =
 
 * First stable release.
