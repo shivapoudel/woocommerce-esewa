@@ -49,15 +49,62 @@ module.exports = function( grunt ){
 				],
 				expand: true
 			}
+		},
+
+		// Copy files to deploy.
+		copy: {
+			deploy: {
+				src: [
+					'**',
+					'!.*',
+					'!*.md',
+					'!.*/**',
+					'.htaccess',
+					'!Gruntfile.js',
+					'!package.json',
+					'!node_modules/**'
+				],
+				dest: 'deploy',
+				expand: true,
+				dot: true
+			},
+		},
+
+		// Clean the directory.
+		clean: {
+			deploy: ['deploy']
+		},
+
+		// Deploy WP Plug-in.
+		wp_plugin: {
+			options: {
+				svn_username: 'axisthemes',
+
+			},
+			deploy: {
+				options: {
+					deploy_dir: 'deploy',
+					assets_dir: 'assets/wp-assets',
+					plugin_slug: 'woocommerce-esewa'
+				}
+			}
 		}
 	});
 
 	// Load NPM tasks to be used here
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
+	grunt.loadNpmTasks( 'grunt-wp-plugin' );
+	grunt.loadNpmTasks( 'grunt-contrib-copy' );
+	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
 
 	// Register tasks
 	grunt.registerTask( 'default', [
 		'makepot'
+	]);
+
+	grunt.registerTask( 'deploy', [
+		'clean:deploy',
+		'copy:deploy'
 	]);
 };
