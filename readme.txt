@@ -88,6 +88,10 @@ For downloadable products to WooCommerce default setting is to allow access only
 
 == Changelog ==
 
+* Fix - Ensure coupon discount are applied when processing checkout.
+* Dev - Included grunt-wp-plugin for deploying.
+* Refactor - Subtotal amount values.
+
 = 1.0.1 =
 
 * Fix - When eSewa payment is on hold, reduce stock and empty cart.
