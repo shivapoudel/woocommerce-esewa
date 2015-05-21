@@ -5,7 +5,7 @@
  * Description: WooCommerce eSewa is a Nepali payment gateway for WooCommerce.
  * Author: AxisThemes
  * Author URI: http://axisthemes.com
- * Version: 1.0.1
+ * Version: 1.0.2
  * License: GPLv2 or later
  * Text Domain: woocommerce-esewa
  * Domain Path: /languages/
@@ -27,7 +27,7 @@ class WC_eSewa {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.0.1';
+	const VERSION = '1.0.2';
 
 	/**
 	 * Instance of this class.

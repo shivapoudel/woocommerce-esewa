@@ -3,7 +3,7 @@ Contributors: axisthemes, shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,8 @@ For downloadable products to WooCommerce default setting is to allow access only
 2. Checkout page.
 
 == Changelog ==
+
+= 1.0.2 =
 
 * Fix - Ensure coupon discount are applied when processing checkout.
 * Dev - Included grunt-wp-plugin for deploying.
