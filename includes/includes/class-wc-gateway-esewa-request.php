@@ -55,7 +55,7 @@ class WC_Gateway_eSewa_Request {
 		WC_Gateway_eSewa::log( 'Generating payment form for order ' . $order->get_order_number() . '. Notify URL: ' . $this->notify_url );
 
 		return apply_filters( 'woocommerce_esewa_args', array(
-			'amt'   => wc_format_decimal( $order->get_subtotal(), 2 ),
+			'amt'   => wc_format_decimal( $order->get_subtotal() - $order->get_total_discount(), 2 ),
 			'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
 			'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
 			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
