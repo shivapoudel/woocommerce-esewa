@@ -73,13 +73,13 @@ class WC_Gateway_eSewa_Request {
 	 * @return float
 	 */
 	private function get_service_charge( $order ) {
-		$charge = 0;
+		$fee_total = 0;
 		if ( sizeof( $order->get_fees() ) > 0 ) {
 			foreach ( $order->get_fees() as $item ) {
-				$charge += ( isset( $item['line_total'] ) ) ? $item['line_total'] : 0;
+				$fee_total += ( isset( $item['line_total'] ) ) ? $item['line_total'] : 0;
 			}
 		}
 
-		return $charge;
+		return $fee_total;
 	}
 }
