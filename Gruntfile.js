@@ -107,4 +107,9 @@ module.exports = function( grunt ){
 		'clean:deploy',
 		'copy:deploy'
 	]);
+
+	grunt.registerTask( 'release', [
+		'deploy',
+		'wp_plugin'
+	]);
 };
