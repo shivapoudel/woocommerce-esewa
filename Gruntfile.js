@@ -59,11 +59,11 @@ module.exports = function( grunt ){
 					'!.*',
 					'!*.md',
 					'!.*/**',
-					'.htaccess',
+					'!tmp/**',
 					'!Gruntfile.js',
 					'!package.json',
 					'!node_modules/**',
-					'!assets/wp-assets'
+					'!assets/wp-assets/**'
 				],
 				dest: 'deploy',
 				expand: true,
