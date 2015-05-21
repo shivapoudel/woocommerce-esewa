@@ -102,3 +102,8 @@ For downloadable products to WooCommerce default setting is to allow access only
 
 = 1.0.0 =
 * First stable release.
+
+== Upgrade Notice ==
+
+= 1.1.0 =
+1.1.0 is a major update so it is important that you make backups, test extensions and your theme prior to updating. Developers should catch up with [develop.axisthemes.com](http://develop.axisthemes.com/) to see what has been happening in core.
