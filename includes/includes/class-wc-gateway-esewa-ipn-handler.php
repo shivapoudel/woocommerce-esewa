@@ -64,9 +64,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			WC_Gateway_eSewa::log( 'Found order #' . $order->id );
 			WC_Gateway_eSewa::log( 'Payment status: ' . $requested['payment_status'] );
 
-			if ( method_exists( __CLASS__, 'payment_status_' . $requested['payment_status'] ) ) {
+			if ( method_exists( $this, 'payment_status_' . $requested['payment_status'] ) ) {
 				wp_redirect( esc_url( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ) );
-				call_user_func( array( __CLASS__, 'payment_status_' . $requested['payment_status'] ), $order, $requested );
+				call_user_func( array( $this, 'payment_status_' . $requested['payment_status'] ), $order, $requested );
 			}
 		}
 	}
