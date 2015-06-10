@@ -31,6 +31,8 @@ abstract class WC_Gateway_eSewa_Response {
 				WC_Gateway_eSewa::log( 'Error: Order Keys do not match.' );
 				return false;
 			}
+
+		// Fallback to filter to allow 3rd parties to retrieve the order
 		} else if ( ! $order = apply_filters( 'woocommerce_get_esewa_order', false, array( $order_id, $order_key ) ) ) {
 			WC_Gateway_eSewa::log( 'Error: Order ID and key were not found.' );
 			return false;
