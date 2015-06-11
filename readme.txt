@@ -88,6 +88,8 @@ For downloadable products to WooCommerce default setting is to allow access only
 
 == Changelog ==
 
+Fix - Class reference in eSewa IPN handler
+
 = 1.1.0 =
 * Dev - Deploy corrections.
 
