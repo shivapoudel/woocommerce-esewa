@@ -40,7 +40,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			exit;
 		}
 
-		wp_die( 'eSewa IPN Request Failure', 'eSewa IPN', array( 'response' => 200 ) );
+		wp_die( 'eSewa IPN Request Failure', 'eSewa IPN', array( 'response' => 500 ) );
 	}
 
 	/**
