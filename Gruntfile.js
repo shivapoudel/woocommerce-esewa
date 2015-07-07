@@ -74,21 +74,6 @@ module.exports = function( grunt ){
 		// Clean the directory.
 		clean: {
 			deploy: ['deploy']
-		},
-
-		// Deploy WP Plug-in.
-		wp_plugin: {
-			options: {
-				svn_username: 'axisthemes',
-
-			},
-			deploy: {
-				options: {
-					deploy_dir: 'deploy',
-					assets_dir: 'assets/wp-assets',
-					plugin_slug: 'woocommerce-esewa'
-				}
-			}
 		}
 	});
 
@@ -107,10 +92,5 @@ module.exports = function( grunt ){
 	grunt.registerTask( 'deploy', [
 		'clean:deploy',
 		'copy:deploy'
-	]);
-
-	grunt.registerTask( 'release', [
-		'deploy',
-		'wp_plugin'
 	]);
 };
