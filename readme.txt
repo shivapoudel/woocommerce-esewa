@@ -90,6 +90,7 @@ For downloadable products to WooCommerce default setting is to allow access only
 
 Fix - 500 response on IPN fail
 Fix - Class reference in eSewa IPN handler
+Tweak - Improve the check for class single instance
 Tweak - Changed all requests with wp_remote_* to wp_safe_remote_*
 
 = 1.1.0 =

@@ -24,14 +24,12 @@ class WC_eSewa {
 
 	/**
 	 * Plugin version.
-	 *
 	 * @var string
 	 */
 	const VERSION = '1.2.0';
 
 	/**
 	 * Instance of this class.
-	 *
 	 * @var object
 	 */
 	protected static $instance = null;
@@ -55,23 +53,21 @@ class WC_eSewa {
 		}
 	}
 
+
 	/**
 	 * Return an instance of this class.
-	 *
 	 * @return object A single instance of this class.
 	 */
 	public static function get_instance() {
 		// If the single instance hasn't been set, set it now.
-		if ( null == self::$instance ) {
-			self::$instance = new self;
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
 		}
-
 		return self::$instance;
 	}
 
 	/**
 	 * Get the plugin path.
-	 *
 	 * @return string
 	 */
 	public function plugin_path() {
@@ -121,7 +117,6 @@ class WC_eSewa {
 
 	/**
 	 * WooCommerce fallback notice.
-	 *
 	 * @return string
 	 */
 	public function woocommerce_missing_notice() {
