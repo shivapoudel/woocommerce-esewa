@@ -2,8 +2,8 @@
 Contributors: axisthemes, shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
-Tested up to: 4.2
-Stable tag: 1.1.0
+Tested up to: 4.3
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,10 +88,11 @@ For downloadable products to WooCommerce default setting is to allow access only
 
 == Changelog ==
 
-Fix - 500 response on IPN fail
-Fix - Class reference in eSewa IPN handler
-Tweak - Improve the check for class single instance
-Tweak - Changed all requests with wp_remote_* to wp_safe_remote_*
+= 1.2.0 =
+* Fix - 500 response on IPN fail
+* Fix - Class reference in eSewa IPN handler
+* Tweak - Improve the check for class single instance
+* Tweak - Changed all requests with wp_remote_* to wp_safe_remote_*
 
 = 1.1.0 =
 * Dev - Deploy corrections.
