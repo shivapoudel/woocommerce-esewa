@@ -112,4 +112,4 @@ For downloadable products to WooCommerce default setting is to allow access only
 == Upgrade Notice ==
 
 = 1.2.0 =
-1.2.0 is a major update so it is important that you make backups, test extensions and your theme prior to updating. Developers should catch up with [develop.axisthemes.com](http://develop.axisthemes.com/) to see what has been happening in core.
+1.2.0 is a major update so it is important that you make backups, and ensure themes and extensions are 1.2 compatible.
