@@ -62,8 +62,7 @@ module.exports = function( grunt ){
 					'!tmp/**',
 					'!Gruntfile.js',
 					'!package.json',
-					'!node_modules/**',
-					'!assets/wp-assets/**'
+					'!node_modules/**'
 				],
 				dest: 'deploy',
 				expand: true,
