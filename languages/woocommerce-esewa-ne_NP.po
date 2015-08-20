@@ -4,9 +4,9 @@
 # Shiva Poudel <dev.shivapoudel@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: woocommerce-esewa\n"
+"Project-Id-Version: WooCommerce eSewa\n"
 "Report-Msgid-Bugs-To: https://github.com/axisthemes/woocommerce-esewa/issues\n"
-"POT-Creation-Date: 2015-08-20 00:01:33+00:00\n"
+"POT-Creation-Date: 2015-08-20 05:02:07+00:00\n"
 "PO-Revision-Date: 2015-08-19 23:43+0000\n"
 "Last-Translator: Shiva Poudel <dev.shivapoudel@gmail.com>\n"
 "Language-Team: Nepali (Nepal) (http://www.transifex.com/axisthemes/woocommerce-esewa/language/ne_NP/)\n"
