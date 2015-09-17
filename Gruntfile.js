@@ -101,7 +101,7 @@ module.exports = function( grunt ){
 				dest: 'deploy',
 				expand: true,
 				dot: true
-			},
+			}
 		},
 
 		// Clean the directory.
