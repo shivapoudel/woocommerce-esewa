@@ -53,7 +53,6 @@ class WC_eSewa {
 		}
 	}
 
-
 	/**
 	 * Return an instance of this class.
 	 * @return object A single instance of this class.
