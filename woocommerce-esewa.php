@@ -79,8 +79,8 @@ class WC_eSewa {
 	 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
 	 *
 	 * Locales found in:
-	 *      - WP_LANG_DIR/forkit-ribbon/forkit-ribbon-LOCALE.mo
-	 *      - WP_LANG_DIR/plugins/forkit-ribbon-LOCALE.mo
+	 *      - WP_LANG_DIR/woocommerce-esewa/woocommerce-esewa-LOCALE.mo
+	 *      - WP_LANG_DIR/plugins/woocommerce-esewa-LOCALE.mo
 	 */
 	public function load_plugin_textdomain() {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-esewa' );
