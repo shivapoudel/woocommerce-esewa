@@ -74,13 +74,19 @@ class WC_eSewa {
 	}
 
 	/**
-	 * Load the plugin text domain for translation.
+	 * Load Localisation files.
+	 *
+	 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
+	 *
+	 * Locales found in:
+	 *      - WP_LANG_DIR/woocommerce-esewa/woocommerce-esewa-LOCALE.mo
+	 *      - WP_LANG_DIR/plugins/woocommerce-esewa-LOCALE.mo
 	 */
 	public function load_plugin_textdomain() {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-esewa' );
 
-		load_textdomain( 'woocommerce-esewa', trailingslashit( WP_LANG_DIR ) . 'woocommerce-esewa/woocommerce-esewa-' . $locale . '.mo' );
-		load_plugin_textdomain( 'woocommerce-esewa', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_textdomain( 'woocommerce-esewa', WP_LANG_DIR . '/woocommerce-esewa/woocommerce-esewa-' . $locale . '.mo' );
+		load_plugin_textdomain( 'woocommerce-esewa', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/**
