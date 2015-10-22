@@ -36,7 +36,7 @@ Check out our installation guide and configuration of WooCommerce eSewa tab [Ins
 
 = Questions? =
 
-You can answer you questions using:
+You can answer your questions using:
 
 * Our Session [FAQ](http://wordpress.org/extend/plugins/woocommerce-esewa/faq/).
 * Creating a topic in the [WordPress support forum](http://wordpress.org/support/plugin/woocommerce-esewa) (English only).
