@@ -34,7 +34,7 @@ return array(
 		'desc_tip'    => true,
 		'description' => __( 'Please enter your eSewa Service Code; this is needed in order to take payment.', 'woocommerce-esewa' ),
 		'default'     => '',
-		'placeholder' => 'Eg: WooCommerce'
+		'placeholder' => 'Eg: Woo'
 	),
 	'invoice_prefix' => array(
 		'title'       => __( 'Invoice Prefix', 'woocommerce-esewa' ),
