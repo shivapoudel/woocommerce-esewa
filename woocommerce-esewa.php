@@ -6,7 +6,7 @@
  * Version: 1.2.1-dev
  * Author: AxisThemes
  * Author URI: http://axisthemes.com
- * License: GPLv2 or later
+ * License: GPLv3 or later
  * Text Domain: woocommerce-esewa
  * Domain Path: /languages/
  */
