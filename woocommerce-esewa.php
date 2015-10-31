@@ -106,7 +106,7 @@ class WC_eSewa {
 	 */
 	public function plugin_action_links( $actions ) {
 		$new_actions = array(
-			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=esewa' ) . '" title="' . esc_attr( __( 'View Settings', 'woocommerce-esewa' ) ) . '">' . __( 'Settings', 'woocommerce-esewa' ) . '</a>',
+			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=esewa' ) . '" title="' . esc_attr( __( 'View settings', 'woocommerce-esewa' ) ) . '">' . __( 'Settings', 'woocommerce-esewa' ) . '</a>',
 		);
 
 		return array_merge( $new_actions, $actions );
