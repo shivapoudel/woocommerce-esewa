@@ -38,7 +38,7 @@ class WC_eSewa {
 	 * Initialize the plugin.
 	 */
 	private function __construct() {
-		// Load plugin text domain
+		// Load plugin text domain.
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
 		// Checks with WooCommerce is installed.
