@@ -25,11 +25,6 @@ Add eSewa as a payment method in your WooCommerce store.
 
 The plugin WooCommerce eSewa was developed without any incentive or eSewa Company. None of the developers of this plugin have ties to any of these two companies.
 
-= Requirements =
-
-* WordPress 4.0 or later.
-* WooCommerce 2.3 or later.
-
 = Installation =
 
 Check out our installation guide and configuration of WooCommerce eSewa tab [Installation](http://wordpress.org/extend/plugins/woocommerce-esewa/installation/).
@@ -47,9 +42,24 @@ You can contribute to the source code in our [GitHub](https://github.com/axisthe
 
 == Installation ==
 
-* Upload plugin files to your plugins folder, or install using WordPress built-in Add New Plugin installer;
-* Activate the plugin;
-* This ready! You can now navigate to WooCommerce -> Settings -> Payment Gateways, choose eSewa and fill in your eSewa Merchant/Service Code.
+= Minimum Requirements =
+
+* WordPress 4.0 or greater.
+* WooCommerce 2.3 or greater.
+
+= Automatic installation =
+
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of WooCommerce eSewa, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+
+In the search field type “WooCommerce eSewa” and click Search Plugins. Once you’ve found our payment gateway plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
+
+= Manual installation =
+
+The manual installation method involves downloading our woocommerce-esewa plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+
+= Updating =
+
+Automatic updates should work like a charm; as always though, ensure you backup your site just in case.
 
 == Frequently Asked Questions ==
 
@@ -80,6 +90,14 @@ Yes, this is absolutely right and means that the plugin is working as it should.
 All payment gateway in WooCommerce must change the order status to "processing" when the payment is confirmed and should never be changed alone to "complete" because the request should go only to the status "finished" after it has been delivered.
 
 For downloadable products to WooCommerce default setting is to allow access only when the request has the status "completed", however in WooCommerce settings tab Products you can enable the option "Grant access to download the product after payment" and thus release download when the order status is as "processing."
+
+= Where can I report bugs or contribute to the project? =
+
+Bugs can be reported either in our support forum or preferably on the [WooCommerce eSewa GitHub repository](https://github.com/axisthemes/woocommerce-esewa/issues).
+
+= WooCommerce eSewa is awesome! Can I contribute? =
+
+Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woocommerce-esewa/) :)
 
 == Screenshots ==
 
