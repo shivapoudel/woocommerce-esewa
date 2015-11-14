@@ -6,20 +6,15 @@ module.exports = function( grunt ){
 
 		// Generate POT files.
 		makepot: {
-			options: {
-				type: 'wp-plugin',
-				domainPath: 'languages',
-				potHeaders: {
-					'report-msgid-bugs-to': 'https://github.com/axisthemes/woocommerce-esewa/issues',
-					'language-team': 'LANGUAGE <EMAIL@ADDRESS>'
-				}
-			},
 			dist: {
 				options: {
+					type: 'wp-plugin',
+					domainPath: 'languages',
 					potFilename: 'woocommerce-esewa.pot',
-					exclude: [
-						'deploy/.*'
-					]
+					potHeaders: {
+						'report-msgid-bugs-to': 'https://github.com/axisthemes/woocommerce-esewa/issues',
+						'language-team': 'LANGUAGE <EMAIL@ADDRESS>'
+					}
 				}
 			}
 		},
@@ -52,47 +47,15 @@ module.exports = function( grunt ){
 				],
 				expand: true
 			}
-		},
-
-		// Copy files to deploy.
-		copy: {
-			deploy: {
-				src: [
-					'**',
-					'!.*',
-					'!*.md',
-					'!.*/**',
-					'!tmp/**',
-					'!Gruntfile.js',
-					'!package.json',
-					'!node_modules/**'
-				],
-				dest: 'deploy',
-				expand: true,
-				dot: true
-			}
-		},
-
-		// Clean the directory.
-		clean: {
-			deploy: ['deploy']
 		}
 	});
 
 	// Load NPM tasks to be used here
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
-	grunt.loadNpmTasks( 'grunt-contrib-copy' );
-	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
 
 	// Register tasks
 	grunt.registerTask( 'default', [
 		'makepot'
-	]);
-
-	grunt.registerTask( 'deploy', [
-		'makepot',
-		'clean',
-		'copy'
 	]);
 };
