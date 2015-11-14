@@ -1,8 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[woocommerce-esewa.woocommerce-esewa-pot]
-file_filter = languages/woocommerce-esewa-<lang>.po
-source_file = languages/woocommerce-esewa.pot
-source_lang = en
-type = PO

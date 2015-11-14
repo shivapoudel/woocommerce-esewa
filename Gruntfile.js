@@ -54,37 +54,6 @@ module.exports = function( grunt ){
 			}
 		},
 
-		// Exec shell commands.
-		shell: {
-			options: {
-				stdout: true,
-				stderr: true
-			},
-			txpush: {
-				command: 'tx push -s' // push the resources
-			},
-			txpull: {
-				command: 'tx pull -a -f' // pull the .po files
-			}
-		},
-
-		// Compile .po to .mo files.
-		potomo: {
-			options: {
-				poDel: false
-			},
-			dist: {
-				files: [{
-					expand: true,
-					cwd: 'languages/',
-					src: ['*.po'],
-					dest: 'languages/',
-					ext: '.mo',
-					nonull: true
-				}]
-			}
-		},
-
 		// Copy files to deploy.
 		copy: {
 			deploy: {
@@ -111,8 +80,6 @@ module.exports = function( grunt ){
 	});
 
 	// Load NPM tasks to be used here
-	grunt.loadNpmTasks( 'grunt-shell' );
-	grunt.loadNpmTasks( 'grunt-potomo' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
@@ -123,20 +90,9 @@ module.exports = function( grunt ){
 		'makepot'
 	]);
 
-	grunt.registerTask( 'resources', [
-		'makepot',
-		'shell:txpush'
-	]);
-
-	grunt.registerTask( 'tx_update', [
-		'shell:txpull',
-		'potomo'
-	]);
-
 	grunt.registerTask( 'deploy', [
-		'resources',
-		'tx_update',
-		'clean:deploy',
-		'copy:deploy'
+		'makepot',
+		'clean',
+		'copy'
 	]);
 };
