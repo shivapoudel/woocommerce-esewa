@@ -55,7 +55,7 @@ In the search field type “WooCommerce eSewa” and click Search Plugins. Once 
 
 = Manual installation =
 
-The manual installation method involves downloading our woocommerce-esewa plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+The manual installation method involves downloading our woocommerce esewa plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 = Updating =
 
