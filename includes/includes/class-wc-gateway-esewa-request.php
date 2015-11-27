@@ -62,8 +62,8 @@ class WC_Gateway_eSewa_Request {
 			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
 			'scd'   => $this->gateway->get_option( 'service_code' ),
 			'pid'   => $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(),
-			'su'    => add_query_arg( array( 'payment_status' => 'success', 'key' => $order->order_key ), $this->notify_url ),
-			'fu'    => add_query_arg( array( 'payment_status' => 'failure', 'key' => $order->order_key ), $this->notify_url ),
+			'su'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'success', 'key' => $order->order_key ), $this->notify_url ) ),
+			'fu'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'failure', 'key' => $order->order_key ), $this->notify_url ) ),
 		), $order );
 	}
 

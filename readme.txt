@@ -108,6 +108,7 @@ Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woo
 
 * Fix - Typo in readme file.
 * Tweak - Improve load_plugin_textdomain method.
+* Tweak - Escape success and failure using `esc_url_raw` for query args.
 
 = 1.2.0 =
 * Fix - 500 response on IPN fail
