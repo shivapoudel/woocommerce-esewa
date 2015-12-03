@@ -3,7 +3,7 @@ Contributors: axisthemes, shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,6 +105,10 @@ Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woo
 2. Checkout page.
 
 == Changelog ==
+
+= 1.2.2 =
+* Fix - Payment description typo.
+* Dev - PHP_CodeSniffer standard tweaks.
 
 = 1.2.1 =
 * Fix - Typo in readme file.
