@@ -1,14 +1,14 @@
 <?php
 /**
- * eSewa Payment Gateway
+ * eSewa Payment Gateway.
  *
  * Provides a eSewa Payment Gateway.
  *
- * @class       WC_Gateway_eSewa
- * @extends     WC_Payment_Gateway
- * @category    Class
- * @author      AxisThemes
- * @since       1.0.0
+ * @class    WC_Gateway_eSewa
+ * @extends  WC_Payment_Gateway
+ * @category Class
+ * @author   AxisThemes
+ * @since    1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WC_Gateway_eSewa Class
+ * WC_Gateway_eSewa Class.
  */
 class WC_Gateway_eSewa extends WC_Payment_Gateway {
 
