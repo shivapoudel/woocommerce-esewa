@@ -41,7 +41,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->init_form_fields();
 		$this->init_settings();
 
-		// Define user set variables
+		// Define user set variables.
 		$this->title        = $this->get_option( 'title' );
 		$this->description  = $this->get_option( 'description' );
 		$this->testmode     = 'yes' === $this->get_option( 'testmode', 'no' );
@@ -66,7 +66,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Logging method
+	 * Logging method.
 	 * @param string $message
 	 */
 	public static function log( $message ) {
@@ -79,8 +79,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Check if this gateway is enabled and available in the user's country
-	 *
+	 * Check if this gateway is enabled and available in the user's country.
 	 * @return bool
 	 */
 	public function is_valid_for_use() {
@@ -88,8 +87,8 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Admin Panel Options
-	 * - Options for bits like 'title' and availability on a country-by-country basis
+	 * Admin Panel Options.
+	 * - Options for bits like 'title' and availability on a country-by-country basis.
 	 *
 	 * @since 1.0.0
 	 */
@@ -104,7 +103,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Initialise Gateway Settings Form Fields
+	 * Initialise Gateway Settings Form Fields.
 	 */
 	public function init_form_fields() {
 		$this->form_fields = include( 'includes/settings-esewa.php' );
