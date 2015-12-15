@@ -5,24 +5,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Generates requests to send to eSewa
+ * Generates requests to send to eSewa.
  */
 class WC_Gateway_eSewa_Request {
 
 	/**
-	 * Pointer to gateway making the request
+	 * Pointer to gateway making the request.
 	 * @var WC_Gateway_eSewa
 	 */
 	protected $gateway;
 
 	/**
-	 * Endpoint for requests from eSewa
+	 * Endpoint for requests from eSewa.
 	 * @var string
 	 */
 	protected $notify_url;
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 * @param WC_Gateway_eSewa $gateway
 	 */
 	public function __construct( $gateway ) {
@@ -31,7 +31,7 @@ class WC_Gateway_eSewa_Request {
 	}
 
 	/**
-	 * Get the eSewa request URL for an order
+	 * Get the eSewa request URL for an order.
 	 * @param  WC_Order $order
 	 * @param  boolean  $sandbox
 	 * @return string
@@ -47,7 +47,7 @@ class WC_Gateway_eSewa_Request {
 	}
 
 	/**
-	 * Get eSewa Args for passing to eSewa
+	 * Get eSewa Args for passing to eSewa.
 	 * @param  WC_Order $order
 	 * @return array
 	 */
@@ -68,7 +68,7 @@ class WC_Gateway_eSewa_Request {
 	}
 
 	/**
-	 * Get the service charge to send to eSewa
+	 * Get the service charge to send to eSewa.
 	 * @param  WC_Order $order
 	 * @return float
 	 */
