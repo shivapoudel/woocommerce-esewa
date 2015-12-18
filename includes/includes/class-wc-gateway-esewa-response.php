@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Handles Responses
+ * Handles Responses.
  */
 abstract class WC_Gateway_eSewa_Response {
 
@@ -13,7 +13,7 @@ abstract class WC_Gateway_eSewa_Response {
 	protected $sandbox = false;
 
 	/**
-	 * Get the order from the eSewa Order ID and Key variable
+	 * Get the order from the eSewa Order ID and Key variable.
 	 * @param  string $order_id
 	 * @param  string $order_key
 	 * @return bool|WC_Order object
@@ -42,7 +42,7 @@ abstract class WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Complete order, add transaction ID and note
+	 * Complete order, add transaction ID and note.
 	 * @param WC_Order $order
 	 * @param string   $txn_id
 	 * @param string   $note
@@ -53,7 +53,7 @@ abstract class WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Hold order and add note
+	 * Hold order and add note.
 	 * @param WC_Order $order
 	 * @param string   $reason
 	 */

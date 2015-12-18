@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 include_once( 'class-wc-gateway-esewa-response.php' );
 
 /**
- * Handles PDT Responses from eSewa
+ * Handles PDT Responses from eSewa.
  */
 class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 
@@ -15,7 +15,7 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 	protected $service_code;
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct( $sandbox = false, $service_code = '' ) {
 		add_action( 'woocommerce_thankyou_esewa', array( $this, 'check_response' ) );
@@ -25,7 +25,7 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Validate a PDT Transaction to ensure its authentic
+	 * Validate a PDT Transaction to ensure its authentic.
 	 * @param  string $transaction
 	 * @return bool
 	 */
@@ -43,7 +43,7 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 			'user-agent'  => 'WooCommerce/' . WC_VERSION
 		);
 
-		// Post back to get a response
+		// Post back to get a response.
 		$response = wp_safe_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $pdt );
 
 		if ( is_wp_error( $response ) || ! strpos( $response['body'], 'SUCCESS' ) === 0 ) {
@@ -54,7 +54,7 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Check Response for PDT
+	 * Check Response for PDT.
 	 */
 	public function check_response() {
 		if ( empty( $_REQUEST['oid'] ) || empty( $_REQUEST['amt'] ) || empty( $_REQUEST['refId'] ) ) {
