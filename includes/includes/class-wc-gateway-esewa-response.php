@@ -22,7 +22,7 @@ abstract class WC_Gateway_eSewa_Response {
 		if ( is_string( $order_key ) ) {
 
 			if ( ! $order = wc_get_order( $order_id ) ) {
-				// We have an invalid $order_id, probably because invoice_prefix has changed
+				// We have an invalid $order_id, probably because invoice_prefix has changed.
 				$order_id = wc_get_order_id_by_order_key( $order_key );
 				$order    = wc_get_order( $order_id );
 			}
@@ -32,7 +32,7 @@ abstract class WC_Gateway_eSewa_Response {
 				return false;
 			}
 
-		// Fallback to filter to allow 3rd parties to retrieve the order
+		// Fallback to filter to allow 3rd parties to retrieve the order.
 		} else if ( ! $order = apply_filters( 'woocommerce_get_esewa_order', false, array( $order_id, $order_key ) ) ) {
 			WC_Gateway_eSewa::log( 'Error: Order ID and key were not found.' );
 			return false;
