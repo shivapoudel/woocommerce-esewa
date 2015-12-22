@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 include_once( 'class-wc-gateway-esewa-response.php' );
 
 /**
- * Handles IPN Responses from eSewa
+ * Handles IPN Responses from eSewa.
  */
 class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
@@ -15,8 +15,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	protected $service_code;
 
 	/**
-	 * Constructor
-	 * @param WC_Gateway_eSewa $gateway
+	 * Constructor.
+	 * @param WC_Gateway_eSewa $gateway.
 	 */
 	public function __construct( $gateway, $sandbox = false, $service_code = '' ) {
 		add_action( 'woocommerce_api_wc_gateway_esewa', array( $this, 'check_response' ) );
@@ -28,7 +28,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Check for eSewa IPN Response
+	 * Check for eSewa IPN Response.
 	 */
 	public function check_response() {
 		@ob_clean();
@@ -44,7 +44,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * There was a valid response
+	 * There was a valid response.
 	 * @param array $requested Request data after wp_unslash
 	 */
 	public function valid_response( $requested ) {
@@ -72,7 +72,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Check eSewa IPN validity
+	 * Check eSewa IPN validity.
 	 */
 	public function validate_ipn() {
 		WC_Gateway_eSewa::log( 'Checking IPN response is valid' );
@@ -97,13 +97,13 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			'user-agent'  => 'WooCommerce/' . WC()->version
 		);
 
-		// Post back to get a response
+		// Post back to get a response.
 		$response = wp_safe_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $params );
 
 		WC_Gateway_eSewa::log( 'IPN Request: ' . print_r( $params, true ) );
 		WC_Gateway_eSewa::log( 'IPN Response: ' . print_r( $response, true ) );
 
-		// check to see if the request was valid
+		// Check to see if the request was valid.
 		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 && strstr( strtoupper( $response['body'] ), 'SUCCESS' ) ) {
 			WC_Gateway_eSewa::log( 'Received valid response from eSewa' );
 			return true;
@@ -119,21 +119,21 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Check payment amount from IPN matches the order
+	 * Check payment amount from IPN matches the order.
 	 * @param WC_Order $order
 	 */
 	protected function validate_amount( $order, $amount ) {
 		if ( number_format( $order->get_total(), 2, '.', '' ) != number_format( $amount, 2, '.', '' ) ) {
 			WC_Gateway_eSewa::log( 'Payment error: Amounts do not match (gross ' . $amount . ')' );
 
-			// Put this order on-hold for manual checking
+			// Put this order on-hold for manual checking.
 			$order->update_status( 'on-hold', sprintf( __( 'Validation error: eSewa amounts do not match (gross %s).', 'woocommerce-esewa' ), $amount ) );
 			exit;
 		}
 	}
 
 	/**
-	 * Handle a completed payment
+	 * Handle a completed payment.
 	 * @param WC_Order $order
 	 */
 	protected function payment_status_completed( $order, $requested ) {
@@ -152,7 +152,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Handle a failed payment
+	 * Handle a failed payment.
 	 * @param WC_Order $order
 	 */
 	protected function payment_status_failed( $order, $requested ) {

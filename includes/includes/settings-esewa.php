@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Settings for eSewa Gateway
+ * Settings for eSewa Gateway.
  */
 return array(
 	'enabled' => array(
