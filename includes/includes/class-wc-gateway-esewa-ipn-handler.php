@@ -16,7 +16,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * Constructor.
-	 * @param WC_Gateway_eSewa $gateway.
+	 * @param WC_Gateway_eSewa $gateway
 	 */
 	public function __construct( $gateway, $sandbox = false, $service_code = '' ) {
 		add_action( 'woocommerce_api_wc_gateway_esewa', array( $this, 'check_response' ) );

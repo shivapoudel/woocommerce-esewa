@@ -125,7 +125,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Process the payment and return the result
+	 * Process the payment and return the result.
 	 *
 	 * @param  int $order_id
 	 * @return array
