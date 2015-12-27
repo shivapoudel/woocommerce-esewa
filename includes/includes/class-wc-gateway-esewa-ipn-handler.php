@@ -81,7 +81,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		$order_id    = wc_clean( stripslashes( $_REQUEST['oid'] ) );
 		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
 
-		// Send back post vars to eSewa
+		// Send back post vars to esewa.
 		$params = array(
 			'body'        => array(
 				'amt'  => $amount,
