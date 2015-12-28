@@ -61,8 +61,8 @@ class WC_Gateway_eSewa_PDT_Handler extends WC_Gateway_eSewa_Response {
 			return;
 		}
 
-		$order_key   = wc_clean( stripslashes( $_REQUEST['key'] ) );
 		$order_id    = wc_clean( stripslashes( $_REQUEST['oid'] ) );
+		$order_key   = wc_clean( stripslashes( $_REQUEST['key'] ) );
 		$amount      = wc_clean( stripslashes( $_REQUEST['amt'] ) );
 		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
 

@@ -32,8 +32,8 @@ abstract class WC_Gateway_eSewa_Response {
 				return false;
 			}
 
-		// Fallback to filter to allow 3rd parties to retrieve the order.
-		} else if ( ! $order = apply_filters( 'woocommerce_get_esewa_order', false, array( $order_id, $order_key ) ) ) {
+		// Nothing was found.
+		} else {
 			WC_Gateway_eSewa::log( 'Error: Order ID and key were not found.' );
 			return false;
 		}
