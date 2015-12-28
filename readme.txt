@@ -3,7 +3,7 @@ Contributors: axisthemes, shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 1.2.2
+Stable tag: 1.3.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,11 @@ Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woo
 
 == Changelog ==
 
+= 1.3.0 =
+* Tweak - Method description for gateway.
+* Refactor - Correctly validated the IPN and PDT once again.
+* Deprecated - Remove `plugin_path()` method in main plugin class.
+
 = 1.2.2 =
 * Fix - Payment description typo.
 * Dev - PHP_CodeSniffer standard tweaks.
@@ -138,5 +143,5 @@ Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woo
 
 == Upgrade Notice ==
 
-= 1.2.0 =
-1.2.0 is a major update so it is important that you make backups, and ensure themes and extensions are 1.2 compatible.
+= 1.3.0 =
+1.3.0 is a major update so it is important that you make backups, and ensure themes and extensions are 1.3 compatible.
