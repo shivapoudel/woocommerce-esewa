@@ -66,14 +66,6 @@ class WC_eSewa {
 	}
 
 	/**
-	 * Get the plugin path.
-	 * @return string
-	 */
-	public function plugin_path() {
-		return untrailingslashit( plugin_dir_path( __FILE__ ) );
-	}
-
-	/**
 	 * Load Localisation files.
 	 *
 	 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
