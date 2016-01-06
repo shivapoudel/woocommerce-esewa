@@ -33,7 +33,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get the eSewa request URL for an order.
 	 * @param  WC_Order $order
-	 * @param  boolean  $sandbox
+	 * @param  bool     $sandbox
 	 * @return string
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
