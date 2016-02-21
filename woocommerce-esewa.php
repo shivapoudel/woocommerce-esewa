@@ -47,7 +47,7 @@ class WC_eSewa {
 
 			// Hooks.
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateway' ) );
-			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'plugin_action_links' ) );
+			add_filter( 'plugin_action_links', array( $this, 'plugin_action_links' ), 10, 2 );
 		} else {
 			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
 		}
@@ -100,16 +100,21 @@ class WC_eSewa {
 	}
 
 	/**
-	 * Show action links on the plugin screen.
-	 * @param  mixed $links Plugin Action links.
+	 * Display action links in the Plugins list table.
+	 * @param  array  $actions
+	 * @param  string $plugin_file
 	 * @return array
 	 */
-	public static function plugin_action_links( $links ) {
-		$action_links = array(
-			'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=wc_gateway_esewa' ) . '" title="' . esc_attr( __( 'View Settings', 'woocommerce-esewa' ) ) . '">' . __( 'Settings', 'woocommerce-esewa' ) . '</a>',
-		);
+	public function plugin_action_links( $actions, $plugin_file ) {
+		if ( $plugin_file == plugin_basename( __FILE__ ) ) {
+			$new_actions = array(
+				'settings' => '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=wc_gateway_esewa' ) . '" title="' . esc_attr( __( 'View Settings', 'woocommerce-esewa' ) ) . '">' . __( 'Settings', 'woocommerce-esewa' ) . '</a>',
+			);
 
-		return array_merge( $action_links, $links );
+			return array_merge( $new_actions, $actions );
+		}
+
+		return (array) $actions;
 	}
 
 	/**
