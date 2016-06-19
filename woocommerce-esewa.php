@@ -121,6 +121,6 @@ class WC_eSewa {
 	}
 }
 
-add_action( 'plugins_loaded', array( 'WC_eSewa', 'get_instance' ), 0 );
+add_action( 'plugins_loaded', array( 'WC_eSewa', 'get_instance' ) );
 
 endif;
