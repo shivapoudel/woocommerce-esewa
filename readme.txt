@@ -15,7 +15,7 @@ Adds eSewa as payment gateway in WooCommerce plugin.
 
 This plugin adds eSewa gateway to WooCommerce.
 
-Please notice that [WooCommerce](http://wordpress.org/plugins/woocommerce/) must be installed and active.
+Please notice that [WooCommerce](https://wordpress.org/plugins/woocommerce/) must be installed and active.
 
 = Introduction =
 
@@ -27,14 +27,14 @@ The plugin WooCommerce eSewa was developed without any incentive or eSewa Compan
 
 = Installation =
 
-Check out our installation guide and configuration of WooCommerce eSewa tab [Installation](http://wordpress.org/extend/plugins/woocommerce-esewa/installation/).
+Check out our installation guide and configuration of WooCommerce eSewa tab [Installation](https://wordpress.org/extend/plugins/woocommerce-esewa/installation/).
 
 = Questions? =
 
 You can answer your questions using:
 
-* Our Session [FAQ](http://wordpress.org/extend/plugins/woocommerce-esewa/faq/).
-* Creating a topic in the [WordPress support forum](http://wordpress.org/support/plugin/woocommerce-esewa) (English only).
+* Our Session [FAQ](https://wordpress.org/extend/plugins/woocommerce-esewa/faq/).
+* Creating a topic in the [WordPress support forum](https://wordpress.org/support/plugin/woocommerce-esewa) (English only).
 
 = Contribute =
 
