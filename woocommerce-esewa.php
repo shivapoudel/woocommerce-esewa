@@ -85,7 +85,7 @@ class WC_eSewa {
 	 * Includes.
 	 */
 	private function includes() {
-		include_once( 'includes/class-wc-esewa-gateway.php' );
+		include_once( dirname( __FILE__ ) . '/includes/class-wc-esewa-gateway.php' );
 	}
 
 	/**

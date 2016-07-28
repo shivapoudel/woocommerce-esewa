@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once( 'class-wc-gateway-esewa-response.php' );
+include_once( dirname( __FILE__ ) . '/class-wc-gateway-esewa-response.php' );
 
 /**
  * Handles IPN Responses from eSewa.
