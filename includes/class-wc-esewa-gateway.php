@@ -67,7 +67,11 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	public static function log( $message ) {
 		if ( self::$log_enabled ) {
 			if ( empty( self::$log ) ) {
-				self::$log = new WC_Logger();
+				if ( version_compare( WC_VERSION, '2.7', '>=' ) ) {
+					self::$log = wc_get_logger();
+				} else {
+					self::$log = new WC_Logger();
+				}
 			}
 			self::$log->add( 'esewa', $message );
 		}
