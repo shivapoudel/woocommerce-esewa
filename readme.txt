@@ -2,8 +2,8 @@
 Contributors: axisthemes, shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
-Tested up to: 4.5
-Stable tag: 1.4.0
+Tested up to: 4.6
+Stable tag: 1.5.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,6 +105,12 @@ Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woo
 2. Checkout page.
 
 == Changelog ==
+
+= 1.5.0 =
+* Fix - Plugins action settings link.
+* Tweak - More logging for request args.
+* Tweak - Define full path for includes.
+* Tweak - Add support for WC_Logger pluggable via wc_get_logger function.
 
 = 1.4.0 =
 * Deprecated - PDT Check as IPN is sufficient for processing order.

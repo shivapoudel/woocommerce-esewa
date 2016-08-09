@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce eSewa
  * Plugin URI: https://github.com/axisthemes/woocommerce-esewa
  * Description: WooCommerce eSewa is a Nepali payment gateway for WooCommerce.
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: AxisThemes
  * Author URI: http://axisthemes.com
  * License: GPLv3 or later
@@ -26,7 +26,7 @@ class WC_eSewa {
 	 * Plugin version.
 	 * @var string
 	 */
-	const VERSION = '1.4.0';
+	const VERSION = '1.5.0';
 
 	/**
 	 * Instance of this class.
