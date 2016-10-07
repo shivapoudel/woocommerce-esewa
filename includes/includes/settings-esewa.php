@@ -29,7 +29,7 @@ return array(
 		'default'     => __( 'Pay via eSewa; you can pay with eSewa account securely.', 'woocommerce-esewa' )
 	),
 	'service_code' => array(
-		'title'       => __( 'Service Code', 'woocommerce-esewa' ),
+		'title'       => __( 'Service code', 'woocommerce-esewa' ),
 		'type'        => 'text',
 		'desc_tip'    => true,
 		'description' => __( 'Please enter your eSewa Service Code; this is needed in order to take payment.', 'woocommerce-esewa' ),
@@ -37,21 +37,21 @@ return array(
 		'placeholder' => 'Eg: Woo'
 	),
 	'invoice_prefix' => array(
-		'title'       => __( 'Invoice Prefix', 'woocommerce-esewa' ),
+		'title'       => __( 'Invoice prefix', 'woocommerce-esewa' ),
 		'type'        => 'text',
 		'desc_tip'    => true,
 		'description' => __( 'Please enter a prefix for your invoice numbers. If you use your eSewa account for multiple stores ensure this prefix is unique as eSewa will not allow orders with the same invoice number.', 'woocommerce-esewa' ),
 		'default'     => 'WC-'
 	),
 	'testmode' => array(
-		'title'       => __( 'Sandbox Mode', 'woocommerce-esewa' ),
+		'title'       => __( 'Sandbox mode', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable Sandbox Mode', 'woocommerce-esewa' ),
 		'default'     => 'no',
 		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Sign up for a developer account %shere%s.', 'woocommerce-esewa' ), '<a href="https://dev.esewa.com.np/" target="_blank">', '</a>' )
 	),
 	'debug' => array(
-		'title'       => __( 'Debug Log', 'woocommerce-esewa' ),
+		'title'       => __( 'Debug log', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable logging', 'woocommerce-esewa' ),
 		'default'     => 'no',
