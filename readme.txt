@@ -149,8 +149,3 @@ Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woo
 
 = 1.0.0 =
 * First stable release.
-
-== Upgrade Notice ==
-
-= 1.4.0 =
-1.4.0 is a major update so it is important that you make backups, and ensure themes and extensions are 1.4 compatible.
