@@ -48,7 +48,7 @@ return array(
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable Sandbox Mode', 'woocommerce-esewa' ),
 		'default'     => 'no',
-		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Sign up for a developer account %shere%s.', 'woocommerce-esewa' ), '<a href="https://dev.esewa.com.np/" target="_blank">', '</a>' ),
+		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Sign up for a developer account %1$shere%2$s.', 'woocommerce-esewa' ), '<a href="https://dev.esewa.com.np/" target="_blank">', '</a>' ),
 	),
 	'debug' => array(
 		'title'       => __( 'Debug log', 'woocommerce-esewa' ),

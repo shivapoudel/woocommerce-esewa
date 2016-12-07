@@ -35,7 +35,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->has_fields         = false;
 		$this->order_button_text  = __( 'Proceed to eSewa', 'woocommerce-esewa' );
 		$this->method_title       = __( 'eSewa', 'woocommerce-esewa' );
-		$this->method_description = sprintf( __( 'The eSewa epay system sends customers to eSewa to enter their payment information. The eSewa IPN requires fsockopen/cURL support to update order statuses after payment. Check the %ssystem status%s page for more details.', 'woocommerce-esewa' ), '<a href="' . admin_url( 'admin.php?page=wc-status' ) . '">', '</a>' );
+		$this->method_description = sprintf( __( 'The eSewa epay system sends customers to eSewa to enter their payment information. The eSewa IPN requires fsockopen/cURL support to update order statuses after payment. Check the %1$ssystem status%2$s page for more details.', 'woocommerce-esewa' ), '<a href="' . admin_url( 'admin.php?page=wc-status' ) . '">', '</a>' );
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -54,7 +54,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 
 		if ( ! $this->is_valid_for_use() ) {
 			$this->enabled = 'no';
-		} else if ( $this->service_code ) {
+		} elseif ( $this->service_code ) {
 			include_once( dirname( __FILE__ ) . '/includes/class-wc-gateway-esewa-ipn-handler.php' );
 			new WC_Gateway_eSewa_IPN_Handler( $this, $this->testmode, $this->service_code );
 		}
@@ -137,7 +137,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 
 		return array(
 			'result'   => 'success',
-			'redirect' => $esewa_request->get_request_url( $order, $this->testmode )
+			'redirect' => $esewa_request->get_request_url( $order, $this->testmode ),
 		);
 	}
 }

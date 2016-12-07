@@ -2,7 +2,7 @@
   "name": "woocommerce-esewa",
   "title": "WooCommerce eSewa",
   "version": "1.5.0",
-  "homepage": "http://axisthemes.com/woocommerce-esewa/",
+  "homepage": "https://github.com/axisthemes/woocommerce-esewa",
   "repository": {
     "type": "git",
     "url": "https://github.com/axisthemes/woocommerce-esewa.git"
@@ -12,6 +12,8 @@
   "devDependencies": {
     "grunt": "~1.0.1",
     "grunt-checktextdomain": "~1.0.1",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-phpcs": "~0.4.0",
     "grunt-wp-i18n": "~0.5.4"
   },
   "engines": {

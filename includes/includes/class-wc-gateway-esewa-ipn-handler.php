@@ -89,14 +89,14 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 				'amt'  => $amount,
 				'pid'  => $order_id,
 				'rid'  => $transaction,
-				'scd'  => $this->service_code
+				'scd'  => $this->service_code,
 			),
 			'timeout'     => 60,
 			'sslverify'   => false,
 			'httpversion' => '1.1',
 			'compress'    => false,
 			'decompress'  => false,
-			'user-agent'  => 'WooCommerce/' . WC()->version
+			'user-agent'  => 'WooCommerce/' . WC()->version,
 		);
 
 		// Post back to get a response.

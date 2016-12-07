@@ -4,17 +4,32 @@ module.exports = function( grunt ){
 
 	grunt.initConfig({
 
+		// JavaScript linting with JSHint.
+		jshint: {
+			options: {
+				jshintrc: '.jshintrc'
+			},
+			all: [
+				'Gruntfile.js'
+			]
+		},
+
 		// Generate POT files.
 		makepot: {
+			options: {
+				type: 'wp-plugin',
+				domainPath: 'languages',
+				potHeaders: {
+					'report-msgid-bugs-to': 'https://github.com/axisthemes/woocommerce-esewa/issues',
+					'language-team': 'LANGUAGE <EMAIL@ADDRESS>'
+				}
+			},
 			dist: {
 				options: {
-					type: 'wp-plugin',
-					domainPath: 'languages',
 					potFilename: 'woocommerce-esewa.pot',
-					potHeaders: {
-						'report-msgid-bugs-to': 'https://github.com/axisthemes/woocommerce-esewa/issues',
-						'language-team': 'LANGUAGE <EMAIL@ADDRESS>'
-					}
+					exclude: [
+						'vendor/.*'
+					]
 				}
 			}
 		},
@@ -41,21 +56,44 @@ module.exports = function( grunt ){
 				]
 			},
 			files: {
-				src: [
-					'**/*.php',
-					'!node_modules/**'
+				src:  [
+					'**/*.php',         // Include all files
+					'!node_modules/**', // Exclude node_modules/
+					'!vendor/**'        // Exclude vendor/
 				],
 				expand: true
+			}
+		},
+
+		// PHP Code Sniffer.
+		phpcs: {
+			options: {
+				bin: 'vendor/bin/phpcs',
+				standard: './phpcs.ruleset.xml'
+			},
+			dist: {
+				src:  [
+					'**/*.php',         // Include all files
+					'!node_modules/**', // Exclude node_modules/
+					'!vendor/**'        // Exclude vendor/
+				]
 			}
 		}
 	});
 
 	// Load NPM tasks to be used here
+	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 
 	// Register tasks
 	grunt.registerTask( 'default', [
+		'jshint'
+	]);
+
+	grunt.registerTask( 'dev', [
+		'default',
 		'makepot'
 	]);
 };
