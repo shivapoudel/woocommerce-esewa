@@ -2,10 +2,10 @@
   "name": "woocommerce-esewa",
   "title": "WooCommerce eSewa",
   "version": "1.5.0",
-  "homepage": "https://github.com/axisthemes/woocommerce-esewa",
+  "homepage": "https://github.com/shivapoudel/woocommerce-esewa",
   "repository": {
     "type": "git",
-    "url": "https://github.com/axisthemes/woocommerce-esewa.git"
+    "url": "https://github.com/shivapoudel/woocommerce-esewa.git"
   },
   "license": "GPL-3.0+",
   "main": "Gruntfile.js",

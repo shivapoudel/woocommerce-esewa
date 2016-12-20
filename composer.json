@@ -1,7 +1,7 @@
 {
-  "name": "axisthemes/woocommerce-esewa",
+  "name": "shivapoudel/woocommerce-esewa",
   "description": "WooCommerce eSewa is a Nepali payment gateway for WooCommerce.",
-  "homepage": "https://github.com/axisthemes/woocommerce-esewa/",
+  "homepage": "https://github.com/shivapoudel/woocommerce-esewa/",
   "type": "wordpress-plugin",
   "license": "GPL-3.0+",
   "require": {

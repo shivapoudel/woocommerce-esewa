@@ -1,5 +1,5 @@
 === WooCommerce eSewa ===
-Contributors: axisthemes, shivapoudel
+Contributors: shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
 Tested up to: 4.7
@@ -38,7 +38,7 @@ You can answer your questions using:
 
 = Contribute =
 
-You can contribute to the source code in our [GitHub](https://github.com/axisthemes/woocommerce-esewa/) page.
+You can contribute to the source code in our [GitHub](https://github.com/shivapoudel/woocommerce-esewa/) page.
 
 == Installation ==
 
@@ -93,11 +93,11 @@ For downloadable products to WooCommerce default setting is to allow access only
 
 = Where can I report bugs or contribute to the project? =
 
-Bugs can be reported either in our support forum or preferably on the [WooCommerce eSewa GitHub repository](https://github.com/axisthemes/woocommerce-esewa/issues).
+Bugs can be reported either in our support forum or preferably on the [WooCommerce eSewa GitHub repository](https://github.com/shivapoudel/woocommerce-esewa/issues).
 
 = WooCommerce eSewa is awesome! Can I contribute? =
 
-Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woocommerce-esewa/) :)
+Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/woocommerce-esewa/) :)
 
 == Screenshots ==
 
@@ -105,6 +105,10 @@ Yes you can! Join in on our [GitHub repository](http://github.com/axisthemes/woo
 2. Checkout page.
 
 == Changelog ==
+
+= 1.6.0 =
+* Fix - Limit lengths of eSewa Args.
+* Fix - Variable for logging eSewa args.
 
 = 1.5.0 =
 * Fix - Plugins action settings link.

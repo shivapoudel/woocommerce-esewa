@@ -7,7 +7,7 @@
  * @class    WC_Gateway_eSewa
  * @extends  WC_Payment_Gateway
  * @category Class
- * @author   AxisThemes
+ * @author   Shiva Poudel
  * @since    1.0.0
  */
 
