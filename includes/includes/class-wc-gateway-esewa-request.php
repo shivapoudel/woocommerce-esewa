@@ -37,7 +37,7 @@ class WC_Gateway_eSewa_Request {
 	 * @return string
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
-		$esewa_args = http_build_query( $this->get_esewa_args( $order ), '', '&' );
+		$esewa_args = http_build_query( array_filter( $this->get_esewa_args( $order ) ), '', '&' );
 
 		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . print_r( $esewa_args, true ) );
 
@@ -46,6 +46,20 @@ class WC_Gateway_eSewa_Request {
 		} else {
 			return 'https://esewa.com.np/epay/main?' . $esewa_args;
 		}
+	}
+
+	/**
+	 * Limit length of an arg.
+	 *
+	 * @param  string  $string
+	 * @param  integer $limit
+	 * @return string
+	 */
+	protected function limit_length( $string, $limit = 127 ) {
+		if ( strlen( $string ) > $limit ) {
+			$string = substr( $string, 0, $limit - 3 ) . '...';
+		}
+		return $string;
 	}
 
 	/**
@@ -62,10 +76,10 @@ class WC_Gateway_eSewa_Request {
 			'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
 			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
 			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
-			'scd'   => $this->gateway->get_option( 'service_code' ),
-			'pid'   => $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(),
-			'su'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'success', 'key' => $order->order_key ), $this->notify_url ) ),
-			'fu'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'failure', 'key' => $order->order_key ), $this->notify_url ) ),
+			'scd'   => $this->limit_length( $this->gateway->get_option( 'service_code' ), 32 ),
+			'pid'   => $this->limit_length( $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(), 127 ),
+			'su'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'success', 'key' => $order->order_key ), $this->limit_length( $this->notify_url, 255 ) ) ),
+			'fu'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'failure', 'key' => $order->order_key ), $this->limit_length( $this->notify_url, 255 ) ) ),
 		), $order );
 	}
 
