@@ -3,7 +3,7 @@ Contributors: shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,6 +105,9 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 2. Checkout page.
 
 == Changelog ==
+
+= 1.6.0 =
+* Tweak - Tested upto WP 4.8 & WooCommerce 3.0 :)
 
 = 1.6.0 =
 * Fix - Limit lengths of eSewa Args.
