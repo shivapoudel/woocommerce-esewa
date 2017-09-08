@@ -9,6 +9,8 @@
  * License: GPLv3 or later
  * Text Domain: woocommerce-esewa
  * Domain Path: /languages/
+ * WC requires at least: 3.0.0
+ * WC tested up to: 3.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
