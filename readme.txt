@@ -2,8 +2,8 @@
 Contributors: shivapoudel
 Tags: woocommerce, esewa
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 1.7.0
+Tested up to: 4.9
+Stable tag: 1.8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,54 +106,58 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 
 == Changelog ==
 
-= 1.6.0 =
+= 1.8.0 - XX-XX-2017 =
+* Fix - Use of default green color eSewa logo to prevent brand violation.
+* Tweak - Added extra plugin headers support for WC extension.
+
+= 1.7.0 - 18-07-2017 =
 * Tweak - Tested upto WP 4.8 & WooCommerce 3.0 :)
 
-= 1.6.0 =
+= 1.6.0 - 20-12-2016 =
 * Fix - Limit lengths of eSewa Args.
 * Fix - Variable for logging eSewa args.
 * Dev - Plugin Authorship to @shivapoudel.
 
-= 1.5.0 =
+= 1.5.0 - 07-12-2016 =
 * Fix - Plugins action settings link.
 * Tweak - More logging for request args.
 * Tweak - Define full path for includes.
 * Tweak - Add support for WC_Logger pluggable via wc_get_logger function.
 
-= 1.4.0 =
+= 1.4.0 - 31-12-2015 =
 * Deprecated - PDT Check as IPN is sufficient for processing order.
 
-= 1.3.0 =
+= 1.3.0 - 29-12-2015 =
 * Tweak - Method description for gateway.
 * Refactor - Correctly validated the IPN and PDT once again.
 * Deprecated - Remove `plugin_path()` method in main plugin class.
 
-= 1.2.2 =
+= 1.2.2 - 03-12-2015 =
 * Fix - Payment description typo.
 * Dev - PHP_CodeSniffer standard tweaks.
 
-= 1.2.1 =
+= 1.2.1 - 01-12-2015 =
 * Fix - Typo in readme file.
 * Tweak - Improve load_plugin_textdomain method.
 * Tweak - Escape success and failure using `esc_url_raw` for query args.
 
-= 1.2.0 =
+= 1.2.0 - 20-08-2015 =
 * Fix - 500 response on IPN fail
 * Fix - Class reference in eSewa IPN handler
 * Tweak - Improve the check for class single instance
 * Tweak - Changed all requests with wp_remote_* to wp_safe_remote_*
 
-= 1.1.0 =
+= 1.1.0 - 22-05-2015 =
 * Dev - Deploy corrections.
 
-= 1.0.2 =
+= 1.0.2 - 21-05-2015 =
 * Fix - Ensure coupon discount are applied when processing checkout.
 * Dev - Included grunt-wp-plugin for deploying.
 * Refactor - Subtotal amount values.
 
-= 1.0.1 =
+= 1.0.1 - 16-05-2015 =
 * Fix - When eSewa payment is on hold, reduce stock and empty cart.
 * Tweak - Change method description for eSewa settings page.
 
-= 1.0.0 =
+= 1.0.0 - 12-05-2015 =
 * First stable release.
