@@ -73,8 +73,8 @@ class WC_Gateway_eSewa_Request {
 		return apply_filters( 'woocommerce_esewa_args', array(
 			'amt'   => wc_format_decimal( $order->get_subtotal() - $order->get_total_discount(), 2 ),
 			'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
-			'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
 			'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
+			'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
 			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
 			'scd'   => $this->limit_length( $this->gateway->get_option( 'service_code' ), 32 ),
 			'pid'   => $this->limit_length( $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(), 127 ),
