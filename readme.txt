@@ -45,7 +45,7 @@ You can contribute to the source code in our [GitHub](https://github.com/shivapo
 = Minimum Requirements =
 
 * WordPress 4.0 or greater.
-* WooCommerce 2.3 or greater.
+* WooCommerce 3.0 or greater.
 
 = Automatic installation =
 
@@ -70,7 +70,7 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 = What is needed to use this plugin? =
 
 * WordPress 4.0 or later.
-* WooCommerce 2.3 or later.
+* WooCommerce 3.0 or later.
 * Merchant/Service Code from eSewa.
 
 = eSewa receives payments from which countries? =

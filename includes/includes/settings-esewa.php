@@ -1,4 +1,9 @@
 <?php
+/**
+ * Payment Gateway: Settings - eSewa.
+ *
+ * @package WooCommerce/Classes/Payment
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -29,12 +34,11 @@ return array(
 		'default'     => __( 'Pay via eSewa; you can pay with eSewa wallet securely.', 'woocommerce-esewa' ),
 	),
 	'service_code' => array(
-		'title'       => __( 'Service code', 'woocommerce-esewa' ),
+		'title'       => __( 'Merchant/Service code', 'woocommerce-esewa' ),
 		'type'        => 'text',
 		'desc_tip'    => true,
-		'description' => __( 'Please enter your eSewa Service Code; this is needed in order to take payment.', 'woocommerce-esewa' ),
+		'description' => __( 'Please enter your eSewa Merchant/Service Code; this is needed in order to take payment.', 'woocommerce-esewa' ),
 		'default'     => '',
-		'placeholder' => 'Eg: Woo',
 	),
 	'invoice_prefix' => array(
 		'title'       => __( 'Invoice prefix', 'woocommerce-esewa' ),
@@ -43,18 +47,25 @@ return array(
 		'description' => __( 'Please enter a prefix for your invoice numbers. If you use your eSewa account for multiple stores ensure this prefix is unique as eSewa will not allow orders with the same invoice number.', 'woocommerce-esewa' ),
 		'default'     => 'WC-',
 	),
+	'advanced' => array(
+		'title'       => __( 'Advanced options', 'woocommerce-esewa' ),
+		'type'        => 'title',
+		'description' => '',
+	),
 	'testmode' => array(
 		'title'       => __( 'Sandbox mode', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable Sandbox Mode', 'woocommerce-esewa' ),
 		'default'     => 'no',
-		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Sign up for a developer account %1$shere%2$s.', 'woocommerce-esewa' ), '<a href="https://dev.esewa.com.np/" target="_blank">', '</a>' ),
+		/* translators: %s: eSewa developer account */
+		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Sign up for a %1$sdeveloper account%2$s.', 'woocommerce-esewa' ), '<a href="https://dev.esewa.com.np/" target="_blank">', '</a>' ),
 	),
 	'debug' => array(
 		'title'       => __( 'Debug log', 'woocommerce-esewa' ),
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable logging', 'woocommerce-esewa' ),
 		'default'     => 'no',
+		/* translators: %s: eSewa log file path */
 		'description' => sprintf( __( 'Log eSewa events, such as IPN requests, inside <code>%s</code>', 'woocommerce-esewa' ), wc_get_log_file_path( 'esewa' ) ),
 	),
 );

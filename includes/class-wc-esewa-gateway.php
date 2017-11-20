@@ -35,7 +35,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->has_fields         = false;
 		$this->order_button_text  = __( 'Proceed to eSewa', 'woocommerce-esewa' );
 		$this->method_title       = __( 'eSewa', 'woocommerce-esewa' );
-		$this->method_description = sprintf( __( 'The eSewa epay system sends customers to eSewa to enter their payment information. The eSewa IPN requires fsockopen/cURL support to update order statuses after payment. Check the %1$ssystem status%2$s page for more details.', 'woocommerce-esewa' ), '<a href="' . admin_url( 'admin.php?page=wc-status' ) . '">', '</a>' );
+		$this->method_description = sprintf( __( 'The eSewa epay system sends customers to eSewa to enter their payment information. The eSewa IPN requires fsockopen/cURL support to update order statuses after payment. Check the <a href="%s">system status</a> page for more details.', 'woocommerce-esewa' ), admin_url( 'admin.php?page=wc-status' ) );
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -62,18 +62,17 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 
 	/**
 	 * Logging method.
-	 * @param string $message
+	 *
+	 * @param string $message Log message.
+	 * @param string $level   Optional. Default 'info'.
+	 *     emergency|alert|critical|error|warning|notice|info|debug
 	 */
-	public static function log( $message ) {
+	public static function log( $message, $level = 'info' ) {
 		if ( self::$log_enabled ) {
 			if ( empty( self::$log ) ) {
-				if ( version_compare( WC_VERSION, '2.7', '>=' ) ) {
-					self::$log = wc_get_logger();
-				} else {
-					self::$log = new WC_Logger();
-				}
+				self::$log = wc_get_logger();
 			}
-			self::$log->add( 'esewa', $message );
+			self::$log->log( $level, $message, array( 'source' => 'esewa' ) );
 		}
 	}
 

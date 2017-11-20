@@ -11,11 +11,12 @@ include_once( dirname( __FILE__ ) . '/class-wc-gateway-esewa-response.php' );
  */
 class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
-	/** @var string Service code for IPN support */
+	/** @var string Merchant/Service code for IPN support */
 	protected $service_code;
 
 	/**
 	 * Constructor.
+	 *
 	 * @param WC_Gateway_eSewa $gateway
 	 * @param bool             $sandbox
 	 * @param string           $service_code
@@ -33,12 +34,12 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Check for eSewa IPN Response.
 	 */
 	public function check_response() {
-		@ob_clean();
-
 		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) {
 			$requested = wp_unslash( $_REQUEST );
 
+			// @codingStandardsIgnoreStart
 			do_action( 'valid-esewa-standard-ipn-request', $requested );
+			// @codingStandardsIgnoreEnd
 			exit;
 		}
 
@@ -47,6 +48,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * There was a valid response.
+	 *
 	 * @param array $requested Request data after wp_unslash
 	 */
 	public function valid_response( $requested ) {
@@ -102,8 +104,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		// Post back to get a response.
 		$response = wp_safe_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $params );
 
-		WC_Gateway_eSewa::log( 'IPN Request: ' . print_r( $params, true ) );
-		WC_Gateway_eSewa::log( 'IPN Response: ' . print_r( $response, true ) );
+		WC_Gateway_eSewa::log( 'IPN Request: ' . wc_print_r( $params, true ) );
+		WC_Gateway_eSewa::log( 'IPN Response: ' . wc_print_r( $response, true ) );
 
 		// Check to see if the request was valid.
 		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 && strstr( strtoupper( $response['body'] ), 'SUCCESS' ) ) {
