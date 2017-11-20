@@ -65,7 +65,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 				$requested['payment_status'] = 'failed';
 			}
 
-			WC_Gateway_eSewa::log( 'Found order #' . $order->id );
+			WC_Gateway_eSewa::log( 'Found order #' . $order->get_id() );
 			WC_Gateway_eSewa::log( 'Payment status: ' . $requested['payment_status'] );
 
 			if ( method_exists( $this, 'payment_status_' . $requested['payment_status'] ) ) {
