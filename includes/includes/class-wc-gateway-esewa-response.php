@@ -28,7 +28,7 @@ abstract class WC_Gateway_eSewa_Response {
 				$order    = wc_get_order( $order_id );
 			}
 
-			if ( ! $order || $order->order_key !== $order_key ) {
+			if ( ! $order || $order->get_order_key() !== $order_key ) {
 				WC_Gateway_eSewa::log( 'Order Keys do not match.', 'error' );
 				return false;
 			}
