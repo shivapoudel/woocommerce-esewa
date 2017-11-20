@@ -68,4 +68,11 @@ return array(
 		/* translators: %s: eSewa log file path */
 		'description' => sprintf( __( 'Log eSewa events, such as IPN requests, inside <code>%s</code>', 'woocommerce-esewa' ), wc_get_log_file_path( 'esewa' ) ),
 	),
+	'ipn_notification' => array(
+		'title'       => __( 'IPN Email Notifications', 'woocommerce-esewa' ),
+		'type'        => 'checkbox',
+		'label'       => __( 'Enable IPN email notifications', 'woocommerce-esewa' ),
+		'default'     => 'yes',
+		'description' => __( 'Send notifications when an IPN is received from eSewa indicating cancellations.', 'woocommerce-esewa' ),
+	),
 );

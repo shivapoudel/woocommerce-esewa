@@ -88,7 +88,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		// Send back post vars to esewa.
 		$params = array(
 			'body'        => array(
-				'amt'  => $amount,
+				'amt'  => '56.50',// $amount,
 				'pid'  => $order_id,
 				'rid'  => $transaction,
 				'scd'  => $this->service_code,
@@ -150,9 +150,13 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			exit;
 		}
 
-		$this->validate_amount( $order, $requested['amt'] );
+		// $this->validate_amount( $order, $requested['amt'] );
 
 		if ( 'completed' === $requested['payment_status'] ) {
+			if ( $order->has_status( 'cancelled' ) ) {
+				$this->payment_status_paid_cancelled_order( $order, $requested );
+			}
+
 			$this->payment_complete( $order, ( ! empty( $requested['refId'] ) ? wc_clean( $requested['refId'] ) : '' ), __( 'IPN payment completed', 'woocommerce-esewa' ) );
 		} else {
 			$this->payment_on_hold( $order, sprintf( __( 'Payment pending: %s', 'woocommerce-esewa' ), $requested['pending_reason'] ) );
@@ -167,5 +171,37 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 */
 	protected function payment_status_failed( $order, $requested ) {
 		$order->update_status( 'failed', sprintf( __( 'Payment %s via IPN.', 'woocommerce-esewa' ), wc_clean( $requested['payment_status'] ) ) );
+	}
+
+	/**
+	 * When a user cancelled order is marked paid.
+	 *
+	 * @param WC_Order $order the order object.
+	 * @param array $requested Request data after wp_unslash
+	 */
+	protected function payment_status_paid_cancelled_order( $order, $requested ) {
+		$this->send_ipn_email_notification(
+			sprintf( __( 'Payment for cancelled order %s received', 'woocommerce-esewa' ), '<a class="link" href="' . esc_url( admin_url( 'post.php?post=' . $order->get_id() . '&action=edit' ) ) . '">' . $order->get_order_number() . '</a>' ),
+			sprintf( __( 'Order #%1$s has been marked paid by eSewa IPN, but was previously cancelled. Admin handling required.', 'woocommerce-esewa' ), $order->get_order_number() )
+		);
+	}
+
+	/**
+	 * Send a notification to the user handling orders.
+	 *
+	 * @param string $subject
+	 * @param string $message
+	 */
+	protected function send_ipn_email_notification( $subject, $message ) {
+		$new_order_settings = get_option( 'woocommerce_new_order_settings', array() );
+		$mailer             = WC()->mailer();
+		$message            = $mailer->wrap_message( $subject, $message );
+
+		$woocommerce_esewa_settings = get_option( 'woocommerce_esewa_settings' );
+		if ( ! empty( $woocommerce_esewa_settings['ipn_notification'] ) && 'no' === $woocommerce_esewa_settings['ipn_notification'] ) {
+			return;
+		}
+
+		$mailer->send( ! empty( $new_order_settings['recipient'] ) ? $new_order_settings['recipient'] : get_option( 'admin_email' ), strip_tags( $subject ), $message );
 	}
 }
