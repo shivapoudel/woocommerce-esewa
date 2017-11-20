@@ -145,7 +145,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * @param array $requested Request data after wp_unslash
 	 */
 	protected function payment_status_completed( $order, $requested ) {
-		if ( $order->has_status( 'completed' ) ) {
+		if ( $order->has_status( wc_get_is_paid_statuses() ) ) {
 			WC_Gateway_eSewa::log( 'Aborting, Order #' . $order->id . ' is already complete.' );
 			exit;
 		}
