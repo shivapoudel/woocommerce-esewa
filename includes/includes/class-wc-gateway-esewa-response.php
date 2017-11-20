@@ -14,6 +14,7 @@ abstract class WC_Gateway_eSewa_Response {
 
 	/**
 	 * Get the order from the eSewa Order ID and Key variable.
+	 *
 	 * @param  string $order_id
 	 * @param  string $order_key
 	 * @return bool|WC_Order object
@@ -28,13 +29,13 @@ abstract class WC_Gateway_eSewa_Response {
 			}
 
 			if ( ! $order || $order->order_key !== $order_key ) {
-				WC_Gateway_eSewa::log( 'Error: Order Keys do not match.' );
+				WC_Gateway_eSewa::log( 'Order Keys do not match.', 'error' );
 				return false;
 			}
 
 		// Nothing was found.
 		} else {
-			WC_Gateway_eSewa::log( 'Error: Order ID and key were not found.' );
+			WC_Gateway_eSewa::log( 'Order ID and key were not found.', 'error' );
 			return false;
 		}
 
@@ -43,7 +44,8 @@ abstract class WC_Gateway_eSewa_Response {
 
 	/**
 	 * Complete order, add transaction ID and note.
-	 * @param WC_Order $order
+	 *
+	 * @param WC_Order $order the order object.
 	 * @param string   $txn_id
 	 * @param string   $note
 	 */
@@ -54,7 +56,8 @@ abstract class WC_Gateway_eSewa_Response {
 
 	/**
 	 * Hold order and add note.
-	 * @param WC_Order $order
+	 *
+	 * @param WC_Order $order the order object.
 	 * @param string   $reason
 	 */
 	protected function payment_on_hold( $order, $reason = '' ) {

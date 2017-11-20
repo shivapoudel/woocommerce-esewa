@@ -17,9 +17,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Gateway_eSewa $gateway
-	 * @param bool             $sandbox
-	 * @param string           $service_code
+	 * @param WC_Gateway_eSewa $gateway      Gateway class.
+	 * @param bool             $sandbox      Sandbox mode.
+	 * @param string           $service_code Merchant/Service code.
 	 */
 	public function __construct( $gateway, $sandbox = false, $service_code = '' ) {
 		add_action( 'woocommerce_api_wc_gateway_esewa', array( $this, 'check_response' ) );
@@ -124,7 +124,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * Check payment amount from IPN matches the order.
-	 * @param WC_Order $order
+	 *
+	 * @param WC_Order $order the order object.
 	 * @param int      $amount
 	 */
 	protected function validate_amount( $order, $amount ) {
@@ -139,8 +140,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * Handle a completed payment.
-	 * @param WC_Order $order
-	 * @param array    $requested
+	 *
+	 * @param WC_Order $order the order object.
+	 * @param array $requested Request data after wp_unslash
 	 */
 	protected function payment_status_completed( $order, $requested ) {
 		if ( $order->has_status( 'completed' ) ) {
@@ -159,8 +161,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 	/**
 	 * Handle a failed payment.
-	 * @param WC_Order $order
-	 * @param array    $requested
+	 *
+	 * @param WC_Order $order the order object.
+	 * @param array $requested Request data after wp_unslash.
 	 */
 	protected function payment_status_failed( $order, $requested ) {
 		$order->update_status( 'failed', sprintf( __( 'Payment %s via IPN.', 'woocommerce-esewa' ), wc_clean( $requested['payment_status'] ) ) );
