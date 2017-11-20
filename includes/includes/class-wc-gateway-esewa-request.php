@@ -26,7 +26,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Gateway_eSewa $gateway
+	 * @param WC_Gateway_eSewa $gateway Gateway class.
 	 */
 	public function __construct( $gateway ) {
 		$this->gateway    = $gateway;
@@ -36,14 +36,14 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get the eSewa request URL for an order.
 	 *
-	 * @param  WC_Order $order
-	 * @param  bool     $sandbox
+	 * @param  WC_Order $order the order object.
+	 * @param  bool     $sandbox Sandbox mode.
 	 * @return string
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
 		$esewa_args = http_build_query( $this->get_esewa_args( $order ), '', '&' );
 
-		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . print_r( $esewa_args, true ) );
+		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . wc_print_r( $esewa_args, true ) );
 
 		if ( $sandbox ) {
 			return 'https://dev.esewa.com.np/epay/main?' . $esewa_args;
@@ -55,8 +55,8 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Limit length of an arg.
 	 *
-	 * @param  string  $string
-	 * @param  integer $limit
+	 * @param  string  $string String to trim.
+	 * @param  integer $limit  Amount of characters. Defaults to 127.
 	 * @return string
 	 */
 	protected function limit_length( $string, $limit = 127 ) {
@@ -69,7 +69,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get eSewa Args for passing to eSewa.
 	 *
-	 * @param  WC_Order $order
+	 * @param  WC_Order $order the order object.
 	 * @return array
 	 */
 	protected function get_esewa_args( $order ) {
@@ -97,12 +97,14 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get the service charge to send to eSewa.
 	 *
-	 * @param  WC_Order $order
-	 * @return float
+	 * @param  WC_Order $order the order object.
+	 * @return float amount
 	 */
 	private function get_service_charge( $order ) {
 		$fee_total = 0;
-		if ( sizeof( $order->get_fees() ) > 0 ) {
+
+		// Add fees.
+		if ( count( $order->get_fees() ) > 0 ) {
 			foreach ( $order->get_fees() as $item ) {
 				$fee_total += ( isset( $item['line_total'] ) ) ? $item['line_total'] : 0;
 			}
