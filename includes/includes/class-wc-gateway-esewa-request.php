@@ -11,18 +11,21 @@ class WC_Gateway_eSewa_Request {
 
 	/**
 	 * Pointer to gateway making the request.
+	 *
 	 * @var WC_Gateway_eSewa
 	 */
 	protected $gateway;
 
 	/**
 	 * Endpoint for requests from eSewa.
+	 *
 	 * @var string
 	 */
 	protected $notify_url;
 
 	/**
 	 * Constructor.
+	 *
 	 * @param WC_Gateway_eSewa $gateway
 	 */
 	public function __construct( $gateway ) {
@@ -32,12 +35,13 @@ class WC_Gateway_eSewa_Request {
 
 	/**
 	 * Get the eSewa request URL for an order.
+	 *
 	 * @param  WC_Order $order
 	 * @param  bool     $sandbox
 	 * @return string
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
-		$esewa_args = http_build_query( array_filter( $this->get_esewa_args( $order ) ), '', '&' );
+		$esewa_args = http_build_query( $this->get_esewa_args( $order ), '', '&' );
 
 		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . print_r( $esewa_args, true ) );
 
@@ -64,6 +68,7 @@ class WC_Gateway_eSewa_Request {
 
 	/**
 	 * Get eSewa Args for passing to eSewa.
+	 *
 	 * @param  WC_Order $order
 	 * @return array
 	 */
@@ -78,13 +83,20 @@ class WC_Gateway_eSewa_Request {
 			'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
 			'scd'   => $this->limit_length( $this->gateway->get_option( 'service_code' ), 32 ),
 			'pid'   => $this->limit_length( $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(), 127 ),
-			'su'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'success', 'key' => $order->order_key ), $this->limit_length( $this->notify_url, 255 ) ) ),
-			'fu'    => esc_url_raw( add_query_arg( array( 'payment_status' => 'failure', 'key' => $order->order_key ), $this->limit_length( $this->notify_url, 255 ) ) ),
+			'su'    => esc_url_raw( add_query_arg( array(
+				'payment_status' => 'success',
+				'key'            => $order->order_key,
+			), $this->limit_length( $this->notify_url, 255 ) ) ),
+			'fu'    => esc_url_raw( add_query_arg( array(
+				'payment_status' => 'failure',
+				'key'            => $order->order_key,
+			), $this->limit_length( $this->notify_url, 255 ) ) ),
 		), $order );
 	}
 
 	/**
 	 * Get the service charge to send to eSewa.
+	 *
 	 * @param  WC_Order $order
 	 * @return float
 	 */
