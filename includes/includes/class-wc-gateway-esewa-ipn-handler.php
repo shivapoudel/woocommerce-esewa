@@ -150,7 +150,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			exit;
 		}
 
-		// $this->validate_amount( $order, $requested['amt'] );
+		$this->validate_amount( $order, $requested['amt'] );
 
 		if ( 'completed' === $requested['payment_status'] ) {
 			if ( $order->has_status( 'cancelled' ) ) {
