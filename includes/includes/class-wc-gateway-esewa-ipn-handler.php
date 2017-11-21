@@ -88,10 +88,10 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		// Send back post vars to esewa.
 		$params = array(
 			'body'        => array(
-				'amt'  => $amount,
-				'pid'  => $order_id,
-				'rid'  => $transaction,
-				'scd'  => $this->service_code,
+				'amt' => $amount,
+				'pid' => $order_id,
+				'rid' => $transaction,
+				'scd' => $this->service_code,
 			),
 			'timeout'     => 60,
 			'sslverify'   => false,
@@ -126,10 +126,10 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Check payment amount from IPN matches the order.
 	 *
 	 * @param WC_Order $order the order object.
-	 * @param int      $amount
+	 * @param int      $amount Total amount.
 	 */
 	protected function validate_amount( $order, $amount ) {
-		if ( number_format( $order->get_total(), 2, '.', '' ) != number_format( $amount, 2, '.', '' ) ) {
+		if ( number_format( $order->get_total(), 2, '.', '' ) !== number_format( $amount, 2, '.', '' ) ) {
 			WC_Gateway_eSewa::log( 'Payment error: Amounts do not match (gross ' . $amount . ')' );
 
 			// Put this order on-hold for manual checking.
@@ -142,7 +142,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Handle a completed payment.
 	 *
 	 * @param WC_Order $order the order object.
-	 * @param array $requested Request data after wp_unslash
+	 * @param array    $requested Request data after wp_unslash.
 	 */
 	protected function payment_status_completed( $order, $requested ) {
 		if ( $order->has_status( wc_get_is_paid_statuses() ) ) {
@@ -167,7 +167,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Handle a failed payment.
 	 *
 	 * @param WC_Order $order the order object.
-	 * @param array $requested Request data after wp_unslash.
+	 * @param array    $requested Request data after wp_unslash.
 	 */
 	protected function payment_status_failed( $order, $requested ) {
 		$order->update_status( 'failed', sprintf( __( 'Payment %s via IPN.', 'woocommerce-esewa' ), wc_clean( $requested['payment_status'] ) ) );
@@ -177,7 +177,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * When a user cancelled order is marked paid.
 	 *
 	 * @param WC_Order $order the order object.
-	 * @param array $requested Request data after wp_unslash
+	 * @param array    $requested Request data after wp_unslash.
 	 */
 	protected function payment_status_paid_cancelled_order( $order, $requested ) {
 		$this->send_ipn_email_notification(

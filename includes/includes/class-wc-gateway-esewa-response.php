@@ -9,20 +9,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 abstract class WC_Gateway_eSewa_Response {
 
-	/** @var bool Sandbox mode */
+	/**
+	 * Sandbox mode.
+	 *
+	 * @var boolean
+	 */
 	protected $sandbox = false;
 
 	/**
 	 * Get the order from the eSewa Order ID and Key variable.
 	 *
-	 * @param  string $order_id
-	 * @param  string $order_key
+	 * @param  string $order_id  Order ID.
+	 * @param  string $order_key Order key.
 	 * @return bool|WC_Order object
 	 */
 	protected function get_esewa_order( $order_id, $order_key ) {
 		if ( is_string( $order_key ) ) {
+			$order = wc_get_order( $order_id );
 
-			if ( ! $order = wc_get_order( $order_id ) ) {
+			if ( ! $order ) {
 				// We have an invalid $order_id, probably because invoice_prefix has changed.
 				$order_id = wc_get_order_id_by_order_key( $order_key );
 				$order    = wc_get_order( $order_id );
@@ -32,9 +37,8 @@ abstract class WC_Gateway_eSewa_Response {
 				WC_Gateway_eSewa::log( 'Order Keys do not match.', 'error' );
 				return false;
 			}
-
-		// Nothing was found.
 		} else {
+			// Nothing was found.
 			WC_Gateway_eSewa::log( 'Order ID and key were not found.', 'error' );
 			return false;
 		}
@@ -46,8 +50,8 @@ abstract class WC_Gateway_eSewa_Response {
 	 * Complete order, add transaction ID and note.
 	 *
 	 * @param WC_Order $order the order object.
-	 * @param string   $txn_id
-	 * @param string   $note
+	 * @param string   $txn_id Transaction Id.
+	 * @param string   $note Note to add.
 	 */
 	protected function payment_complete( $order, $txn_id = '', $note = '' ) {
 		$order->add_order_note( $note );
@@ -58,7 +62,7 @@ abstract class WC_Gateway_eSewa_Response {
 	 * Hold order and add note.
 	 *
 	 * @param WC_Order $order the order object.
-	 * @param string   $reason
+	 * @param string   $reason Awaiting reason.
 	 */
 	protected function payment_on_hold( $order, $reason = '' ) {
 		$order->update_status( 'on-hold', $reason );

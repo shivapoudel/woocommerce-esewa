@@ -5,13 +5,21 @@
 
 	<description>WooCommerce eSewa dev PHP_CodeSniffer ruleset.</description>
 
+	<!-- Exclude paths -->
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Configs -->
+	<config name="minimum_supported_wp_version" value="4.5" />
+	<config name="testVersion" value="5.2-"/>
+
+	<!-- Rules -->
 	<rule ref="PHPCompatibility"/>
 
 	<rule ref="WordPress">
 		<exclude name="WordPress.VIP.RestrictedFunctions" />
 		<exclude name="WordPress.VIP.OrderByRand" />
 	</rule>
-
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array" value="woocommerce-esewa" />
