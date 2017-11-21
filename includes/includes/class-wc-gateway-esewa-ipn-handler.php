@@ -88,7 +88,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		// Send back post vars to esewa.
 		$params = array(
 			'body'        => array(
-				'amt'  => '56.50',// $amount,
+				'amt'  => $amount,
 				'pid'  => $order_id,
 				'rid'  => $transaction,
 				'scd'  => $this->service_code,
