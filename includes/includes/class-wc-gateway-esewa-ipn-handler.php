@@ -52,13 +52,15 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * @param array $requested Request data after wp_unslash
 	 */
 	public function valid_response( $requested ) {
-		if ( ! empty( $requested['key'] ) && $order = $this->get_esewa_order( $requested['oid'], $requested['key'] ) ) {
+		$order = $this->get_esewa_order( $requested['oid'], $requested['key'] );
+
+		if ( ! empty( $requested['key'] ) && $order ) {
 
 			// Lowercase returned variables.
 			$requested['payment_status'] = strtolower( $requested['payment_status'] );
 
 			// Validate transaction status.
-			if ( isset( $requested['refId'] ) && 'success' == $requested['payment_status'] ) {
+			if ( isset( $requested['refId'] ) && 'success' === $requested['payment_status'] ) {
 				$requested['payment_status'] = 'completed';
 				$requested['pending_reason'] = __( 'eSewa IPN response failed.', 'woocommerce-esewa' );
 			} else {
@@ -133,6 +135,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			WC_Gateway_eSewa::log( 'Payment error: Amounts do not match (gross ' . $amount . ')' );
 
 			// Put this order on-hold for manual checking.
+			/* translators: %s: amount */
 			$order->update_status( 'on-hold', sprintf( __( 'Validation error: eSewa amounts do not match (gross %s).', 'woocommerce-esewa' ), $amount ) );
 			exit;
 		}
@@ -159,6 +162,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 			$this->payment_complete( $order, ( ! empty( $requested['refId'] ) ? wc_clean( $requested['refId'] ) : '' ), __( 'IPN payment completed', 'woocommerce-esewa' ) );
 		} else {
+			/* translators: %s: pending reason */
 			$this->payment_on_hold( $order, sprintf( __( 'Payment pending: %s', 'woocommerce-esewa' ), $requested['pending_reason'] ) );
 		}
 	}
@@ -170,6 +174,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * @param array    $requested Request data after wp_unslash.
 	 */
 	protected function payment_status_failed( $order, $requested ) {
+		/* translators: %s: payment status */
 		$order->update_status( 'failed', sprintf( __( 'Payment %s via IPN.', 'woocommerce-esewa' ), wc_clean( $requested['payment_status'] ) ) );
 	}
 
