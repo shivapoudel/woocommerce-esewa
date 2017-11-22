@@ -1,14 +1,14 @@
 <?php
 /**
- * eSewa Payment Gateway.
+ * Payment gateway - eSewa
  *
  * Provides an eSewa Payment Gateway.
  *
  * @class    WC_Gateway_eSewa
- * @extends  WC_Payment_Gateway
+ * @version  1.0.0
+ * @package  WooCommerce_eSewa/Classes/Payment
  * @category Class
  * @author   Shiva Poudel
- * @since    1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -38,14 +38,12 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 * Constructor for the gateway.
 	 */
 	public function __construct() {
-		$this->id                = 'esewa';
-		$this->icon              = apply_filters( 'woocommerce_esewa_icon', plugins_url( 'assets/images/esewa.png', plugin_dir_path( __FILE__ ) ) );
-		$this->has_fields        = false;
-		$this->order_button_text = __( 'Proceed to eSewa', 'woocommerce-esewa' );
-		$this->method_title      = __( 'eSewa', 'woocommerce-esewa' );
-
-		/* translators: %s: status page */
-		$this->method_description = sprintf( __( 'The eSewa epay system sends customers to eSewa to enter their payment information. The eSewa IPN requires fsockopen/cURL support to update order statuses after payment. Check the <a href="%s">system status</a> page for more details.', 'woocommerce-esewa' ), admin_url( 'admin.php?page=wc-status' ) );
+		$this->id                 = 'esewa';
+		$this->icon               = apply_filters( 'woocommerce_esewa_icon', plugins_url( 'assets/images/esewa.png', plugin_dir_path( __FILE__ ) ) );
+		$this->has_fields         = false;
+		$this->order_button_text  = __( 'Proceed to eSewa', 'woocommerce-esewa' );
+		$this->method_title       = __( 'eSewa', 'woocommerce-esewa' );
+		$this->method_description = __( 'Take payments via eSewa - sends customers to eSewa to enter their payment information.', 'woocommerce-esewa' );
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -79,7 +77,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 *
 	 * @param string $message Log message.
 	 * @param string $level Optional, defaults to info, valid levels:
-	 *     emergency|alert|critical|error|warning|notice|info|debug
+	 *     emergency|alert|critical|error|warning|notice|info|debug.
 	 */
 	public static function log( $message, $level = 'info' ) {
 		if ( self::$log_enabled ) {
