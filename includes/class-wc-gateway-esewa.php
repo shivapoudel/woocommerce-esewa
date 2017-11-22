@@ -2,7 +2,7 @@
 /**
  * eSewa Payment Gateway.
  *
- * Provides a eSewa Payment Gateway.
+ * Provides an eSewa Payment Gateway.
  *
  * @class    WC_Gateway_eSewa
  * @extends  WC_Payment_Gateway
@@ -57,6 +57,9 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->testmode     = 'yes' === $this->get_option( 'testmode', 'no' );
 		$this->debug        = 'yes' === $this->get_option( 'debug', 'no' );
 		$this->service_code = $this->get_option( 'service_code' );
+
+		// Transactional details URL.
+		$this->view_transaction_url = $this->testmode ? 'https://dev.esewa.com.np/merchant#!mpyments/!mpd;tid=%s' : 'https://esewa.com.np/merchant#!mpyments/!mpd;tid=%s';
 
 		// Enable logging for events.
 		self::$log_enabled = $this->debug;
@@ -117,21 +120,6 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 */
 	public function init_form_fields() {
 		$this->form_fields = include 'includes/settings-esewa.php';
-	}
-
-	/**
-	 * Get the transaction URL.
-	 *
-	 * @param  WC_Order $order the order object.
-	 * @return string
-	 */
-	public function get_transaction_url( $order ) {
-		if ( $this->testmode ) {
-			$this->view_transaction_url = 'https://dev.esewa.com.np/merchant#!mpyments/!mpd;tid=%s';
-		} else {
-			$this->view_transaction_url = 'https://esewa.com.np/merchant#!mpyments/!mpd;tid=%s';
-		}
-		return parent::get_transaction_url( $order );
 	}
 
 	/**
