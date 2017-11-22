@@ -1,7 +1,7 @@
 === WooCommerce eSewa ===
 Contributors: shivapoudel
 Tags: woocommerce, esewa
-Requires at least: 4.0
+Requires at least: 4.7
 Tested up to: 4.9
 Stable tag: 1.8.0
 License: GPLv3 or later
@@ -44,7 +44,7 @@ You can contribute to the source code in our [GitHub](https://github.com/shivapo
 
 = Minimum Requirements =
 
-* WordPress 4.5 or greater.
+* WordPress 4.7 or greater.
 * WooCommerce 3.0 or greater.
 
 = Automatic installation =
@@ -69,7 +69,7 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 
 = What is needed to use this plugin? =
 
-* WordPress 4.5 or later.
+* WordPress 4.7 or later.
 * WooCommerce 3.0 or later.
 * Merchant/Service Code from eSewa.
 
