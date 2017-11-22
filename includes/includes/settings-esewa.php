@@ -2,7 +2,7 @@
 /**
  * Payment Gateway: Settings - eSewa.
  *
- * @package WooCommerce/Classes/Payment
+ * @package WooCommerce_eSewa/Classes/Payment
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

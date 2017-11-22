@@ -1,17 +1,31 @@
 <?php
+/**
+ * Handles IPN Responses from eSewa
+ *
+ * @class    WC_Gateway_eSewa_IPN_Handler
+ * @extends  WC_Gateway_eSewa_Response
+ * @version  1.0.0
+ * @package  WooCommerce_eSewa/Classes/Payment
+ * @category Class
+ * @author   Shiva Poudel
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once( dirname( __FILE__ ) . '/class-wc-gateway-esewa-response.php' );
+require_once dirname( __FILE__ ) . '/class-wc-gateway-esewa-response.php';
 
 /**
- * Handles IPN Responses from eSewa.
+ * WC_Gateway_eSewa_IPN_Handler class.
  */
 class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
-	/** @var string Merchant/Service code for IPN support */
+	/**
+	 * Merchant/Service code for IPN support.
+	 *
+	 * @var string
+	 */
 	protected $service_code;
 
 	/**
@@ -167,16 +181,18 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 */
 	protected function payment_status_paid_cancelled_order( $order, $requested ) {
 		$this->send_ipn_email_notification(
+			/* translators: %s: order number */
 			sprintf( __( 'Payment for cancelled order %s received', 'woocommerce-esewa' ), '<a class="link" href="' . esc_url( admin_url( 'post.php?post=' . $order->get_id() . '&action=edit' ) ) . '">' . $order->get_order_number() . '</a>' ),
-			sprintf( __( 'Order #%1$s has been marked paid by eSewa IPN, but was previously cancelled. Admin handling required.', 'woocommerce-esewa' ), $order->get_order_number() )
+			/* translators: %s: order number */
+			sprintf( __( 'Order #%s has been marked paid by eSewa IPN, but was previously cancelled. Admin handling required.', 'woocommerce-esewa' ), $order->get_order_number() )
 		);
 	}
 
 	/**
 	 * Send a notification to the user handling orders.
 	 *
-	 * @param string $subject
-	 * @param string $message
+	 * @param string $subject Email notification subject.
+	 * @param string $message Email notification message.
 	 */
 	protected function send_ipn_email_notification( $subject, $message ) {
 		$new_order_settings = get_option( 'woocommerce_new_order_settings', array() );

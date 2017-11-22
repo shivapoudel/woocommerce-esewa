@@ -1,11 +1,20 @@
 <?php
+/**
+ * Abstract class for handling eSewa IPN responses.
+ *
+ * @class    WC_Gateway_eSewa_Response
+ * @version  1.0.0
+ * @package  WooCommerce_eSewa/Abstracts
+ * @category Abstract Class
+ * @author   Shiva Poudel
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Handles Responses.
+ * WC_Gateway_eSewa_Response class.
  */
 abstract class WC_Gateway_eSewa_Response {
 

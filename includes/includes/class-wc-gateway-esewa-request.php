@@ -1,11 +1,20 @@
 <?php
+/**
+ * Generates requests to send to eSewa
+ *
+ * @class    WC_Gateway_eSewa_Request
+ * @version  1.0.0
+ * @package  WooCommerce_eSewa/Classes/Payment
+ * @category Class
+ * @author   Shiva Poudel
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Generates requests to send to eSewa.
+ * WC_Gateway_eSewa_Request class.
  */
 class WC_Gateway_eSewa_Request {
 
