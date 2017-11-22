@@ -85,7 +85,7 @@ final class WooCommerce_eSewa {
 	 * Includes.
 	 */
 	private function includes() {
-		include_once dirname( WC_ESEWA_PLUGIN_FILE ) . '/includes/class-wc-esewa-gateway.php';
+		include_once dirname( WC_ESEWA_PLUGIN_FILE ) . '/includes/class-wc-gateway-esewa.php';
 	}
 
 	/**
