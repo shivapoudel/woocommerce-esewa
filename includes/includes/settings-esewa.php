@@ -31,7 +31,7 @@ return array(
 		'type'        => 'text',
 		'desc_tip'    => true,
 		'description' => __( 'This controls the description which the user sees during checkout.', 'woocommerce-esewa' ),
-		'default'     => __( 'Pay via eSewa; you can pay with eSewa wallet securely.', 'woocommerce-esewa' ),
+		'default'     => __( 'Pay via eSewa; you can pay with eSewa account securely.', 'woocommerce-esewa' ),
 	),
 	'service_code'     => array(
 		'title'       => __( 'Merchant/Service code', 'woocommerce-esewa' ),

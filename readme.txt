@@ -106,9 +106,16 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 
 == Changelog ==
 
-= 1.8.0 - XX-XX-2017 =
+= 1.8.0 - XX-12-2017 =
+* Fix - eSewa IPN validation error due to invalid amount send from esewa.
 * Fix - Use of default green color eSewa logo to prevent brand violation.
+* Fix - Notices declaring to use `get_id()` and `get_order_key()` instead.
+* Dev - WordPress coding standard and move WooCommerce eSewa class to seperate file.
 * Tweak - Added extra plugin headers support for WC extension.
+* Tweak - Prevent double checking amount during IPN validation.
+* Tweak - Send IPN email notification when cancelled order are paid.
+* Tweak - Remove array filter since all args defined by WC have values.
+* Dev - WordPress coding standard and move WooCommerce eSewa class to seperate file.
 
 = 1.7.0 - 18-07-2017 =
 * Tweak - Tested upto WP 4.8 & WooCommerce 3.0 :)
