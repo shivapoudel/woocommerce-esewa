@@ -49,7 +49,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 */
 	public function check_response() {
 		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) {
-			$requested = wp_unslash( $_REQUEST );
+			$requested = wp_unslash( $_REQUEST ); // WPCS: input var ok, CSRF ok.
 
 			// @codingStandardsIgnoreStart
 			do_action( 'valid-esewa-standard-ipn-request', $requested );
@@ -63,7 +63,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	/**
 	 * There was a valid response.
 	 *
-	 * @param array $requested Request data after wp_unslash
+	 * @param array $requested Request data after wp_unslash.
 	 */
 	public function valid_response( $requested ) {
 		$order = $this->get_esewa_order( $requested['oid'], $requested['key'] );
@@ -97,9 +97,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	public function validate_ipn() {
 		WC_Gateway_eSewa::log( 'Checking IPN response is valid' );
 
-		$amount      = wc_clean( stripslashes( $_REQUEST['amt'] ) );
-		$order_id    = wc_clean( stripslashes( $_REQUEST['oid'] ) );
-		$transaction = wc_clean( stripslashes( $_REQUEST['refId'] ) );
+		$amount      = wc_clean( wp_unslash( $_REQUEST['amt'] ) ); // WPCS: input var ok, sanitization ok, CSRF ok.
+		$order_id    = wc_clean( wp_unslash( $_REQUEST['oid'] ) ); // WPCS: input var ok, sanitization ok, CSRF ok.
+		$transaction = wc_clean( wp_unslash( $_REQUEST['refId'] ) ); // WPCS: input var ok, sanitization ok, CSRF ok.
 
 		// Send back post vars to esewa.
 		$params = array(
