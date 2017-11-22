@@ -97,9 +97,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	public function validate_ipn() {
 		WC_Gateway_eSewa::log( 'Checking IPN response is valid' );
 
-		$amount      = wc_clean( wp_unslash( $_REQUEST['amt'] ) ); // WPCS: input var ok, sanitization ok, CSRF ok.
-		$order_id    = wc_clean( wp_unslash( $_REQUEST['oid'] ) ); // WPCS: input var ok, sanitization ok, CSRF ok.
-		$transaction = wc_clean( wp_unslash( $_REQUEST['refId'] ) ); // WPCS: input var ok, sanitization ok, CSRF ok.
+		$amount      = isset( $_REQUEST['amt'] ) ? wc_clean( wp_unslash( $_REQUEST['amt'] ) ) : ''; // WPCS: input var ok, CSRF ok.
+		$order_id    = isset( $_REQUEST['oid'] ) ? wc_clean( wp_unslash( $_REQUEST['oid'] ) ) : ''; // WPCS: input var ok, CSRF ok.
+		$transaction = isset( $_REQUEST['refId'] ) ? wc_clean( wp_unslash( $_REQUEST['refId'] ) ) : ''; // WPCS: input var ok, CSRF ok.
 
 		// Send back post vars to esewa.
 		$params = array(
