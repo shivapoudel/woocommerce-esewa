@@ -96,11 +96,11 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 				'scd' => $this->service_code,
 			),
 			'timeout'     => 60,
-			'sslverify'   => false,
 			'httpversion' => '1.1',
 			'compress'    => false,
 			'decompress'  => false,
 			'user-agent'  => 'WooCommerce/' . WC()->version,
+			'sslverify'   => apply_filters( 'https_local_ssl_verify', false ),
 		);
 
 		// Post back to get a response.
