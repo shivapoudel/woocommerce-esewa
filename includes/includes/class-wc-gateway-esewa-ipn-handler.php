@@ -101,6 +101,16 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		$order_id    = isset( $_REQUEST['oid'] ) ? wc_clean( wp_unslash( $_REQUEST['oid'] ) ) : ''; // WPCS: input var ok, CSRF ok.
 		$transaction = isset( $_REQUEST['refId'] ) ? wc_clean( wp_unslash( $_REQUEST['refId'] ) ) : ''; // WPCS: input var ok, CSRF ok.
 
+		// Fix esewa amount validation.
+		if ( isset( $_REQUEST['key'] ) ) {
+			$order = $this->get_esewa_order( $order_id, wc_clean( wp_unslash( $_REQUEST['key'] ) ) ); // WPCS: input var ok, CSRF ok.
+
+			if ( number_format( $order->get_total(), 2, '.', '' ) !== number_format( $amount, 2, '.', '' ) ) {
+				WC_Gateway_eSewa::log( 'Amount alert: eSewa amount do not match (sent "' . $order->get_total() . '" | returned "' . $amount . '").', 'alert' );
+				$amount = $order->get_total();
+			}
+		}
+
 		// Send back post vars to esewa.
 		$params = array(
 			'body'        => array(
