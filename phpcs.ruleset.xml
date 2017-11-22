@@ -17,6 +17,7 @@
 	<rule ref="PHPCompatibility"/>
 
 	<rule ref="WordPress">
+		<exclude name="PEAR.NamingConventions.ValidClassName.Invalid" />
 		<exclude name="WordPress.VIP.RestrictedFunctions" />
 		<exclude name="WordPress.VIP.OrderByRand" />
 	</rule>
