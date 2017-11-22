@@ -125,23 +125,6 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	}
 
 	/**
-	 * Check payment amount from IPN matches the order.
-	 *
-	 * @param WC_Order $order the order object.
-	 * @param int      $amount Total amount.
-	 */
-	protected function validate_amount( $order, $amount ) {
-		if ( number_format( $order->get_total(), 2, '.', '' ) !== number_format( $amount, 2, '.', '' ) ) {
-			WC_Gateway_eSewa::log( 'Payment error: Amounts do not match (gross ' . $amount . ')' );
-
-			// Put this order on-hold for manual checking.
-			/* translators: %s: amount */
-			$order->update_status( 'on-hold', sprintf( __( 'Validation error: eSewa amounts do not match (gross %s).', 'woocommerce-esewa' ), $amount ) );
-			exit;
-		}
-	}
-
-	/**
 	 * Handle a completed payment.
 	 *
 	 * @param WC_Order $order the order object.
@@ -152,8 +135,6 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			WC_Gateway_eSewa::log( 'Aborting, Order #' . $order->get_id() . ' is already complete.' );
 			exit;
 		}
-
-		$this->validate_amount( $order, $requested['amt'] );
 
 		if ( 'completed' === $requested['payment_status'] ) {
 			if ( $order->has_status( 'cancelled' ) ) {
