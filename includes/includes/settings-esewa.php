@@ -34,7 +34,14 @@ return array(
 		'default'     => __( 'Pay via eSewa; you can pay with eSewa account securely.', 'woocommerce-esewa' ),
 	),
 	'service_code'     => array(
-		'title'       => __( 'Merchant/Service code', 'woocommerce-esewa' ),
+		'title'       => __( 'Live Merchant/Service code', 'woocommerce-esewa' ),
+		'type'        => 'text',
+		'desc_tip'    => true,
+		'description' => __( 'Please enter your eSewa Merchant/Service Code; this is needed in order to take payment.', 'woocommerce-esewa' ),
+		'default'     => '',
+	),
+	'sandbox_service_code'     => array(
+		'title'       => __( 'Test Merchant/Service code', 'woocommerce-esewa' ),
 		'type'        => 'text',
 		'desc_tip'    => true,
 		'description' => __( 'Please enter your eSewa Merchant/Service Code; this is needed in order to take payment.', 'woocommerce-esewa' ),
@@ -57,8 +64,8 @@ return array(
 		'type'        => 'checkbox',
 		'label'       => __( 'Enable Sandbox Mode', 'woocommerce-esewa' ),
 		'default'     => 'no',
-		/* translators: %s: eSewa developer account */
-		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Sign up for a %1$sdeveloper account%2$s.', 'woocommerce-esewa' ), '<a href="https://dev.esewa.com.np/" target="_blank">', '</a>' ),
+		/* translators: %s: eSewa contact page */
+		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Please contact eSewa <a href="%s" target="_blank">Merchant/Service Provider</a> for a developer account.', 'woocommerce-esewa' ), 'https://blog.esewa.com.np/contact-us' ),
 	),
 	'debug'            => array(
 		'title'       => __( 'Debug log', 'woocommerce-esewa' ),

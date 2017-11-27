@@ -39,7 +39,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 */
 	public function __construct() {
 		$this->id                 = 'esewa';
-		$this->icon               = apply_filters( 'woocommerce_esewa_icon', plugins_url( 'assets/images/esewa.png', plugin_dir_path( __FILE__ ) ) );
+		$this->icon               = apply_filters( 'woocommerce_esewa_icon', plugins_url( 'assets/images/esewa.png', WC_ESEWA_PLUGIN_FILE ) );
 		$this->has_fields         = false;
 		$this->order_button_text  = __( 'Proceed to eSewa', 'woocommerce-esewa' );
 		$this->method_title       = __( 'eSewa', 'woocommerce-esewa' );
@@ -54,7 +54,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->description  = $this->get_option( 'description' );
 		$this->testmode     = 'yes' === $this->get_option( 'testmode', 'no' );
 		$this->debug        = 'yes' === $this->get_option( 'debug', 'no' );
-		$this->service_code = $this->get_option( 'service_code' );
+		$this->service_code = $this->testmode ? $this->get_option( 'sandbox_service_code' ) : $this->get_option( 'service_code' );
 
 		// Transactional details URL.
 		$this->view_transaction_url = $this->testmode ? 'https://dev.esewa.com.np/merchant#!mpyments/!mpd;tid=%s' : 'https://esewa.com.np/merchant#!mpyments/!mpd;tid=%s';
@@ -62,6 +62,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		// Enable logging for events.
 		self::$log_enabled = $this->debug;
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 
 		if ( ! $this->is_valid_for_use() ) {
@@ -136,5 +137,23 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 			'result'   => 'success',
 			'redirect' => $esewa_request->get_request_url( $order, $this->testmode ),
 		);
+	}
+
+	/**
+	 * Load admin scripts.
+	 *
+	 * @since 1.8.0
+	 */
+	public function admin_scripts() {
+		$screen    = get_current_screen();
+		$screen_id = $screen ? $screen->id : '';
+
+		if ( 'woocommerce_page_wc-settings' !== $screen_id ) {
+			return;
+		}
+
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
+		wp_enqueue_script( 'woocommerce_esewa_admin', plugins_url( '/assets/js/esewa-admin' . $suffix . '.js', WC_ESEWA_PLUGIN_FILE ), array(), WC_VERSION, true );
 	}
 }

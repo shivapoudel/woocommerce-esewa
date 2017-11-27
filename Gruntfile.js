@@ -4,6 +4,12 @@ module.exports = function( grunt ){
 
 	grunt.initConfig({
 
+		// Setting folder templates.
+		dirs: {
+			images: 'assets/images',
+			js: 'assets/js'
+		},
+
 		// JavaScript linting with JSHint.
 		jshint: {
 			options: {
@@ -12,6 +18,31 @@ module.exports = function( grunt ){
 			all: [
 				'Gruntfile.js'
 			]
+		},
+
+		// Minify .js files.
+		uglify: {
+			options: {
+				ie8: true,
+				parse: {
+					strict: false
+				},
+				output: {
+					comments : /@license|@preserve|^!/
+				}
+			},
+			all: {
+				files: [{
+					expand: true,
+					cwd: 'assets/js/',
+					src: [
+						'*.js',
+						'!*.min.js'
+					],
+					dest: 'assets/js/',
+					ext: '.min.js'
+				}]
+			}
 		},
 
 		// Generate POT files.
@@ -86,6 +117,7 @@ module.exports = function( grunt ){
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 
 	// Register tasks
 	grunt.registerTask( 'default', [
@@ -94,7 +126,8 @@ module.exports = function( grunt ){
 	]);
 
 	grunt.registerTask( 'js', [
-		'jshint'
+		'jshint',
+		'uglify'
 	]);
 
 	// Only an alias to 'default' task.
