@@ -48,7 +48,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Check for eSewa IPN Response.
 	 */
 	public function check_response() {
-		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) {
+		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) { // WPCS: input var ok, CSRF ok.
 			$requested = wp_unslash( $_REQUEST ); // WPCS: input var ok, CSRF ok.
 
 			// @codingStandardsIgnoreStart
@@ -102,7 +102,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		$transaction = isset( $_REQUEST['refId'] ) ? wc_clean( wp_unslash( $_REQUEST['refId'] ) ) : ''; // WPCS: input var ok, CSRF ok.
 
 		// Fix esewa amount validation.
-		if ( isset( $_REQUEST['key'] ) ) {
+		if ( isset( $_REQUEST['key'] ) ) { // WPCS: input var ok, CSRF ok.
 			$order = $this->get_esewa_order( $order_id, wc_clean( wp_unslash( $_REQUEST['key'] ) ) ); // WPCS: input var ok, CSRF ok.
 
 			if ( number_format( $order->get_total(), 2, '.', '' ) !== number_format( $amount, 2, '.', '' ) ) {
