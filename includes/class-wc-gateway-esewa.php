@@ -62,6 +62,11 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		// Enable logging for events.
 		self::$log_enabled = $this->debug;
 
+		if ( $this->testmode ) {
+			$this->description .= ' ' . __( 'SANDBOX ENABLED. You can use testing accounts only.', 'woocommerce-esewa' );
+			$this->description  = trim( $this->description );
+		}
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 

@@ -65,7 +65,7 @@ return array(
 		'label'       => __( 'Enable Sandbox Mode', 'woocommerce-esewa' ),
 		'default'     => 'no',
 		/* translators: %s: eSewa contact page */
-		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Please contact eSewa <a href="%s" target="_blank">Merchant/Service Provider</a> for a developer account.', 'woocommerce-esewa' ), 'https://blog.esewa.com.np/contact-us' ),
+		'description' => sprintf( __( 'Enable eSewa sandbox to test payments. Please contact eSewa Merchant/Service Provider for a <a href="%s" target="_blank">developer account</a>.', 'woocommerce-esewa' ), 'https://blog.esewa.com.np/contact-us/' ),
 	),
 	'debug'            => array(
 		'title'       => __( 'Debug log', 'woocommerce-esewa' ),
