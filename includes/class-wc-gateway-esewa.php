@@ -73,7 +73,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		if ( ! $this->is_valid_for_use() ) {
 			$this->enabled = 'no';
 		} elseif ( $this->service_code ) {
-			include_once dirname( __FILE__ ) . '/includes/class-wc-gateway-esewa-ipn-handler.php';
+			include_once dirname( __FILE__ ) . '/gateways/class-wc-gateway-esewa-ipn-handler.php';
 			new WC_Gateway_eSewa_IPN_Handler( $this, $this->testmode, $this->service_code );
 		}
 	}
@@ -123,7 +123,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 * Initialise Gateway Settings Form Fields.
 	 */
 	public function init_form_fields() {
-		$this->form_fields = include 'includes/settings-esewa.php';
+		$this->form_fields = include 'gateways/settings-esewa.php';
 	}
 
 	/**
@@ -133,7 +133,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 * @return array
 	 */
 	public function process_payment( $order_id ) {
-		include_once dirname( __FILE__ ) . '/includes/class-wc-gateway-esewa-request.php';
+		include_once dirname( __FILE__ ) . '/gateways/class-wc-gateway-esewa-request.php';
 
 		$order         = wc_get_order( $order_id );
 		$esewa_request = new WC_Gateway_eSewa_Request( $this );
