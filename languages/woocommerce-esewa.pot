@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce eSewa 1.8.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/shivapoudel/woocommerce-esewa/issues\n"
-"POT-Creation-Date: 2017-11-22 20:36:51+00:00\n"
+"POT-Creation-Date: 2017-11-27 19:39:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgid "Proceed to eSewa"
 msgstr ""
 
 #: includes/class-wc-gateway-esewa.php:45
-#: includes/includes/settings-esewa.php:27
+#: includes/gateways/settings-esewa.php:27
 msgid "eSewa"
 msgstr ""
 
@@ -29,11 +29,15 @@ msgid ""
 "information."
 msgstr ""
 
-#: includes/class-wc-gateway-esewa.php:111
+#: includes/class-wc-gateway-esewa.php:66
+msgid "SANDBOX ENABLED. You can use testing accounts only."
+msgstr ""
+
+#: includes/class-wc-gateway-esewa.php:117
 msgid "Gateway Disabled"
 msgstr ""
 
-#: includes/class-wc-gateway-esewa.php:111
+#: includes/class-wc-gateway-esewa.php:117
 msgid "eSewa does not support your store currency."
 msgstr ""
 
@@ -54,126 +58,132 @@ msgstr ""
 msgid "WooCommerce 3.0"
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-ipn-handler.php:79
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:79
 msgid "eSewa IPN response failed."
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-ipn-handler.php:168
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:168
 msgid "IPN payment completed"
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-ipn-handler.php:171
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:171
 #. translators: %s: pending reason
 msgid "Payment pending: %s"
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-ipn-handler.php:183
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:183
 #. translators: %s: payment status
 msgid "Payment %s via IPN."
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-ipn-handler.php:195
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:195
 #. translators: %s: order number
 msgid "Payment for cancelled order %s received"
 msgstr ""
 
-#: includes/includes/class-wc-gateway-esewa-ipn-handler.php:197
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:197
 #. translators: %s: order number
 msgid ""
 "Order #%s has been marked paid by eSewa IPN, but was previously cancelled. "
 "Admin handling required."
 msgstr ""
 
-#: includes/includes/settings-esewa.php:17
+#: includes/gateways/settings-esewa.php:17
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:19
+#: includes/gateways/settings-esewa.php:19
 msgid "Enable eSewa Payment"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:23
+#: includes/gateways/settings-esewa.php:23
 msgid "Title"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:26
+#: includes/gateways/settings-esewa.php:26
 msgid "This controls the title which the user sees during checkout."
 msgstr ""
 
-#: includes/includes/settings-esewa.php:30
+#: includes/gateways/settings-esewa.php:30
 msgid "Description"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:33
+#: includes/gateways/settings-esewa.php:33
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
-#: includes/includes/settings-esewa.php:34
+#: includes/gateways/settings-esewa.php:34
 msgid "Pay via eSewa; you can pay with eSewa account securely."
 msgstr ""
 
-#: includes/includes/settings-esewa.php:37
-msgid "Merchant/Service code"
+#: includes/gateways/settings-esewa.php:37
+msgid "Live Merchant/Service code"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:40
+#: includes/gateways/settings-esewa.php:40
+#: includes/gateways/settings-esewa.php:47
 msgid ""
 "Please enter your eSewa Merchant/Service Code; this is needed in order to "
 "take payment."
 msgstr ""
 
-#: includes/includes/settings-esewa.php:44
+#: includes/gateways/settings-esewa.php:44
+msgid "Test Merchant/Service code"
+msgstr ""
+
+#: includes/gateways/settings-esewa.php:51
 msgid "Invoice prefix"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:47
+#: includes/gateways/settings-esewa.php:54
 msgid ""
 "Please enter a prefix for your invoice numbers. If you use your eSewa "
 "account for multiple stores ensure this prefix is unique as eSewa will not "
 "allow orders with the same invoice number."
 msgstr ""
 
-#: includes/includes/settings-esewa.php:51
+#: includes/gateways/settings-esewa.php:58
 msgid "Advanced options"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:56
+#: includes/gateways/settings-esewa.php:63
 msgid "Sandbox mode"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:58
+#: includes/gateways/settings-esewa.php:65
 msgid "Enable Sandbox Mode"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:61
-#. translators: %s: eSewa developer account
+#: includes/gateways/settings-esewa.php:68
+#. translators: %s: eSewa contact page
 msgid ""
-"Enable eSewa sandbox to test payments. Sign up for a %1$sdeveloper "
-"account%2$s."
+"Enable eSewa sandbox to test payments. Please contact eSewa "
+"Merchant/Service Provider for a <a href=\"%s\" target=\"_blank\">developer "
+"account</a>."
 msgstr ""
 
-#: includes/includes/settings-esewa.php:64
+#: includes/gateways/settings-esewa.php:71
 msgid "Debug log"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:66
+#: includes/gateways/settings-esewa.php:73
 msgid "Enable logging"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:69
+#: includes/gateways/settings-esewa.php:76
 #. translators: %s: eSewa log file path
 msgid "Log eSewa events, such as IPN requests, inside <code>%s</code>"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:72
+#: includes/gateways/settings-esewa.php:79
 msgid "IPN Email Notifications"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:74
+#: includes/gateways/settings-esewa.php:81
 msgid "Enable IPN email notifications"
 msgstr ""
 
-#: includes/includes/settings-esewa.php:76
+#: includes/gateways/settings-esewa.php:83
 msgid ""
 "Send notifications when an IPN is received from eSewa indicating "
 "cancellations."
