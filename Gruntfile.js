@@ -16,7 +16,9 @@ module.exports = function( grunt ){
 				jshintrc: '.jshintrc'
 			},
 			all: [
-				'Gruntfile.js'
+				'Gruntfile.js',
+				'<%= dirs.js %>/*.js',
+				'!<%= dirs.js %>/*.min.js'
 			]
 		},
 
@@ -34,14 +36,25 @@ module.exports = function( grunt ){
 			all: {
 				files: [{
 					expand: true,
-					cwd: 'assets/js/',
+					cwd: '<%= dirs.js %>/',
 					src: [
 						'*.js',
 						'!*.min.js'
 					],
-					dest: 'assets/js/',
+					dest: '<%= dirs.js %>/',
 					ext: '.min.js'
 				}]
+			}
+		},
+
+		// Watch changes for assets.
+		watch: {
+			js: {
+				files: [
+					'<%= dirs.js %>/*js',
+					'!<%= dirs.js %>/*.min.js'
+				],
+				tasks: ['jshint', 'uglify']
 			}
 		},
 
@@ -118,6 +131,7 @@ module.exports = function( grunt ){
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
 	// Register tasks
 	grunt.registerTask( 'default', [
