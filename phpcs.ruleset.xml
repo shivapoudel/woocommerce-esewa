@@ -17,7 +17,6 @@
 	<rule ref="PHPCompatibility"/>
 
 	<rule ref="WordPress">
-		<exclude name="PEAR.NamingConventions.ValidClassName.Invalid" />
 		<exclude name="WordPress.VIP.RestrictedFunctions" />
 	</rule>
 	<rule ref="WordPress.VIP.ValidatedSanitizedInput">
@@ -29,5 +28,8 @@
 		<properties>
 			<property name="text_domain" type="array" value="woocommerce-esewa" />
 		</properties>
+	</rule>
+	<rule ref="PEAR.NamingConventions.ValidClassName">
+		<exclude-pattern>includes/</exclude-pattern>
 	</rule>
 </ruleset>

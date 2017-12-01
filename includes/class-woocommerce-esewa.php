@@ -46,7 +46,7 @@ final class WooCommerce_eSewa {
 
 			// Hooks.
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'add_gateway' ) );
-			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
+			add_filter( 'plugin_action_links_' . plugin_basename( WC_ESEWA_PLUGIN_FILE ), array( $this, 'plugin_action_links' ) );
 		} else {
 			add_action( 'admin_notices', array( $this, 'woocommerce_missing_notice' ) );
 		}
@@ -78,7 +78,7 @@ final class WooCommerce_eSewa {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'woocommerce-esewa' );
 
 		load_textdomain( 'woocommerce-esewa', WP_LANG_DIR . '/woocommerce-esewa/woocommerce-esewa-' . $locale . '.mo' );
-		load_plugin_textdomain( 'woocommerce-esewa', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'woocommerce-esewa', false, plugin_basename( dirname( WC_ESEWA_PLUGIN_FILE ) ) . '/languages' );
 	}
 
 	/**

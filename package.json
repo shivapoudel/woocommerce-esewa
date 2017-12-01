@@ -9,11 +9,16 @@
   },
   "license": "GPL-3.0+",
   "main": "Gruntfile.js",
+  "scripts": {
+    "build": "grunt",
+    "build-watch": "grunt watch"
+  },
   "devDependencies": {
     "grunt": "~1.0.1",
     "grunt-checktextdomain": "~1.0.1",
     "grunt-contrib-jshint": "~1.1.0",
     "grunt-contrib-uglify": "~3.2.1",
+    "grunt-contrib-watch": "~1.0.0",
     "grunt-phpcs": "~0.4.0",
     "grunt-wp-i18n": "~1.0.1"
   },

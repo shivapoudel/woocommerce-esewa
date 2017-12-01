@@ -113,7 +113,7 @@ class WC_Gateway_eSewa_Request {
 		foreach ( $payment_statuses as $key => $payment_status ) {
 			$payment_status_args[ $key ] = esc_url_raw( add_query_arg( array(
 				'payment_status' => $payment_status,
-				'key'            => $order->order_key,
+				'key'            => $order->get_order_key(),
 			), $this->limit_length( $this->notify_url, 255 ) ) );
 		}
 
