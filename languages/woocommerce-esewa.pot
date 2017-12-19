@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: WooCommerce eSewa 1.8.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/shivapoudel/woocommerce-esewa/issues\n"
-"POT-Creation-Date: 2017-11-27 19:39:05+00:00\n"
+"POT-Creation-Date: 2017-12-19 17:47:17+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Generator: grunt-wp-i18n1.0.1\n"
 
 #: includes/class-wc-gateway-esewa.php:44
 msgid "Proceed to eSewa"
@@ -62,26 +62,26 @@ msgstr ""
 msgid "eSewa IPN response failed."
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:168
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:169
 msgid "IPN payment completed"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:171
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:172
 #. translators: %s: pending reason
 msgid "Payment pending: %s"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:183
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:184
 #. translators: %s: payment status
 msgid "Payment %s via IPN."
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:195
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:196
 #. translators: %s: order number
 msgid "Payment for cancelled order %s received"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:197
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:198
 #. translators: %s: order number
 msgid ""
 "Order #%s has been marked paid by eSewa IPN, but was previously cancelled. "
