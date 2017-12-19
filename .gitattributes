@@ -1,5 +1,5 @@
 /.* export-ignore
+phpcs.xml export-ignore
 composer.* export-ignore
 Gruntfile.js export-ignore
 package.json export-ignore
-phpcs.ruleset.xml export-ignore
