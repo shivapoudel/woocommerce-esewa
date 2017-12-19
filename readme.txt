@@ -114,7 +114,7 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 * Tweak - Added extra plugin headers support for WC extension.
 * Tweak - Prevent double checking amount during IPN validation.
 * Tweak - Send IPN email notification when cancelled order are paid.
-* Tweak - Remove array filter since all args defined by WC have values.
+* Tweak - Remove `array_filter` since all args defined by WC have values.
 * Dev - WordPress coding standard and move WooCommerce eSewa class to seperate file.
 
 = 1.7.0 - 18-07-2017 =
