@@ -1,11 +1,10 @@
 <?php
 /**
- * WooCommerce eSewa Setup.
+ * WooCommerce eSewa setup
  *
- * @author   Shiva Poudel
- * @category Core
- * @package  WooCommerce_eSewa
- * @since    1.8.0
+ * @package WooCommerce_eSewa
+ * @version 1.8.0
+ * @since   1.8.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
