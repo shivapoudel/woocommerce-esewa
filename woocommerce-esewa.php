@@ -13,9 +13,7 @@
  * WC requires at least: 3.0.0
  * WC tested up to: 3.3.0
  *
- * @package  WooCommerce_eSewa
- * @category Core
- * @author   Shiva Poudel
+ * @package WooCommerce_eSewa
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

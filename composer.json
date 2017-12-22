@@ -30,10 +30,10 @@
       "WooCommerce\\GitHooks\\Hooks::postHooks"
     ],
     "phpcs": [
-      "phpcs -s -p --standard=./phpcs.ruleset.xml"
+      "phpcs -s -p"
     ],
     "phpcbf": [
-      "phpcbf -p --standard=./phpcs.ruleset.xml"
+      "phpcbf -p"
     ]
   },
   "extra": {

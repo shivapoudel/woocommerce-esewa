@@ -112,8 +112,7 @@ module.exports = function( grunt ){
 		// PHP Code Sniffer.
 		phpcs: {
 			options: {
-				bin: 'vendor/bin/phpcs',
-				standard: './phpcs.ruleset.xml'
+				bin: 'vendor/bin/phpcs'
 			},
 			dist: {
 				src:  [

@@ -4,11 +4,9 @@
  *
  * Provides an eSewa Payment Gateway.
  *
- * @class    WC_Gateway_eSewa
- * @version  1.0.0
- * @package  WooCommerce_eSewa/Classes/Payment
- * @category Class
- * @author   Shiva Poudel
+ * @package WooCommerce_eSewa\Classes\Payment
+ * @version 1.8.0
+ * @since   1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
