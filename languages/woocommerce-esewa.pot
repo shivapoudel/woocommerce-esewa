@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WooCommerce eSewa 1.8.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/shivapoudel/woocommerce-esewa/issues\n"
-"POT-Creation-Date: 2017-12-19 17:47:17+00:00\n"
+"POT-Creation-Date: 2017-12-22 05:02:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,74 +14,74 @@ msgstr ""
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: grunt-wp-i18n1.0.1\n"
 
-#: includes/class-wc-gateway-esewa.php:44
+#: includes/class-wc-gateway-esewa.php:42
 msgid "Proceed to eSewa"
 msgstr ""
 
-#: includes/class-wc-gateway-esewa.php:45
+#: includes/class-wc-gateway-esewa.php:43
 #: includes/gateways/settings-esewa.php:27
 msgid "eSewa"
 msgstr ""
 
-#: includes/class-wc-gateway-esewa.php:46
+#: includes/class-wc-gateway-esewa.php:44
 msgid ""
 "Take payments via eSewa - sends customers to eSewa to enter their payment "
 "information."
 msgstr ""
 
-#: includes/class-wc-gateway-esewa.php:66
+#: includes/class-wc-gateway-esewa.php:64
 msgid "SANDBOX ENABLED. You can use testing accounts only."
 msgstr ""
 
-#: includes/class-wc-gateway-esewa.php:117
+#: includes/class-wc-gateway-esewa.php:115
 msgid "Gateway Disabled"
 msgstr ""
 
-#: includes/class-wc-gateway-esewa.php:117
+#: includes/class-wc-gateway-esewa.php:115
 msgid "eSewa does not support your store currency."
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:110
+#: includes/class-woocommerce-esewa.php:109
 msgid "View settings"
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:110
+#: includes/class-woocommerce-esewa.php:109
 msgid "Settings"
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:121
+#: includes/class-woocommerce-esewa.php:120
 #. translators: %s: woocommerce version
 msgid "WooCommerce eSewa depends on the last version of %s or later to work!"
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:121
+#: includes/class-woocommerce-esewa.php:120
 msgid "WooCommerce 3.0"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:79
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:76
 msgid "eSewa IPN response failed."
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:169
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:166
 msgid "IPN payment completed"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:172
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:169
 #. translators: %s: pending reason
 msgid "Payment pending: %s"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:184
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:181
 #. translators: %s: payment status
 msgid "Payment %s via IPN."
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:196
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:193
 #. translators: %s: order number
 msgid "Payment for cancelled order %s received"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:198
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:195
 #. translators: %s: order number
 msgid ""
 "Order #%s has been marked paid by eSewa IPN, but was previously cancelled. "
