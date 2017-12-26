@@ -5,7 +5,11 @@ msgstr ""
 "Project-Id-Version: WooCommerce eSewa 1.8.0\n"
 "Report-Msgid-Bugs-To: "
 "https://github.com/shivapoudel/woocommerce-esewa/issues\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2017-12-20 22:00:16+00:00\n"
+=======
+"POT-Creation-Date: 2017-12-22 05:02:42+00:00\n"
+>>>>>>> 6cadf026dd50e0dd8a1276c988aa438fa9718cf4
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
