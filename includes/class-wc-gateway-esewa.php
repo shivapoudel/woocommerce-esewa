@@ -55,7 +55,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 		$this->service_code = $this->testmode ? $this->get_option( 'sandbox_service_code' ) : $this->get_option( 'service_code' );
 
 		// Transactional details URL.
-		$this->view_transaction_url = $this->testmode ? 'https://dev.esewa.com.np/merchant#!mpyments/!mpd;tid=%s' : 'https://esewa.com.np/merchant#!mpyments/!mpd;tid=%s';
+		$this->view_transaction_url = $this->testmode ? 'https://dev.esewa.com.np/#/transaction/%s' : 'https://esewa.com.np/#/transaction/%s';
 
 		// Enable logging for events.
 		self::$log_enabled = $this->debug;
