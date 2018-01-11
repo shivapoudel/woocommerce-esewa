@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles IPN Responses from eSewa
+ * Handles responses from eSewa IPN.
  *
  * @package WooCommerce_eSewa\Classes\Payment
  * @version 1.8.0
@@ -29,7 +29,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Constructor.
 	 *
 	 * @param WC_Gateway_eSewa $gateway      Gateway class.
-	 * @param bool             $sandbox      Sandbox mode.
+	 * @param bool             $sandbox      Use sandbox or not.
 	 * @param string           $service_code Merchant/Service code.
 	 */
 	public function __construct( $gateway, $sandbox = false, $service_code = '' ) {
@@ -45,8 +45,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * Check for eSewa IPN Response.
 	 */
 	public function check_response() {
-		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) { // WPCS: input var ok, CSRF ok.
-			$requested = wp_unslash( $_REQUEST ); // WPCS: input var ok, CSRF ok.
+		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) { // WPCS: CSRF ok.
+			$requested = wp_unslash( $_REQUEST ); // WPCS: CSRF ok, input var ok.
 
 			// @codingStandardsIgnoreStart
 			do_action( 'valid-esewa-standard-ipn-request', $requested );
@@ -63,9 +63,9 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	 * @param array $requested Request data after wp_unslash.
 	 */
 	public function valid_response( $requested ) {
-		$order = $this->get_esewa_order( $requested['oid'], $requested['key'] );
+		$order = isset( $requested['oid'], $requested['key'] ) ? $this->get_esewa_order( $requested['oid'], $requested['key'] ) : false;
 
-		if ( ! empty( $requested['key'] ) && $order ) {
+		if ( $order ) {
 
 			// Lowercase returned variables.
 			$requested['payment_status'] = strtolower( $requested['payment_status'] );
@@ -100,7 +100,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		$transaction = isset( $_REQUEST['refId'] ) ? wc_clean( wp_unslash( $_REQUEST['refId'] ) ) : ''; // WPCS: input var ok, CSRF ok.
 
 		// Fix esewa amount validation.
-		if ( isset( $_REQUEST['key'] ) ) { // WPCS: input var ok, CSRF ok.
+		if ( isset( $_REQUEST['key'] ) ) { // WPCS: CSRF ok.
 			$order = $this->get_esewa_order( $order_id, wc_clean( wp_unslash( $_REQUEST['key'] ) ) ); // WPCS: input var ok, CSRF ok.
 
 			if ( number_format( $order->get_total(), 2, '.', '' ) !== number_format( $amount, 2, '.', '' ) ) {
@@ -149,8 +149,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	/**
 	 * Handle a completed payment.
 	 *
-	 * @param WC_Order $order the order object.
-	 * @param array    $requested Request data after wp_unslash.
+	 * @param WC_Order $order     Order object.
+	 * @param array    $requested Request data.
 	 */
 	protected function payment_status_completed( $order, $requested ) {
 		if ( $order->has_status( wc_get_is_paid_statuses() ) ) {
@@ -173,8 +173,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	/**
 	 * Handle a failed payment.
 	 *
-	 * @param WC_Order $order the order object.
-	 * @param array    $requested Request data after wp_unslash.
+	 * @param WC_Order $order     Order object.
+	 * @param array    $requested Request data.
 	 */
 	protected function payment_status_failed( $order, $requested ) {
 		/* translators: %s: payment status */
@@ -184,23 +184,25 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 	/**
 	 * When a user cancelled order is marked paid.
 	 *
-	 * @param WC_Order $order the order object.
-	 * @param array    $requested Request data after wp_unslash.
+	 * @param WC_Order $order     Order object.
+	 * @param array    $requested Request data.
 	 */
 	protected function payment_status_paid_cancelled_order( $order, $requested ) {
-		$this->send_ipn_email_notification(
-			/* translators: %s: order number */
-			sprintf( __( 'Payment for cancelled order %s received', 'woocommerce-esewa' ), '<a class="link" href="' . esc_url( admin_url( 'post.php?post=' . $order->get_id() . '&action=edit' ) ) . '">' . $order->get_order_number() . '</a>' ),
-			/* translators: %s: order number */
-			sprintf( __( 'Order #%s has been marked paid by eSewa IPN, but was previously cancelled. Admin handling required.', 'woocommerce-esewa' ), $order->get_order_number() )
-		);
+		if ( version_compare( WC_VERSION, '3.3.0', '>' ) ) {
+			$this->send_ipn_email_notification(
+				/* translators: %s: order link. */
+				sprintf( __( 'Payment for cancelled order %s received', 'woocommerce-esewa' ), '<a class="link" href="' . esc_url( $order->get_edit_order_url() ) . '">' . $order->get_order_number() . '</a>' ),
+				/* translators: %s: order ID. */
+				sprintf( __( 'Order #%s has been marked paid by eSewa IPN, but was previously cancelled. Admin handling required.', 'woocommerce-esewa' ), $order->get_order_number() )
+			);
+		}
 	}
 
 	/**
 	 * Send a notification to the user handling orders.
 	 *
-	 * @param string $subject Email notification subject.
-	 * @param string $message Email notification message.
+	 * @param string $subject Email subject.
+	 * @param string $message Email message.
 	 */
 	protected function send_ipn_email_notification( $subject, $message ) {
 		$new_order_settings = get_option( 'woocommerce_new_order_settings', array() );

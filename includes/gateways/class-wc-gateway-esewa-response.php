@@ -56,9 +56,9 @@ abstract class WC_Gateway_eSewa_Response {
 	/**
 	 * Complete order, add transaction ID and note.
 	 *
-	 * @param WC_Order $order the order object.
+	 * @param WC_Order $order  Order object.
 	 * @param string   $txn_id Transaction Id.
-	 * @param string   $note Note to add.
+	 * @param string   $note   Note to add.
 	 */
 	protected function payment_complete( $order, $txn_id = '', $note = '' ) {
 		$order->add_order_note( $note );
@@ -68,7 +68,7 @@ abstract class WC_Gateway_eSewa_Response {
 	/**
 	 * Hold order and add note.
 	 *
-	 * @param WC_Order $order the order object.
+	 * @param WC_Order $order  Order object.
 	 * @param string   $reason Awaiting reason.
 	 */
 	protected function payment_on_hold( $order, $reason = '' ) {

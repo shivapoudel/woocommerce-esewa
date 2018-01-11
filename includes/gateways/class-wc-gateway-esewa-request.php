@@ -43,8 +43,8 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get the eSewa request URL for an order.
 	 *
-	 * @param  WC_Order $order the order object.
-	 * @param  bool     $sandbox Sandbox mode.
+	 * @param  WC_Order $order   Order object.
+	 * @param  bool     $sandbox Use sandbox or not.
 	 * @return string
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
@@ -76,7 +76,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get eSewa Args for passing to eSewa.
 	 *
-	 * @param  WC_Order $order the order object.
+	 * @param  WC_Order $order Order object.
 	 * @return array
 	 */
 	protected function get_esewa_args( $order ) {
@@ -99,7 +99,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get payment status args for eSewa request.
 	 *
-	 * @param  WC_Order $order the order object.
+	 * @param  WC_Order $order Order object.
 	 * @return array
 	 */
 	private function get_payment_status_args( $order ) {
@@ -121,7 +121,7 @@ class WC_Gateway_eSewa_Request {
 	/**
 	 * Get the service charge to send to eSewa.
 	 *
-	 * @param  WC_Order $order the order object.
+	 * @param  WC_Order $order Order object.
 	 * @return float amount
 	 */
 	private function get_service_charge( $order ) {
