@@ -124,7 +124,7 @@ module.exports = function( grunt ){
 		}
 	});
 
-	// Load NPM tasks to be used here
+	// Load NPM tasks to be used here.
 	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-checktextdomain' );
@@ -132,7 +132,7 @@ module.exports = function( grunt ){
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
-	// Register tasks
+	// Register tasks.
 	grunt.registerTask( 'default', [
 		'js',
 		'i18n'
