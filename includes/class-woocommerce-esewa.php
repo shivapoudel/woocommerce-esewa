@@ -3,7 +3,6 @@
  * WooCommerce eSewa setup
  *
  * @package WooCommerce_eSewa
- * @version 1.8.0
  * @since   1.8.0
  */
 
