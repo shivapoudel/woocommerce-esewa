@@ -81,7 +81,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 *
 	 * @param string $message Log message.
 	 * @param string $level Optional, defaults to info, valid levels:
-	 *     emergency|alert|critical|error|warning|notice|info|debug.
+	 *                      emergency|alert|critical|error|warning|notice|info|debug.
 	 */
 	public static function log( $message, $level = 'info' ) {
 		if ( self::$log_enabled ) {

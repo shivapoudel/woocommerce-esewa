@@ -107,7 +107,7 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 == Changelog ==
 
 = 1.8.0 - 15-03-2018 =
-* Fix - eSewa test server or request URL.
+* Fix - eSewa test server request URL.
 * Fix - eSewa IPN validation error due to invalid amount send from esewa.
 * Fix - Use of default green color eSewa logo to prevent brand violation.
 * Fix - Notices declaring to use `get_id()` and `get_order_key()` instead.

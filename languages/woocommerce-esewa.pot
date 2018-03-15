@@ -1,22 +1,18 @@
-# Copyright (C) 2017 Shiva Poudel
+# Copyright (C) 2018 Shiva Poudel
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce eSewa 1.8.0\n"
 "Report-Msgid-Bugs-To: "
-"https://github.com/shivapoudel/woocommerce-esewa/issues\n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2017-12-20 22:00:16+00:00\n"
-=======
-"POT-Creation-Date: 2017-12-22 05:02:42+00:00\n"
->>>>>>> 6cadf026dd50e0dd8a1276c988aa438fa9718cf4
+"https://gitlab.com/shivapoudel/woocommerce-esewa/issues\n"
+"POT-Creation-Date: 2018-03-15 09:20:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
-"X-Generator: grunt-wp-i18n1.0.1\n"
+"X-Generator: grunt-wp-i18n1.0.2\n"
 
 #: includes/class-wc-gateway-esewa.php:42
 msgid "Proceed to eSewa"
@@ -45,20 +41,20 @@ msgstr ""
 msgid "eSewa does not support your store currency."
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:109
-msgid "View settings"
+#: includes/class-woocommerce-esewa.php:108
+msgid "View WooCommerce eSewa settings"
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:109
+#: includes/class-woocommerce-esewa.php:108
 msgid "Settings"
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:120
+#: includes/class-woocommerce-esewa.php:119
 #. translators: %s: woocommerce version
 msgid "WooCommerce eSewa depends on the last version of %s or later to work!"
 msgstr ""
 
-#: includes/class-woocommerce-esewa.php:120
+#: includes/class-woocommerce-esewa.php:119
 msgid "WooCommerce 3.0"
 msgstr ""
 
@@ -80,13 +76,13 @@ msgstr ""
 msgid "Payment %s via IPN."
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:193
-#. translators: %s: order number
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:194
+#. translators: %s: order link.
 msgid "Payment for cancelled order %s received"
 msgstr ""
 
-#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:195
-#. translators: %s: order number
+#: includes/gateways/class-wc-gateway-esewa-ipn-handler.php:196
+#. translators: %s: order ID.
 msgid ""
 "Order #%s has been marked paid by eSewa IPN, but was previously cancelled. "
 "Admin handling required."

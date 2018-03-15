@@ -64,7 +64,7 @@ module.exports = function( grunt ){
 				type: 'wp-plugin',
 				domainPath: 'languages',
 				potHeaders: {
-					'report-msgid-bugs-to': 'https://github.com/shivapoudel/woocommerce-esewa/issues',
+					'report-msgid-bugs-to': 'https://gitlab.com/shivapoudel/woocommerce-esewa/issues',
 					'language-team': 'LANGUAGE <EMAIL@ADDRESS>'
 				}
 			},
