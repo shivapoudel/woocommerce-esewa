@@ -53,7 +53,7 @@ class WC_Gateway_eSewa_Request {
 		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . wc_print_r( $esewa_args, true ) );
 
 		if ( $sandbox ) {
-			return 'https://dev.esewa.com.np/epay/main?' . $esewa_args;
+			return 'https://ir-user.esewa.com.np/epay/main?' . $esewa_args;
 		} else {
 			return 'https://esewa.com.np/epay/main?' . $esewa_args;
 		}

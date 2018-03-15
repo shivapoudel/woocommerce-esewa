@@ -126,7 +126,7 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		);
 
 		// Post back to get a response.
-		$response = wp_safe_remote_post( $this->sandbox ? 'https://dev.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $params );
+		$response = wp_safe_remote_post( $this->sandbox ? 'https://ir-user.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $params );
 
 		WC_Gateway_eSewa::log( 'IPN Request: ' . wc_print_r( $params, true ) );
 		WC_Gateway_eSewa::log( 'IPN Response: ' . wc_print_r( $response, true ) );
