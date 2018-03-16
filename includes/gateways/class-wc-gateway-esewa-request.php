@@ -48,7 +48,7 @@ class WC_Gateway_eSewa_Request {
 	 * @return string
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
-		$esewa_args = http_build_query( $this->get_esewa_args( $order ), '', '&' );
+		$esewa_args = http_build_query( $this->get_esewa_args( $order, $sandbox ), '', '&' );
 
 		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . wc_print_r( $esewa_args, true ) );
 
@@ -77,9 +77,10 @@ class WC_Gateway_eSewa_Request {
 	 * Get eSewa Args for passing to eSewa.
 	 *
 	 * @param  WC_Order $order Order object.
+	 * @param  bool     $sandbox Use sandbox or not.
 	 * @return array
 	 */
-	protected function get_esewa_args( $order ) {
+	protected function get_esewa_args( $order, $sandbox ) {
 		WC_Gateway_eSewa::log( 'Generating payment form for order ' . $order->get_order_number() . '. Notify URL: ' . $this->notify_url );
 
 		return apply_filters( 'woocommerce_esewa_args', array_merge(
@@ -89,7 +90,7 @@ class WC_Gateway_eSewa_Request {
 				'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
 				'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
 				'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
-				'scd'   => $this->limit_length( $this->gateway->get_option( 'service_code' ), 32 ),
+				'scd'   => $this->limit_length( $this->gateway->get_option( $sandbox ? 'sandbox_service_code' : 'service_code' ), 32 ),
 				'pid'   => $this->limit_length( $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(), 127 ),
 			),
 			$this->get_payment_status_args( $order )
