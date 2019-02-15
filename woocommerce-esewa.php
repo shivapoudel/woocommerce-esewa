@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WooCommerce eSewa
- * Plugin URI: https://github.com/shivapoudel/woocommerce-esewa
+ * Plugin URI: https://gitlab.com/shivapoudel/woocommerce-esewa
  * Description: WooCommerce eSewa is a Nepali payment gateway for WooCommerce.
  * Version: 1.8.0
  * Author: Shiva Poudel
@@ -9,9 +9,10 @@
  * License: GPLv3 or later
  * Text Domain: woocommerce-esewa
  * Domain Path: /languages/
+ * GitLab Plugin URI: shivapoudel/woocommerce-esewa
  *
  * WC requires at least: 3.0.0
- * WC tested up to: 3.3.0
+ * WC tested up to: 3.5.0
  *
  * @package WooCommerce_eSewa
  */
