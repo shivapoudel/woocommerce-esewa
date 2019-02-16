@@ -104,6 +104,26 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
+	 * Processes and saves options.
+	 * If there is an error thrown, will continue to save and validate fields, but will leave the erroring field out.
+	 *
+	 * @return bool was anything saved?
+	 */
+	public function process_admin_options() {
+		$saved = parent::process_admin_options();
+
+		// Maybe clear logs.
+		if ( 'yes' !== $this->get_option( 'debug', 'no' ) ) {
+			if ( empty( self::$log ) ) {
+				self::$log = wc_get_logger();
+			}
+			self::$log->clear( 'esewa' );
+		}
+
+		return $saved;
+	}
+
+	/**
 	 * Check if this gateway is enabled and available in the user's country.
 	 *
 	 * @return bool
@@ -123,7 +143,11 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 			parent::admin_options();
 		} else {
 			?>
-			<div class="inline error"><p><strong><?php esc_html_e( 'Gateway Disabled', 'woocommerce-esewa' ); ?></strong>: <?php esc_html_e( 'eSewa does not support your store currency.', 'woocommerce-esewa' ); ?></p></div>
+			<div class="inline error">
+				<p>
+					<strong><?php esc_html_e( 'Gateway Disabled', 'woocommerce-esewa' ); ?></strong>: <?php esc_html_e( 'eSewa does not support your store currency.', 'woocommerce-esewa' ); ?>
+				</p>
+			</div>
 			<?php
 		}
 	}
