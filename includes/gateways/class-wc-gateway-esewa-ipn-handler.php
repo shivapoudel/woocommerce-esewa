@@ -46,9 +46,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		if ( ! empty( $_REQUEST ) && $this->validate_ipn() ) { // WPCS: CSRF ok.
 			$requested = wp_unslash( $_REQUEST ); // WPCS: CSRF ok, input var ok.
 
-			// @codingStandardsIgnoreStart
+			// phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 			do_action( 'valid-esewa-standard-ipn-request', $requested );
-			// @codingStandardsIgnoreEnd
 			exit;
 		}
 
@@ -81,8 +80,6 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 			if ( method_exists( $this, 'payment_status_' . $requested['payment_status'] ) ) {
 				call_user_func( array( $this, 'payment_status_' . $requested['payment_status'] ), $order, $requested );
-				wp_safe_redirect( esc_url_raw( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ) );
-				exit();
 			}
 		}
 	}
@@ -126,16 +123,15 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 		// Post back to get a response.
 		$response = wp_safe_remote_post( $this->sandbox ? 'https://uat.esewa.com.np/epay/transrec' : 'https://esewa.com.np/epay/transrec', $params );
 
-		WC_Gateway_eSewa::log( 'IPN Request: ' . wc_print_r( $params, true ) );
 		WC_Gateway_eSewa::log( 'IPN Response: ' . wc_print_r( $response, true ) );
 
 		// Check to see if the request was valid.
 		if ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 && strstr( strtoupper( $response['body'] ), 'SUCCESS' ) ) {
-			WC_Gateway_eSewa::log( 'Received valid response from eSewa' );
+			WC_Gateway_eSewa::log( 'Received valid response from eSewa IPN' );
 			return true;
 		}
 
-		WC_Gateway_eSewa::log( 'Received invalid response from eSewa' );
+		WC_Gateway_eSewa::log( 'Received invalid response from eSewa IPN' );
 
 		if ( is_wp_error( $response ) ) {
 			WC_Gateway_eSewa::log( 'Error response: ' . $response->get_error_message() );
