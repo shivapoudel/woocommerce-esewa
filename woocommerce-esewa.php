@@ -4,7 +4,7 @@
  * Plugin URI: https://gitlab.com/shivapoudel/woocommerce-esewa
  * GitLab Plugin URI: https://gitlab.com/shivapoudel/woocommerce-esewa
  * Description: WooCommerce eSewa is a Nepali payment gateway for WooCommerce.
- * Version: 1.8.0
+ * Version: 1.9.0
  * Author: Shiva Poudel
  * Author URI: https://shivapoudel.com
  * License: GPLv3 or later
