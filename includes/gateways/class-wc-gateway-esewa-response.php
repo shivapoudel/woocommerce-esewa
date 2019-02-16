@@ -7,9 +7,7 @@
  * @since   1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * WC_Gateway_eSewa_Response class.

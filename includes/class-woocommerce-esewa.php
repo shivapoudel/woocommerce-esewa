@@ -3,12 +3,10 @@
  * WooCommerce eSewa setup
  *
  * @package WooCommerce_eSewa
- * @since   1.8.0
+ * @since   1.9.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Main WooCommerce eSewa Class.
@@ -22,7 +20,7 @@ final class WooCommerce_eSewa {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.8.0';
+	const VERSION = '1.9.0';
 
 	/**
 	 * Instance of this class.

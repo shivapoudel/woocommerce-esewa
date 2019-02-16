@@ -5,9 +5,7 @@
  * @package WooCommerce_eSewa\Classes\Payment
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Settings for eSewa Gateway.

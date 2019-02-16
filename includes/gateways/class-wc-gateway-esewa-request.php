@@ -7,9 +7,7 @@
  * @since   1.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * WC_Gateway_eSewa_Request class.
@@ -83,18 +81,22 @@ class WC_Gateway_eSewa_Request {
 	protected function get_esewa_args( $order, $sandbox ) {
 		WC_Gateway_eSewa::log( 'Generating payment form for order ' . $order->get_order_number() . '. Notify URL: ' . $this->notify_url );
 
-		return apply_filters( 'woocommerce_esewa_args', array_merge(
-			array(
-				'amt'   => wc_format_decimal( $order->get_subtotal() - $order->get_total_discount(), 2 ),
-				'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
-				'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
-				'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
-				'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
-				'scd'   => $this->limit_length( $this->gateway->get_option( $sandbox ? 'sandbox_service_code' : 'service_code' ), 32 ),
-				'pid'   => $this->limit_length( $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(), 127 ),
+		return apply_filters(
+			'woocommerce_esewa_args',
+			array_merge(
+				array(
+					'amt'   => wc_format_decimal( $order->get_subtotal() - $order->get_total_discount(), 2 ),
+					'txAmt' => wc_format_decimal( $order->get_total_tax(), 2 ),
+					'psc'   => wc_format_decimal( $this->get_service_charge( $order ), 2 ),
+					'pdc'   => wc_format_decimal( $order->get_total_shipping(), 2 ),
+					'tAmt'  => wc_format_decimal( $order->get_total(), 2 ),
+					'scd'   => $this->limit_length( $this->gateway->get_option( $sandbox ? 'sandbox_service_code' : 'service_code' ), 32 ),
+					'pid'   => $this->limit_length( $this->gateway->get_option( 'invoice_prefix' ) . $order->get_order_number(), 127 ),
+				),
+				$this->get_payment_status_args( $order )
 			),
-			$this->get_payment_status_args( $order )
-		), $order );
+			$order
+		);
 	}
 
 	/**
@@ -110,10 +112,15 @@ class WC_Gateway_eSewa_Request {
 		);
 
 		foreach ( $payment_statuses as $key => $payment_status ) {
-			$payment_status_args[ $key ] = esc_url_raw( add_query_arg( array(
-				'payment_status' => $payment_status,
-				'key'            => $order->get_order_key(),
-			), $this->limit_length( $this->notify_url, 255 ) ) );
+			$payment_status_args[ $key ] = esc_url_raw(
+				add_query_arg(
+					array(
+						'payment_status' => $payment_status,
+						'key'            => $order->get_order_key(),
+					),
+					$this->limit_length( $this->notify_url, 255 )
+				)
+			);
 		}
 
 		return $payment_status_args;
