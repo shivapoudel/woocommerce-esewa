@@ -75,6 +75,19 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	}
 
 	/**
+	 * Return whether or not this gateway still requires setup to function.
+	 *
+	 * When this gateway is toggled on via AJAX, if this returns true a
+	 * redirect will occur to the settings page instead.
+	 *
+	 * @since 1.9.0
+	 * @return bool
+	 */
+	public function needs_setup() {
+		return empty( $this->service_code );
+	}
+
+	/**
 	 * Logging method.
 	 *
 	 * @param string $message Log message.
