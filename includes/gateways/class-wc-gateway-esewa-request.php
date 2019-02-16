@@ -29,6 +29,13 @@ class WC_Gateway_eSewa_Request {
 	protected $notify_url;
 
 	/**
+	 * Endpoint for requests to eSewa.
+	 *
+	 * @var string
+	 */
+	protected $endpoint;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param WC_Gateway_eSewa $gateway Gateway class.
@@ -46,27 +53,28 @@ class WC_Gateway_eSewa_Request {
 	 * @return string
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
-		$esewa_args = http_build_query( $this->get_esewa_args( $order, $sandbox ), '', '&' );
+		$this->endpoint = $sandbox ? 'https://uat.esewa.com.np/epay/main?' : 'https://esewa.com.np/epay/main?';
+		$esewa_args     = http_build_query( $this->get_esewa_args( $order, $sandbox ), '', '&' );
 
 		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . wc_print_r( $esewa_args, true ) );
 
-		if ( $sandbox ) {
-			return 'https://uat.esewa.com.np/epay/main?' . $esewa_args;
-		} else {
-			return 'https://esewa.com.np/epay/main?' . $esewa_args;
-		}
+		return $this->endpoint . http_build_query( $paypal_args, '', '&' );
 	}
 
 	/**
 	 * Limit length of an arg.
 	 *
-	 * @param  string  $string String to trim.
-	 * @param  integer $limit  Amount of characters. Defaults to 127.
+	 * @param  string  $string Argument to limit.
+	 * @param  integer $limit Limit size in characters.
 	 * @return string
 	 */
 	protected function limit_length( $string, $limit = 127 ) {
-		if ( strlen( $string ) > $limit ) {
-			$string = substr( $string, 0, $limit - 3 ) . '...';
+		// As the output is to be used in http_build_query which applies URL encoding, the string needs to be
+		// cut as if it was URL-encoded, but returned non-encoded (it will be encoded by http_build_query later).
+		$url_encoded_str = rawurlencode( $string );
+
+		if ( strlen( $url_encoded_str ) > $limit ) {
+			$string = rawurldecode( substr( $url_encoded_str, 0, $limit - 3 ) . '...' );
 		}
 		return $string;
 	}
@@ -105,7 +113,7 @@ class WC_Gateway_eSewa_Request {
 	 * @param  WC_Order $order Order object.
 	 * @return array
 	 */
-	private function get_payment_status_args( $order ) {
+	protected function get_payment_status_args( $order ) {
 		$payment_statuses = array(
 			'su' => 'success',
 			'fu' => 'failure',
@@ -132,7 +140,7 @@ class WC_Gateway_eSewa_Request {
 	 * @param  WC_Order $order Order object.
 	 * @return float amount
 	 */
-	private function get_service_charge( $order ) {
+	protected function get_service_charge( $order ) {
 		$fee_total = 0;
 
 		// Add fees.
