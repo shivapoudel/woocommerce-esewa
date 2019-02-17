@@ -106,6 +106,15 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 
 == Changelog ==
 
+= 1.9.0 - 17-02-2019 =
+* Fix - eSewa sandbox test server URL.
+* Fix - Remove IPN word from failure message.
+* Fix - GitLab Plugin URL in plugin header for updates.
+* Fix - Clear eSewa logs when debug mode is turned off.
+* Fix - Call empty cart when completing payment in eSewa.
+* Fix - Return whether or not this gateway still requires setup.
+* Dev - WordPress coding standard and added husky for pre-commit check.
+
 = 1.8.0 - 15-03-2018 =
 * Fix - eSewa test server request URL.
 * Fix - eSewa IPN validation error due to invalid amount send from esewa.

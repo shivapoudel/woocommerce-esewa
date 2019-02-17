@@ -80,6 +80,8 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 
 			if ( method_exists( $this, 'payment_status_' . $requested['payment_status'] ) ) {
 				call_user_func( array( $this, 'payment_status_' . $requested['payment_status'] ), $order, $requested );
+				wp_safe_redirect( esc_url_raw( add_query_arg( 'utm_nooverride', '1', $this->gateway->get_return_url( $order ) ) ) );
+				exit;
 			}
 		}
 	}
