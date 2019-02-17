@@ -112,7 +112,8 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 * Fix - GitLab Plugin URL in plugin header for updates.
 * Fix - Clear eSewa logs when debug mode is turned off.
 * Fix - Call empty cart when completing payment in eSewa.
-* Fix - Return whether or not this gateway still requires setup.
+* Fix - Log eSewa Reference Code when completing payment in eSewa.
+* Tweak - Return whether or not this gateway still requires setup.
 * Dev - WordPress coding standard and added husky for pre-commit check.
 
 = 1.8.0 - 15-03-2018 =

@@ -160,6 +160,11 @@ class WC_Gateway_eSewa_IPN_Handler extends WC_Gateway_eSewa_Response {
 			}
 
 			$this->payment_complete( $order, ( ! empty( $requested['refId'] ) ? wc_clean( $requested['refId'] ) : '' ), __( 'IPN payment completed', 'woocommerce-esewa' ) );
+
+			// Log eSewa Reference Code.
+			if ( ! empty( $requested['refId'] ) ) {
+				update_post_meta( $order->get_id(), 'eSewa Reference Code', wc_clean( $requested['refId'] ) );
+			}
 		} else {
 			/* translators: %s: pending reason */
 			$this->payment_on_hold( $order, sprintf( __( 'Payment pending: %s', 'woocommerce-esewa' ), $requested['pending_reason'] ) );
