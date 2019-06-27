@@ -54,11 +54,11 @@ class WC_Gateway_eSewa_Request {
 	 */
 	public function get_request_url( $order, $sandbox = false ) {
 		$this->endpoint = $sandbox ? 'https://uat.esewa.com.np/epay/main?' : 'https://esewa.com.np/epay/main?';
-		$esewa_args     = http_build_query( $this->get_esewa_args( $order, $sandbox ), '', '&' );
+		$esewa_args     = $this->get_esewa_args( $order, $sandbox );
 
 		WC_Gateway_eSewa::log( 'eSewa Request Args for order ' . $order->get_order_number() . ': ' . wc_print_r( $esewa_args, true ) );
 
-		return $this->endpoint . http_build_query( $paypal_args, '', '&' );
+		return $this->endpoint . http_build_query( $esewa_args, '', '&' );
 	}
 
 	/**
@@ -69,12 +69,15 @@ class WC_Gateway_eSewa_Request {
 	 * @return string
 	 */
 	protected function limit_length( $string, $limit = 127 ) {
-		// As the output is to be used in http_build_query which applies URL encoding, the string needs to be
-		// cut as if it was URL-encoded, but returned non-encoded (it will be encoded by http_build_query later).
-		$url_encoded_str = rawurlencode( $string );
-
-		if ( strlen( $url_encoded_str ) > $limit ) {
-			$string = rawurldecode( substr( $url_encoded_str, 0, $limit - 3 ) . '...' );
+		$str_limit = $limit - 3;
+		if ( function_exists( 'mb_strimwidth' ) ) {
+			if ( mb_strlen( $string ) > $limit ) {
+				$string = mb_strimwidth( $string, 0, $str_limit ) . '...';
+			}
+		} else {
+			if ( strlen( $string ) > $limit ) {
+				$string = substr( $string, 0, $str_limit ) . '...';
+			}
 		}
 		return $string;
 	}
