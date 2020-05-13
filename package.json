@@ -19,7 +19,7 @@
     "eslint": "~5.14.0",
     "grunt": "~1.0.3",
     "grunt-checktextdomain": "~1.0.1",
-    "grunt-contrib-jshint": "~2.0.0",
+    "grunt-contrib-jshint": "~2.1.0",
     "grunt-contrib-uglify": "~4.0.0",
     "grunt-contrib-watch": "~1.1.0",
     "grunt-phpcs": "~0.4.0",
