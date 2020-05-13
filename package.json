@@ -16,7 +16,7 @@
     "git:update-hooks": "rm -rf .git/hooks && node ./node_modules/husky/husky.js install"
   },
   "devDependencies": {
-    "eslint": "5.16.0",
+    "eslint": "7.0.0",
     "grunt": "1.1.0",
     "grunt-checktextdomain": "1.0.1",
     "grunt-contrib-jshint": "2.1.0",
