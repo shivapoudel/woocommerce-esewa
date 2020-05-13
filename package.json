@@ -16,14 +16,14 @@
     "git:update-hooks": "rm -rf .git/hooks && node ./node_modules/husky/husky.js install"
   },
   "devDependencies": {
-    "eslint": "~5.16.0",
-    "grunt": "~1.0.3",
-    "grunt-checktextdomain": "~1.0.1",
-    "grunt-contrib-jshint": "~2.1.0",
-    "grunt-contrib-uglify": "~4.0.0",
-    "grunt-contrib-watch": "~1.1.0",
-    "grunt-phpcs": "~0.4.0",
-    "grunt-wp-i18n": "~1.0.3",
+    "eslint": "5.16.0",
+    "grunt": "1.0.3",
+    "grunt-checktextdomain": "1.0.1",
+    "grunt-contrib-jshint": "2.1.0",
+    "grunt-contrib-uglify": "4.0.0",
+    "grunt-contrib-watch": "1.1.0",
+    "grunt-phpcs": "0.4.0",
+    "grunt-wp-i18n": "1.0.3",
     "husky": "1.3.1",
     "lint-staged": "8.2.1"
   },
