@@ -80,7 +80,7 @@ class WC_Gateway_eSewa extends WC_Payment_Gateway {
 	 * When this gateway is toggled on via AJAX, if this returns true a
 	 * redirect will occur to the settings page instead.
 	 *
-	 * @since 1.9.0
+	 * @since 2.0.0
 	 * @return bool
 	 */
 	public function needs_setup() {

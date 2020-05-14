@@ -1,5 +1,5 @@
 === WooCommerce eSewa ===
-Contributors: shivapoudel
+Contributors: shivapoudel, nilanzva
 Tags: woocommerce, esewa
 Requires at least: 5.0
 Tested up to: 5.4
@@ -45,7 +45,7 @@ You can contribute to the source code in our [GitHub](https://github.com/shivapo
 = Minimum Requirements =
 
 * WordPress 5.0 or greater.
-* WooCommerce 3.0 or greater.
+* WooCommerce 3.6 or greater.
 
 = Automatic installation =
 
@@ -70,7 +70,7 @@ Automatic updates should work like a charm; as always though, ensure you backup 
 = What is needed to use this plugin? =
 
 * WordPress 5.0 or later.
-* WooCommerce 3.0 or later.
+* WooCommerce 3.6 or later.
 * Merchant/Service Code from eSewa.
 
 = eSewa receives payments from which countries? =
@@ -106,21 +106,12 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 
 == Changelog ==
 
-= 1.9.0 - 14-05-2020 =
-* Tweak - Tested upto WP 5.4 & WooCommerce 4.3 :)
-
-= 1.9.0 - 17-02-2019 =
-* Fix - eSewa sandbox test server URL.
+= 2.0.0 - 14-05-2020 =
+* Fix - eSewa sandbox server request URL.
 * Fix - Remove IPN word from failure message.
-* Fix - GitLab Plugin URL in plugin header for updates.
 * Fix - Clear eSewa logs when debug mode is turned off.
 * Fix - Call empty cart when completing payment in eSewa.
 * Fix - Log eSewa Reference Code when completing payment in eSewa.
-* Tweak - Return whether or not this gateway still requires setup.
-* Dev - WordPress coding standard and added husky for pre-commit check.
-
-= 1.8.0 - 15-03-2018 =
-* Fix - eSewa test server request URL.
 * Fix - eSewa IPN validation error due to invalid amount send from esewa.
 * Fix - Use of default green color eSewa logo to prevent brand violation.
 * Fix - Notices declaring to use `get_id()` and `get_order_key()` instead.
@@ -128,11 +119,10 @@ Yes you can! Join in on our [GitHub repository](http://github.com/shivapoudel/wo
 * Tweak - Added extra plugin headers support for WC extension.
 * Tweak - Prevent double checking amount during IPN validation.
 * Tweak - Send IPN email notification when cancelled order are paid.
+* Tweak - Return whether or not this gateway still requires setup.
 * Tweak - Remove `array_filter` since all args defined by WC have values.
+* Dev - WordPress coding standard and added husky for pre-commit check.
 * Dev - WordPress coding standard and move WooCommerce eSewa class to seperate file.
-
-= 1.7.0 - 18-07-2017 =
-* Tweak - Tested upto WP 4.8 & WooCommerce 3.0 :)
 
 = 1.6.0 - 20-12-2016 =
 * Fix - Limit lengths of eSewa Args.
