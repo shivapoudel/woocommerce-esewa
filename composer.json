@@ -1,7 +1,7 @@
 {
   "name": "shivapoudel/woocommerce-esewa",
   "description": "WooCommerce eSewa is a Nepali payment gateway for WooCommerce.",
-  "homepage": "https://gitlab.com/shivapoudel/woocommerce-esewa/",
+  "homepage": "https://github.com/shivapoudel/woocommerce-esewa/",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
   "prefer-stable": true,
@@ -10,7 +10,8 @@
     "composer/installers": "1.9.0"
   },
   "require-dev": {
-    "woocommerce/woocommerce-sniffs": "*"
+    "woocommerce/woocommerce-sniffs": "0.0.10",
+    "wp-cli/i18n-command": "^2.2"
   },
   "scripts": {
     "phpcs": [
@@ -21,12 +22,20 @@
     ],
     "phpcbf": [
       "phpcbf -p"
+    ],
+    "makepot-audit": [
+      "wp i18n make-pot . --exclude=\".github,.wordpress-org,bin,node_modules\" --slug=woocommerce-esewa"
+    ],
+    "makepot": [
+      "@makepot-audit --skip-audit"
     ]
   },
   "extra": {
     "scripts-description": {
       "phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",
-      "phpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier"
+      "phpcbf": "Fix coding standards warnings/errors automatically with PHP Code Beautifier",
+      "makepot-audit": "Generate i18n/langauges/woocommerce.pot file and run audit",
+      "makepot": "Generate i18n/langauges/woocommerce.pot file"
     }
   }
 }

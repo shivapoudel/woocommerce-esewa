@@ -2,13 +2,24 @@
 <ruleset name="WordPress Coding Standards">
 	<description>WooCommerce eSewa dev PHP_CodeSniffer ruleset.</description>
 
+	<file>.</file>
+
 	<!-- Exclude paths -->
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
+	<!-- Show progress, show the error codes for each message (source). -->
+	<arg value="ps" />
+
+	<!-- Strip the filepaths in reports down to the relevant bit. -->
+	<arg name="basepath" value="./" />
+
+	<!-- Check up to 8 files simultaneously. -->
+	<arg name="parallel" value="8" />
+
 	<!-- Configs -->
-	<config name="minimum_supported_wp_version" value="4.7" />
-	<config name="testVersion" value="5.2-" />
+	<config name="minimum_supported_wp_version" value="5.0" />
+	<config name="testVersion" value="7.0-" />
 
 	<!-- Rules -->
 	<rule ref="WooCommerce-Core" />
@@ -18,6 +29,7 @@
 			<property name="text_domain" type="array" value="woocommerce-esewa" />
 		</properties>
 	</rule>
+
 	<rule ref="PEAR.NamingConventions.ValidClassName">
 		<exclude-pattern>includes/</exclude-pattern>
 	</rule>

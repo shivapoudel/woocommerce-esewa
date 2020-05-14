@@ -2,28 +2,27 @@
   "name": "woocommerce-esewa",
   "title": "WooCommerce eSewa",
   "version": "1.9.0",
-  "homepage": "https://gitlab.com/shivapoudel/woocommerce-esewa",
+  "homepage": "https://github.com/shivapoudel/woocommerce-esewa",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/shivapoudel/woocommerce-esewa.git"
+    "url": "https://github.com/shivapoudel/woocommerce-esewa.git"
   },
   "license": "GPL-3.0+",
   "main": "Gruntfile.js",
   "scripts": {
-    "build": "grunt",
+    "build": "grunt && npm run makepot",
     "build-watch": "grunt watch",
     "lint:js": "eslint assets/js --ext=js",
-    "git:update-hooks": "rm -rf .git/hooks && node ./node_modules/husky/husky.js install"
+    "makepot": "composer run-script makepot",
+    "git:update-hooks": "rm -r .git/hooks && mkdir -p .git/hooks && node ./node_modules/husky/husky.js install"
   },
   "devDependencies": {
     "eslint": "7.0.0",
     "grunt": "1.1.0",
-    "grunt-checktextdomain": "1.0.1",
-    "grunt-contrib-jshint": "2.1.0",
     "grunt-contrib-uglify": "4.0.1",
     "grunt-contrib-watch": "1.1.0",
     "grunt-phpcs": "0.4.0",
-    "grunt-wp-i18n": "1.0.3",
+    "gruntify-eslint": "^5.0.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.2"
   },
@@ -33,22 +32,18 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "post-merge": "./bin/post-merge.sh"
     }
   },
   "lint-staged": {
-    "linters": {
-      "*.php": [
-        "php -d display_errors=1 -l",
-        "composer run-script phpcs-pre-commit"
-      ],
-      "*.js": [
-        "eslint --fix",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "*.min.js"
+    "*.php": [
+      "php -d display_errors=1 -l",
+      "composer run-script phpcs-pre-commit"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
     ]
   }
 }

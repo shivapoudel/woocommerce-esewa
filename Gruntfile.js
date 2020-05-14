@@ -1,4 +1,3 @@
-/* jshint node:true */
 module.exports = function( grunt ){
 	'use strict';
 
@@ -10,13 +9,9 @@ module.exports = function( grunt ){
 			js: 'assets/js'
 		},
 
-		// JavaScript linting with JSHint.
-		jshint: {
-			options: {
-				jshintrc: '.jshintrc'
-			},
+		// JavaScript linting with ESLint.
+		eslint: {
 			all: [
-				'Gruntfile.js',
 				'<%= dirs.js %>/*.js',
 				'!<%= dirs.js %>/*.min.js'
 			]
@@ -51,61 +46,11 @@ module.exports = function( grunt ){
 		watch: {
 			js: {
 				files: [
+					'GruntFile.js',
 					'<%= dirs.js %>/*js',
 					'!<%= dirs.js %>/*.min.js'
 				],
-				tasks: ['jshint', 'uglify']
-			}
-		},
-
-		// Generate POT files.
-		makepot: {
-			options: {
-				type: 'wp-plugin',
-				domainPath: 'languages',
-				potHeaders: {
-					'report-msgid-bugs-to': 'https://gitlab.com/shivapoudel/woocommerce-esewa/issues',
-					'language-team': 'LANGUAGE <EMAIL@ADDRESS>'
-				}
-			},
-			dist: {
-				options: {
-					potFilename: 'woocommerce-esewa.pot',
-					exclude: [
-						'vendor/.*'
-					]
-				}
-			}
-		},
-
-		// Check textdomain errors.
-		checktextdomain: {
-			options: {
-				text_domain: 'woocommerce-esewa',
-				keywords: [
-					'__:1,2d',
-					'_e:1,2d',
-					'_x:1,2c,3d',
-					'esc_html__:1,2d',
-					'esc_html_e:1,2d',
-					'esc_html_x:1,2c,3d',
-					'esc_attr__:1,2d',
-					'esc_attr_e:1,2d',
-					'esc_attr_x:1,2c,3d',
-					'_ex:1,2c,3d',
-					'_n:1,2,4d',
-					'_nx:1,2,4c,5d',
-					'_n_noop:1,2,3d',
-					'_nx_noop:1,2,3c,4d'
-				]
-			},
-			files: {
-				src:  [
-					'**/*.php',         // Include all files
-					'!node_modules/**', // Exclude node_modules/
-					'!vendor/**'        // Exclude vendor/
-				],
-				expand: true
+				tasks: ['eslint', 'uglify']
 			}
 		},
 
@@ -126,30 +71,22 @@ module.exports = function( grunt ){
 
 	// Load NPM tasks to be used here.
 	grunt.loadNpmTasks( 'grunt-phpcs' );
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
-	grunt.loadNpmTasks( 'grunt-checktextdomain' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+	grunt.loadNpmTasks( 'gruntify-eslint' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
 	// Register tasks.
 	grunt.registerTask( 'default', [
-		'js',
-		'i18n'
+		'js'
 	]);
 
 	grunt.registerTask( 'js', [
-		'jshint',
+		'eslint',
 		'uglify'
 	]);
 
 	// Only an alias to 'default' task.
 	grunt.registerTask( 'dev', [
 		'default'
-	]);
-
-	grunt.registerTask( 'i18n', [
-		'checktextdomain',
-		'makepot'
 	]);
 };
