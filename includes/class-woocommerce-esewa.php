@@ -3,7 +3,7 @@
  * WooCommerce eSewa setup
  *
  * @package WooCommerce_eSewa
- * @since   1.9.0
+ * @since   2.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -20,7 +20,7 @@ final class WooCommerce_eSewa {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.9.0';
+	const VERSION = '2.0.0';
 
 	/**
 	 * Instance of this class.

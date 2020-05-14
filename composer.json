@@ -24,7 +24,7 @@
       "phpcbf -p"
     ],
     "makepot-audit": [
-      "wp i18n make-pot . --exclude=\".github,.wordpress-org,bin,node_modules\" --slug=woocommerce-esewa"
+      "wp --allow-root i18n make-pot . --exclude=\".github,.wordpress-org,bin,node_modules\" --slug=woocommerce-esewa"
     ],
     "makepot": [
       "@makepot-audit --skip-audit"

@@ -12,6 +12,9 @@ project.properties
 .sublimelinterrc
 *.swp
 
+# Build
+build/
+
 # Grunt
 /node_modules/
 none
