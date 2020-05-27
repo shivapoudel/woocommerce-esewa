@@ -1,5 +1,5 @@
 === WooCommerce eSewa ===
-Contributors: shivapoudel
+Contributors: shivapoudel, nilanzva
 Tags: woocommerce, esewa
 Requires at least: 5.0
 Tested up to: 5.4
