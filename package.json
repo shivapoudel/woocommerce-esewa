@@ -17,7 +17,7 @@
     "git:update-hooks": "rm -r .git/hooks && mkdir -p .git/hooks && node ./node_modules/husky/husky.js install"
   },
   "devDependencies": {
-    "eslint": "7.4.0",
+    "eslint": "7.5.0",
     "grunt": "1.2.1",
     "grunt-contrib-uglify": "5.0.0",
     "grunt-contrib-watch": "1.1.0",
