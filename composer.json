@@ -11,7 +11,7 @@
   },
   "require-dev": {
     "woocommerce/woocommerce-sniffs": "0.1.1",
-    "wp-cli/i18n-command": "2.2.10"
+    "wp-cli/i18n-command": "2.2.13"
   },
   "scripts": {
     "phpcs": [
