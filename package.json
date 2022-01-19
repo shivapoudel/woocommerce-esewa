@@ -24,7 +24,7 @@
     "grunt-phpcs": "0.4.0",
     "gruntify-eslint": "5.0.0",
     "husky": "7.0.4",
-    "lint-staged": "12.1.7"
+    "lint-staged": "12.2.0"
   },
   "engines": {
     "node": ">=10.15.0",
