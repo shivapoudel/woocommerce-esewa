@@ -7,7 +7,7 @@
   "prefer-stable": true,
   "minimum-stability": "dev",
   "require": {
-    "composer/installers": "2.0.1"
+    "composer/installers": "2.1.0"
   },
   "require-dev": {
     "woocommerce/woocommerce-sniffs": "0.1.2",
