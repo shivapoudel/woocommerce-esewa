@@ -19,7 +19,7 @@
   "devDependencies": {
     "eslint": "8.11.0",
     "grunt": "1.4.1",
-    "grunt-contrib-uglify": "5.0.1",
+    "grunt-contrib-uglify": "5.1.0",
     "grunt-contrib-watch": "1.1.0",
     "grunt-phpcs": "0.4.0",
     "gruntify-eslint": "5.0.0",
